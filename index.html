@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Skill Circle</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #172033;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #facc15;
+}
+
+.header-btn {
+    background: white;
+    color: #4f46e5;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* LANDING */
+
+.hero {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.hero-box {
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 25px;
+    padding: 35px 25px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.hero-box h1 {
+    font-size: 40px;
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.hero-box h1 span {
+    color: #f59e0b;
+}
+
+.hero-box p {
+    color: #667085;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.login-box {
+    max-width: 450px;
+    margin: auto;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    border: 1px solid #d6d9e0;
+    border-radius: 12px;
+    padding: 13px;
+    outline: none;
+    background: #fff;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #6366f1;
+}
+
+.primary-btn {
+    width: 100%;
+    border: none;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.secondary-btn {
+    width: 100%;
+    border: 1px solid #6366f1;
+    background: white;
+    color: #4f46e5;
+    padding: 13px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.role-section {
+    margin-top: 25px;
+}
+
+.role-title {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.roles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.role-card {
+    border: 2px solid #e2e5ec;
+    border-radius: 18px;
+    padding: 22px 10px;
+    background: white;
+    transition: 0.2s;
+}
+
+.role-card:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+}
+
+.role-card .emoji {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.role-card h3 {
+    color: #344054;
+}
+
+.role-card p {
+    font-size: 13px;
+    margin: 5px 0 0;
+}
+
+/* APP */
+
+.app {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.welcome {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.welcome h2 {
+    margin-bottom: 7px;
+}
+
+/* DASHBOARD */
+
+.section-title {
+    margin: 25px 0 15px;
+    font-size: 22px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.category {
+    background: white;
+    border-radius: 18px;
+    padding: 18px 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eceef3;
+}
+
+.category .emoji {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.category p {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+}
+
+.info-card h3 {
+    margin-bottom: 8px;
+    color: #4f46e5;
+}
+
+.info-card p {
+    color: #667085;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.badge {
+    display: inline-block;
+    background: #ede9fe;
+    color: #5b21b6;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* FORM */
+
+.form-container {
+    background: white;
+    border-radius: 22px;
+    padding: 25px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+    margin-top: 20px;
+}
+
+.form-container h2 {
+    color: #4f46e5;
+    margin-bottom: 7px;
+}
+
+.form-subtitle {
+    color: #667085;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.mode-box {
+    border: 2px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.mode-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.mode-option {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mode-option.selected {
+    border-color: #4f46e5;
+    background: #f0efff;
+}
+
+.mode-option input {
+    display: none;
+}
+
+.reminder-box {
+    margin-top: 15px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.reminder-box h4 {
+    color: #c2410c;
+    margin-bottom: 8px;
+}
+
+.reminder-box p {
+    font-size: 13px;
+    color: #7c2d12;
+    margin-bottom: 10px;
+}
+
+/* PROFILE */
+
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    padding: 22px;
+    margin-top: 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+}
+
+.profile-top {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.profile-avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #ede9fe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.profile-details h3 {
+    color: #4f46e5;
+}
+
+.profile-details p {
+    color: #667085;
+    font-size: 14px;
+}
+
+/* NAV */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 5px;
+    z-index: 100;
+}
+
+.bottom-nav button {
+    border: none;
+    background: transparent;
+    color: #667085;
+    font-size: 12px;
+}
+
+.bottom-nav button.active {
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+.page {
+    padding-bottom: 80px;
+}
+
+/* POPUP */
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.popup {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    animation: popup 0.25s ease;
+}
+
+@keyframes popup {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.popup h2 {
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.popup p {
+    color: #667085;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.popup button {
+    border: none;
+    background: #4f46e5;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #172033;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 12px;
+    z-index: 2000;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .hero-box h1 {
+        font-size: 32px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .roles {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .roles {
+        grid-template-columns: 1fr;
+    }
+
+    .mode-options {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header id="mainHeader" class="hidden">
+
+    <div class="logo">
+        Skill<span>Circle</span>
+    </div>
+
+    <button class="header-btn" onclick="logout()">
+        Logout
+    </button>
+
+</header>
+
+
+<!-- =========================
+     LOGIN PAGE
+========================= -->
+
+<section id="loginPage" class="hero">
+
+    <div class="hero-box">
+
+        <h1>Skill<span>Circle</span></h1>
+
+        <p>
+            Connect skills with opportunities.
+            Find trusted local workers or find work that matches your skills.
+        </p>
+
+        <div class="login-box">
+
+            <div class="input-group">
+                <label>Email ID</label>
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                >
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                >
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="login()"
+            >
+                Login / Create Account
+            </button>
+
+            <div class="role-section">
+
+                <div class="role-title">
+                    What do you want to do?
+                </div>
+
+                <div class="roles">
+
+                    <div
+                        class="role-card"
+                        onclick="selectRole('worker')"
+                    >
+
+                        <div class="emoji">👷</div>
+
+                        <h3>Work</h3>
+
+                        <p>
+                            Find work and showcase your skills
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="role-card"
+                        onclick="selectRole('hirer')"
+                    >
+
+                        <div class="emoji">🏠</div>
+
+                        <h3>Hire</h3>
+
+                        <p>
+                            Find skilled people for your work
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAIN APP
+========================= -->
+
+<main id="mainApp" class="app hidden page">
+
+    <div class="welcome">
+
+        <h2 id="welcomeText">
+            Welcome to Skill Circle 👋
+        </h2>
+
+        <p>
+            Your skills can create opportunities.
+        </p>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboardSection">
+
+        <h2 class="section-title">
+            Explore Work Categories
+        </h2>
+
+        <div class="categories">
+
+            <div class="category"
+                 onclick="showCategory('Gardening')">
+                <span class="emoji">🌱</span>
+                <p>Gardening</p>
+            </div>
+
+            <div class="category"
+                 onclick="showCategory('Housemaid')">
+                <span class="emoji">🧹</span>
+                <p>Housemaid</p>
+            </div>
+
+            <div class="category"
+                 onclick="showCategory('Painting')">
+                <span class="emoji">🎨</span>
+                <p>Painting</p>
+            </div>
+
+            <div class="category"
+                 onclick="showCategory('Student Work')">
+                <span class="emoji">🎓</span>
+                <p>Student Work</p>
+            </div>
+
+            <div class="category"
+                 onclick="showCategory('Digital Work')">
+                <span class="emoji">💻</span>
+                <p>Digital Work</p>
+            </div>
+
+        </div>
+
+
+        <h2 class="section-title">
+            How Skill Circle Works
+        </h2>
+
+        <div class="cards">
+
+            <div class="info-card">
+
+                <h3>👷 For Workers</h3>
+
+                <p>
+                    Create your profile, add your skills,
+                    select your work category and choose whether
+                    you want daily work or a permanent work schedule.
+                </p>
+
+            </div>
+
+            <div class="info-card">
+
+                <h3>🏠 For Hirers</h3>
+
+                <p>
+                    Post the work you need and discover
+                    suitable people based on skill,
+                    location and availability.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div id="categoryResult"></div>
+
+    </section>
+
+
+    <!-- WORKER FORM -->
+
+    <section id="workerSection" class="hidden">
+
+        <div class="form-container">
+
+            <h2>👷 Worker Registration</h2>
+
+            <p class="form-subtitle">
+                Create your Skill Circle worker profile.
+            </p>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Full Name *</label>
+                    <input
+                        id="workerName"
+                        type="text"
+                        placeholder="Enter your complete name"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number *</label>
+                    <input
+                        id="workerPhone"
+                        type="tel"
+                        placeholder="Enter phone number"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Aadhaar Number</label>
+                    <input
+                        id="workerAadhaar"
+                        type="text"
+                        maxlength="12"
+                        placeholder="Prototype field"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Profile Photo</label>
+                    <input
+                        id="workerPhoto"
+                        type="file"
+                        accept="image/*"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Current Location *</label>
+                    <input
+                        id="workerLocation"
+                        type="text"
+                        placeholder="City / Area"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Permanent Address</label>
+                    <input
+                        id="workerAddress"
+                        type="text"
+                        placeholder="Enter permanent address"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Previous Profession</label>
+                    <input
+                        id="workerProfession"
+                        type="text"
+                        placeholder="Example: Painter"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Skill Category *</label>
+
+                    <select id="workerCategory">
+
+                        <option value="">
+                            Select category
+                        </option>
+
+                        <option>Gardening</option>
+                        <option>Housemaid</option>
+                        <option>Painting</option>
+                        <option>Student Work</option>
+                        <option>Digital Work</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+                <div class="input-group full">
+
+                    <label>
+                        Skills / Experience
+                    </label>
+
+                    <textarea
+                        id="workerSkills"
+                        rows="4"
+                        placeholder="Tell people about your skills and experience"
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- WORK MODE -->
+
+            <div class="mode-box">
+
+                <strong>
+                    Choose your work availability *
+                </strong>
+
+                <div class="mode-options">
+
+                    <label
+                        class="mode-option"
+                        id="dailyMode"
+                        onclick="chooseMode('daily')"
+                    >
+
+                        <input
+                            type="radio"
+                            name="workMode"
+                            value="daily"
+                        >
+
+                        <div style="font-size:30px;">
+                            📅
+                        </div>
+
+                        <strong>
+                            Work Daily
+                        </strong>
+
+                        <p style="font-size:12px;">
+                            Receive morning work reminders
+                        </p>
+
+                    </label>
+
+
+                    <label
+                        class="mode-option"
+                        id="permanentMode"
+                        onclick="chooseMode('permanent')"
+                    >
+
+                        <input
+                            type="radio"
+                            name="workMode"
+                            value="permanent"
+                        >
+
+                        <div style="font-size:30px;">
+                            🏢
+                        </div>
+
+                        <strong>
+                            Work Permanently
+                        </strong>
+
+                        <p style="font-size:12px;">
+                            Fixed work schedule
+                        </p>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAILY REMINDER -->
+
+            <div
+                id="reminderSettings"
+                class="reminder-box hidden"
+            >
+
+                <h4>
+                    🔔 Daily Work Reminder
+                </h4>
+
+                <p>
+                    Since you selected daily work,
+                    Skill Circle will remind you every morning.
+                </p>
+
+                <div class="input-group">
+
+                    <label>
+                        Morning Reminder Time
+                    </label>
+
+                    <select id="reminderTime">
+
+                        <option value="5">
+                            5:00 AM
+                        </option>
+
+                        <option value="6">
+                            6:00 AM
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button
+                    class="secondary-btn"
+                    onclick="requestNotificationPermission()"
+                >
+                    Enable Notifications 🔔
+                </button>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="saveWorkerProfile()"
+            >
+                Create Worker Profile
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- HIRER FORM -->
+
+    <section id="hirerSection" class="hidden">
+
+        <div class="form-container">
+
+            <h2>🏠 Hire Someone</h2>
+
+            <p class="form-subtitle">
+                Tell Skill Circle what kind of worker you need.
+            </p>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+
+                    <label>
