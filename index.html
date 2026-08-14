@@ -3,549 +3,491 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Skill Circle</title>
+<meta name="theme-color" content="#5b4bdb">
+<title>KaamSetu - Smart Work Connection</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-body {
-    background: #f5f7fb;
-    color: #172033;
+body{
+    background:#f5f6fb;
+    color:#202124;
 }
 
-button,
-input,
-select,
-textarea {
-    font: inherit;
+button,input,select,textarea{
+    font:inherit;
 }
 
-button {
-    cursor: pointer;
+button{
+    cursor:pointer;
 }
 
-.hidden {
-    display: none !important;
+.app{
+    min-height:100vh;
 }
 
-/* HEADER */
-
-header {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: white;
-    padding: 18px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+header{
+    background:linear-gradient(135deg,#5b4bdb,#7b61ff);
+    color:white;
+    padding:16px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:50;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+.logo{
+    font-size:24px;
+    font-weight:800;
 }
 
-.logo span {
-    color: #facc15;
+.logo span{
+    font-size:12px;
+    display:block;
+    opacity:.85;
+    font-weight:normal;
 }
 
-.header-btn {
-    background: white;
-    color: #4f46e5;
-    border: none;
-    padding: 9px 14px;
-    border-radius: 20px;
-    font-weight: bold;
+.header-actions{
+    display:flex;
+    gap:8px;
 }
-
-/* LANDING */
 
-.hero {
-    min-height: calc(100vh - 65px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+.header-actions button{
+    border:0;
+    background:rgba(255,255,255,.15);
+    color:white;
+    padding:9px 13px;
+    border-radius:10px;
 }
 
-.hero-box {
-    width: 100%;
-    max-width: 900px;
-    background: white;
-    border-radius: 25px;
-    padding: 35px 25px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-    text-align: center;
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:25px 16px 70px;
 }
 
-.hero-box h1 {
-    font-size: 40px;
-    color: #4f46e5;
-    margin-bottom: 10px;
+.screen{
+    display:none;
 }
 
-.hero-box h1 span {
-    color: #f59e0b;
+.screen.active{
+    display:block;
 }
 
-.hero-box p {
-    color: #667085;
-    line-height: 1.6;
-    margin-bottom: 25px;
+.hero{
+    background:linear-gradient(135deg,#5b4bdb,#8b78ff);
+    color:white;
+    border-radius:25px;
+    padding:35px 25px;
+    margin-bottom:22px;
 }
 
-.login-box {
-    max-width: 450px;
-    margin: auto;
+.hero h1{
+    font-size:34px;
+    margin-bottom:10px;
 }
 
-.input-group {
-    text-align: left;
-    margin-bottom: 15px;
+.hero p{
+    opacity:.92;
+    line-height:1.6;
 }
 
-.input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 7px;
+.card{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
 
-.input-group input,
-.input-group select,
-.input-group textarea {
-    width: 100%;
-    border: 1px solid #d6d9e0;
-    border-radius: 12px;
-    padding: 13px;
-    outline: none;
-    background: #fff;
+.card h2,.card h3{
+    margin-bottom:12px;
 }
 
-.input-group input:focus,
-.input-group select:focus,
-.input-group textarea:focus {
-    border-color: #6366f1;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:16px;
 }
 
-.primary-btn {
-    width: 100%;
-    border: none;
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: white;
-    padding: 14px;
-    border-radius: 12px;
-    font-weight: bold;
-    margin-top: 8px;
+.choice{
+    border:2px solid #e4e2f8;
+    padding:25px;
+    border-radius:18px;
+    background:white;
+    transition:.2s;
+    text-align:left;
 }
 
-.secondary-btn {
-    width: 100%;
-    border: 1px solid #6366f1;
-    background: white;
-    color: #4f46e5;
-    padding: 13px;
-    border-radius: 12px;
-    font-weight: bold;
-    margin-top: 10px;
+.choice:hover{
+    transform:translateY(-3px);
+    border-color:#6b5ce7;
 }
 
-.role-section {
-    margin-top: 25px;
+.choice .icon{
+    font-size:38px;
+    margin-bottom:12px;
 }
 
-.role-title {
-    margin-bottom: 15px;
-    font-weight: bold;
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
 }
 
-.roles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+.field{
+    margin-bottom:14px;
 }
 
-.role-card {
-    border: 2px solid #e2e5ec;
-    border-radius: 18px;
-    padding: 22px 10px;
-    background: white;
-    transition: 0.2s;
+.field label{
+    display:block;
+    font-weight:700;
+    margin-bottom:6px;
+    font-size:14px;
 }
 
-.role-card:hover {
-    border-color: #6366f1;
-    transform: translateY(-2px);
+.field input,
+.field select,
+.field textarea{
+    width:100%;
+    border:1px solid #ddd;
+    border-radius:11px;
+    padding:12px;
+    outline:none;
+    background:#fff;
 }
 
-.role-card .emoji {
-    font-size: 40px;
-    margin-bottom: 8px;
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:#6b5ce7;
 }
 
-.role-card h3 {
-    color: #344054;
+textarea{
+    min-height:90px;
+    resize:vertical;
 }
 
-.role-card p {
-    font-size: 13px;
-    margin: 5px 0 0;
+.btn{
+    border:0;
+    padding:12px 18px;
+    border-radius:11px;
+    font-weight:700;
+    margin:4px;
 }
 
-/* APP */
-
-.app {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+.primary{
+    background:#5b4bdb;
+    color:white;
 }
 
-.welcome {
-    background: linear-gradient(135deg, #4f46e5, #7c3aed);
-    color: white;
-    border-radius: 22px;
-    padding: 25px;
-    margin-bottom: 20px;
+.secondary{
+    background:#eeeefe;
+    color:#4b3bb5;
 }
 
-.welcome h2 {
-    margin-bottom: 7px;
+.success{
+    background:#16a085;
+    color:white;
 }
 
-/* DASHBOARD */
-
-.section-title {
-    margin: 25px 0 15px;
-    font-size: 22px;
+.danger{
+    background:#e74c3c;
+    color:white;
 }
 
-.categories {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
+.warning{
+    background:#f39c12;
+    color:white;
 }
 
-.category {
-    background: white;
-    border-radius: 18px;
-    padding: 18px 8px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border: 1px solid #eceef3;
+.outline{
+    background:white;
+    border:1px solid #5b4bdb;
+    color:#5b4bdb;
 }
 
-.category .emoji {
-    font-size: 32px;
-    display: block;
-    margin-bottom: 8px;
+.back{
+    margin-bottom:15px;
 }
 
-.category p {
-    font-weight: bold;
-    font-size: 13px;
+.worker{
+    position:relative;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+.worker-top{
+    display:flex;
+    gap:14px;
+    align-items:center;
 }
 
-.info-card {
-    background: white;
-    padding: 20px;
-    border-radius: 18px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+.avatar{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#7567e8,#b2a9ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:24px;
+    font-weight:800;
+    flex-shrink:0;
 }
 
-.info-card h3 {
-    margin-bottom: 8px;
-    color: #4f46e5;
+.worker-name{
+    font-weight:800;
+    font-size:18px;
 }
 
-.info-card p {
-    color: #667085;
-    line-height: 1.6;
-    font-size: 14px;
+.rating{
+    color:#f39c12;
+    font-weight:700;
 }
 
-.badge {
-    display: inline-block;
-    background: #ede9fe;
-    color: #5b21b6;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 8px;
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:12px 0;
 }
-
-/* FORM */
 
-.form-container {
-    background: white;
-    border-radius: 22px;
-    padding: 25px;
-    box-shadow: 0 7px 25px rgba(0,0,0,0.06);
-    margin-top: 20px;
+.tag{
+    background:#f0efff;
+    color:#5142c5;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
 }
 
-.form-container h2 {
-    color: #4f46e5;
-    margin-bottom: 7px;
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+    margin:14px 0;
 }
 
-.form-subtitle {
-    color: #667085;
-    margin-bottom: 20px;
+.stat{
+    background:#f7f7fb;
+    border-radius:10px;
+    padding:10px;
+    text-align:center;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+.stat b{
+    display:block;
+    font-size:18px;
 }
 
-.full {
-    grid-column: 1 / -1;
+.small{
+    color:#666;
+    font-size:13px;
 }
 
-.mode-box {
-    border: 2px solid #e5e7eb;
-    border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 15px;
+.status{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:15px;
+    font-size:12px;
+    font-weight:bold;
 }
 
-.mode-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
+.status.available{
+    background:#e1f7ed;
+    color:#14885f;
 }
 
-.mode-option {
-    border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
+.status.busy{
+    background:#ffe8e5;
+    color:#c0392b;
 }
 
-.mode-option.selected {
-    border-color: #4f46e5;
-    background: #f0efff;
+.status.pending{
+    background:#fff1d6;
+    color:#a56600;
 }
 
-.mode-option input {
-    display: none;
+.status.completed{
+    background:#e5e9ff;
+    color:#4b42a8;
 }
 
-.reminder-box {
-    margin-top: 15px;
-    background: #fff7ed;
-    border: 1px solid #fed7aa;
-    border-radius: 15px;
-    padding: 15px;
+.dashboard{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:18px;
 }
 
-.reminder-box h4 {
-    color: #c2410c;
-    margin-bottom: 8px;
+.sidebar{
+    background:white;
+    border-radius:18px;
+    padding:15px;
+    height:max-content;
+    position:sticky;
+    top:80px;
 }
 
-.reminder-box p {
-    font-size: 13px;
-    color: #7c2d12;
-    margin-bottom: 10px;
+.sidebar button{
+    width:100%;
+    border:0;
+    background:white;
+    text-align:left;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:5px;
 }
 
-/* PROFILE */
-
-.profile-card {
-    background: white;
-    border-radius: 20px;
-    padding: 22px;
-    margin-top: 20px;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+.sidebar button:hover,
+.sidebar button.active{
+    background:#efedff;
+    color:#5142c5;
 }
 
-.profile-top {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+.metric{
+    background:white;
+    padding:20px;
+    border-radius:17px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
 }
 
-.profile-avatar {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: #ede9fe;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
+.metric b{
+    display:block;
+    font-size:27px;
+    margin-top:5px;
 }
 
-.profile-details h3 {
-    color: #4f46e5;
+.modal-bg{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    padding:15px;
 }
 
-.profile-details p {
-    color: #667085;
-    font-size: 14px;
+.modal-bg.show{
+    display:flex;
 }
 
-/* NAV */
-
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-top: 1px solid #e5e7eb;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 5px;
-    z-index: 100;
+.modal{
+    background:white;
+    width:min(520px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:20px;
+    padding:24px;
+    animation:pop .2s ease;
 }
 
-.bottom-nav button {
-    border: none;
-    background: transparent;
-    color: #667085;
-    font-size: 12px;
+@keyframes pop{
+    from{transform:scale(.94);opacity:0}
+    to{transform:scale(1);opacity:1}
 }
 
-.bottom-nav button.active {
-    color: #4f46e5;
-    font-weight: bold;
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
 }
 
-.page {
-    padding-bottom: 80px;
+.close{
+    border:0;
+    background:#eee;
+    width:35px;
+    height:35px;
+    border-radius:50%;
 }
-
-/* POPUP */
 
-.popup-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.55);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    padding: 20px;
+.toast{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    background:#222;
+    color:white;
+    padding:14px 18px;
+    border-radius:12px;
+    display:none;
+    z-index:200;
+    max-width:350px;
 }
 
-.popup {
-    background: white;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 25px;
-    padding: 30px;
-    text-align: center;
-    animation: popup 0.25s ease;
+.toast.show{
+    display:block;
 }
 
-@keyframes popup {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+.notification{
+    background:#fff6db;
+    border:1px solid #f0cf6d;
+    padding:15px;
+    border-radius:14px;
+    margin-bottom:15px;
 }
 
-.popup-icon {
-    font-size: 55px;
-    margin-bottom: 10px;
+.timeline{
+    border-left:3px solid #6b5ce7;
+    padding-left:18px;
 }
 
-.popup h2 {
-    color: #4f46e5;
-    margin-bottom: 10px;
+.timeline-item{
+    margin-bottom:18px;
 }
 
-.popup p {
-    color: #667085;
-    line-height: 1.5;
-    margin-bottom: 20px;
+.review{
+    border-top:1px solid #eee;
+    padding-top:12px;
+    margin-top:12px;
 }
 
-.popup button {
-    border: none;
-    background: #4f46e5;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 12px;
-    font-weight: bold;
+.stars button{
+    border:0;
+    background:none;
+    font-size:30px;
+    color:#ddd;
 }
 
-/* TOAST */
-
-.toast {
-    position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #172033;
-    color: white;
-    padding: 13px 20px;
-    border-radius: 12px;
-    z-index: 2000;
-    max-width: 90%;
-    text-align: center;
+.stars button.selected{
+    color:#f39c12;
 }
 
-/* RESPONSIVE */
+.empty{
+    text-align:center;
+    padding:35px;
+    color:#777;
+}
 
-@media (max-width: 700px) {
+footer{
+    text-align:center;
+    color:#777;
+    padding:30px 15px;
+}
 
-    .hero-box h1 {
-        font-size: 32px;
+@media(max-width:700px){
+    .dashboard{
+        grid-template-columns:1fr;
     }
 
-    .categories {
-        grid-template-columns: repeat(2, 1fr);
+    .sidebar{
+        position:static;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
+    .hero h1{
+        font-size:27px;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .full {
-        grid-column: auto;
-    }
-
-    .roles {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 400px) {
-
-    .roles {
-        grid-template-columns: 1fr;
-    }
-
-    .mode-options {
-        grid-template-columns: 1fr;
+    header{
+        padding:13px;
     }
 }
 </style>
@@ -553,470 +495,443 @@ header {
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+<div class="app">
 
-<header id="mainHeader" class="hidden">
-
+<header>
     <div class="logo">
-        Skill<span>Circle</span>
+        KaamSetu
+        <span>Smart Work • Smart Hiring • Trusted People</span>
     </div>
 
-    <button class="header-btn" onclick="logout()">
-        Logout
-    </button>
-
+    <div class="header-actions">
+        <button onclick="goHome()">Home</button>
+        <button onclick="showScreen('helpScreen')">Help</button>
+    </div>
 </header>
 
+<main>
 
-<!-- =========================
-     LOGIN PAGE
-========================= -->
+<!-- ================= LOGIN ================= -->
 
-<section id="loginPage" class="hero">
+<section id="loginScreen" class="screen active">
 
-    <div class="hero-box">
-
-        <h1>Skill<span>Circle</span></h1>
-
+    <div class="hero">
+        <h1>Welcome to KaamSetu 👋</h1>
         <p>
-            Connect skills with opportunities.
-            Find trusted local workers or find work that matches your skills.
+            A smart platform connecting students, digital workers,
+            shop helpers and other workers with people who need reliable help.
         </p>
+    </div>
 
-        <div class="login-box">
+    <div class="card">
 
-            <div class="input-group">
-                <label>Email ID</label>
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="Enter your email"
-                >
+        <h2>Login / Create Account</h2>
+        <p class="small">Prototype login — no real password is required.</p>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Full Name *</label>
+                <input id="loginName" placeholder="Enter your full name">
             </div>
 
-            <div class="input-group">
-                <label>Password</label>
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Enter your password"
-                >
+            <div class="field">
+                <label>Email *</label>
+                <input id="loginEmail" type="email" placeholder="example@email.com">
             </div>
 
-            <button
-                class="primary-btn"
-                onclick="login()"
-            >
-                Login / Create Account
-            </button>
+            <div class="field">
+                <label>Mobile Number *</label>
+                <input id="loginPhone" maxlength="10" placeholder="10 digit mobile number">
+            </div>
 
-            <div class="role-section">
-
-                <div class="role-title">
-                    What do you want to do?
-                </div>
-
-                <div class="roles">
-
-                    <div
-                        class="role-card"
-                        onclick="selectRole('worker')"
-                    >
-
-                        <div class="emoji">👷</div>
-
-                        <h3>Work</h3>
-
-                        <p>
-                            Find work and showcase your skills
-                        </p>
-
-                    </div>
-
-                    <div
-                        class="role-card"
-                        onclick="selectRole('hirer')"
-                    >
-
-                        <div class="emoji">🏠</div>
-
-                        <h3>Hire</h3>
-
-                        <p>
-                            Find skilled people for your work
-                        </p>
-
-                    </div>
-
-                </div>
-
+            <div class="field">
+                <label>City / Area *</label>
+                <input id="loginArea" placeholder="Your area">
             </div>
 
         </div>
+
+        <button class="btn primary" onclick="login()">
+            Continue →
+        </button>
+
+    </div>
+
+    <div class="card">
+        <h3>Why KaamSetu?</h3>
+
+        <div class="grid">
+            <div>
+                <b>⭐ Trusted Ratings</b>
+                <p class="small">See previous ratings before accepting work.</p>
+            </div>
+
+            <div>
+                <b>📍 Local Matching</b>
+                <p class="small">Find workers around your selected area.</p>
+            </div>
+
+            <div>
+                <b>⏰ Smart Availability</b>
+                <p class="small">Workers can confirm daily availability.</p>
+            </div>
+
+            <div>
+                <b>🤝 Two-way Ratings</b>
+                <p class="small">Workers and owners can rate completed jobs.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ================= ROLE ================= -->
+
+<section id="roleScreen" class="screen">
+
+    <button class="btn secondary back" onclick="showScreen('loginScreen')">
+        ← Back
+    </button>
+
+    <div class="hero">
+        <h1>What do you want to do?</h1>
+        <p>Select whether you want to work or hire someone.</p>
+    </div>
+
+    <div class="grid">
+
+        <button class="choice" onclick="selectRole('worker')">
+            <div class="icon">👩‍💻</div>
+            <h2>I Want to Work</h2>
+            <p class="small">
+                Find suitable jobs, choose your schedule,
+                accept work and build your rating.
+            </p>
+        </button>
+
+        <button class="choice" onclick="selectRole('owner')">
+            <div class="icon">🏢</div>
+            <h2>I Want to Hire</h2>
+            <p class="small">
+                Post work requirements and find suitable
+                workers near your selected area.
+            </p>
+        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     MAIN APP
-========================= -->
+<!-- ================= WORKER PROFILE ================= -->
 
-<main id="mainApp" class="app hidden page">
+<section id="workerProfileScreen" class="screen">
 
-    <div class="welcome">
+    <button class="btn secondary back" onclick="showScreen('roleScreen')">
+        ← Back
+    </button>
 
-        <h2 id="welcomeText">
-            Welcome to Skill Circle 👋
-        </h2>
-
-        <p>
-            Your skills can create opportunities.
+    <div class="card">
+        <h2>Worker Profile</h2>
+        <p class="small">
+            Add the information that helps employers understand your skills.
         </p>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Full Name *</label>
+                <input id="workerName">
+            </div>
+
+            <div class="field">
+                <label>Phone Number *</label>
+                <input id="workerPhone" maxlength="10">
+            </div>
+
+            <div class="field">
+                <label>Age</label>
+                <input id="workerAge" type="number" min="16" max="80">
+            </div>
+
+            <div class="field">
+                <label>Work Category *</label>
+                <select id="workerCategory">
+                    <option value="">Select category</option>
+                    <option>Student Helper</option>
+                    <option>Shop Helper</option>
+                    <option>Data Entry</option>
+                    <option>Digital Work</option>
+                    <option>Delivery / Local Assistance</option>
+                    <option>Event Helper</option>
+                    <option>Office Assistant</option>
+                    <option>Tutoring</option>
+                    <option>Photography / Video</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Skills</label>
+                <input id="workerSkills"
+                       placeholder="Example: Excel, typing, sales">
+            </div>
+
+            <div class="field">
+                <label>Experience</label>
+                <select id="workerExperience">
+                    <option>New Worker</option>
+                    <option>Less than 1 year</option>
+                    <option>1–2 years</option>
+                    <option>2–5 years</option>
+                    <option>5+ years</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Preferred Area *</label>
+                <input id="workerArea">
+            </div>
+
+            <div class="field">
+                <label>Maximum Travel Distance</label>
+                <select id="workerDistance">
+                    <option>5 km</option>
+                    <option selected>10 km</option>
+                    <option>20 km</option>
+                    <option>30 km</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Preferred Work Time</label>
+                <select id="workerTime">
+                    <option>Morning</option>
+                    <option>Afternoon</option>
+                    <option>Evening</option>
+                    <option>Flexible</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label>Expected Pay Per Day (₹)</label>
+                <input id="workerPay" type="number" placeholder="Example: 500">
+            </div>
+
+        </div>
+
+        <div class="field">
+            <label>About You</label>
+            <textarea id="workerAbout"
+                      placeholder="Write a short description about your work experience and skills"></textarea>
+        </div>
+
+        <button class="btn primary" onclick="saveWorkerProfile()">
+            Save Profile & Continue →
+        </button>
 
     </div>
 
+</section>
 
-    <!-- DASHBOARD -->
 
-    <section id="dashboardSection">
+<!-- ================= OWNER PROFILE ================= -->
 
-        <h2 class="section-title">
-            Explore Work Categories
-        </h2>
+<section id="ownerProfileScreen" class="screen">
 
-        <div class="categories">
+    <button class="btn secondary back" onclick="showScreen('roleScreen')">
+        ← Back
+    </button>
 
-            <div class="category"
-                 onclick="showCategory('Gardening')">
-                <span class="emoji">🌱</span>
-                <p>Gardening</p>
+    <div class="card">
+        <h2>Hiring Profile</h2>
+        <p class="small">
+            Add details about yourself/business so workers know who is hiring.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="field">
+                <label>Owner / Contact Name *</label>
+                <input id="ownerName">
             </div>
 
-            <div class="category"
-                 onclick="showCategory('Housemaid')">
-                <span class="emoji">🧹</span>
-                <p>Housemaid</p>
+            <div class="field">
+                <label>Mobile Number *</label>
+                <input id="ownerPhone" maxlength="10">
             </div>
 
-            <div class="category"
-                 onclick="showCategory('Painting')">
-                <span class="emoji">🎨</span>
-                <p>Painting</p>
+            <div class="field">
+                <label>Business / Organization Name</label>
+                <input id="ownerBusiness">
             </div>
 
-            <div class="category"
-                 onclick="showCategory('Student Work')">
-                <span class="emoji">🎓</span>
-                <p>Student Work</p>
+            <div class="field">
+                <label>Work Area *</label>
+                <input id="ownerArea">
             </div>
 
-            <div class="category"
-                 onclick="showCategory('Digital Work')">
-                <span class="emoji">💻</span>
-                <p>Digital Work</p>
+            <div class="field">
+                <label>Work Address</label>
+                <textarea id="ownerAddress"></textarea>
             </div>
 
-        </div>
-
-
-        <h2 class="section-title">
-            How Skill Circle Works
-        </h2>
-
-        <div class="cards">
-
-            <div class="info-card">
-
-                <h3>👷 For Workers</h3>
-
-                <p>
-                    Create your profile, add your skills,
-                    select your work category and choose whether
-                    you want daily work or a permanent work schedule.
-                </p>
-
-            </div>
-
-            <div class="info-card">
-
-                <h3>🏠 For Hirers</h3>
-
-                <p>
-                    Post the work you need and discover
-                    suitable people based on skill,
-                    location and availability.
-                </p>
-
+            <div class="field">
+                <label>Hiring Type</label>
+                <select id="ownerType">
+                    <option>Individual</option>
+                    <option>Shop</option>
+                    <option>Small Business</option>
+                    <option>Startup</option>
+                    <option>Educational Institution</option>
+                    <option>Other</option>
+                </select>
             </div>
 
         </div>
 
+        <button class="btn primary" onclick="saveOwnerProfile()">
+            Save Profile & Continue →
+        </button>
 
-        <div id="categoryResult"></div>
+    </div>
 
-    </section>
-
-
-    <!-- WORKER FORM -->
-
-    <section id="workerSection" class="hidden">
-
-        <div class="form-container">
-
-            <h2>👷 Worker Registration</h2>
-
-            <p class="form-subtitle">
-                Create your Skill Circle worker profile.
-            </p>
-
-            <div class="form-grid">
-
-                <div class="input-group">
-                    <label>Full Name *</label>
-                    <input
-                        id="workerName"
-                        type="text"
-                        placeholder="Enter your complete name"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Phone Number *</label>
-                    <input
-                        id="workerPhone"
-                        type="tel"
-                        placeholder="Enter phone number"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Aadhaar Number</label>
-                    <input
-                        id="workerAadhaar"
-                        type="text"
-                        maxlength="12"
-                        placeholder="Prototype field"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Profile Photo</label>
-                    <input
-                        id="workerPhoto"
-                        type="file"
-                        accept="image/*"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Current Location *</label>
-                    <input
-                        id="workerLocation"
-                        type="text"
-                        placeholder="City / Area"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Permanent Address</label>
-                    <input
-                        id="workerAddress"
-                        type="text"
-                        placeholder="Enter permanent address"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Previous Profession</label>
-                    <input
-                        id="workerProfession"
-                        type="text"
-                        placeholder="Example: Painter"
-                    >
-                </div>
-
-                <div class="input-group">
-                    <label>Skill Category *</label>
-
-                    <select id="workerCategory">
-
-                        <option value="">
-                            Select category
-                        </option>
-
-                        <option>Gardening</option>
-                        <option>Housemaid</option>
-                        <option>Painting</option>
-                        <option>Student Work</option>
-                        <option>Digital Work</option>
-                        <option>Other</option>
-
-                    </select>
-
-                </div>
-
-                <div class="input-group full">
-
-                    <label>
-                        Skills / Experience
-                    </label>
-
-                    <textarea
-                        id="workerSkills"
-                        rows="4"
-                        placeholder="Tell people about your skills and experience"
-                    ></textarea>
-
-                </div>
-
-            </div>
+</section>
 
 
-            <!-- WORK MODE -->
+<!-- ================= WORKER DASHBOARD ================= -->
 
-            <div class="mode-box">
+<section id="workerDashboardScreen" class="screen">
 
-                <strong>
-                    Choose your work availability *
-                </strong>
+    <div class="dashboard">
 
-                <div class="mode-options">
+        <aside class="sidebar">
 
-                    <label
-                        class="mode-option"
-                        id="dailyMode"
-                        onclick="chooseMode('daily')"
-                    >
-
-                        <input
-                            type="radio"
-                            name="workMode"
-                            value="daily"
-                        >
-
-                        <div style="font-size:30px;">
-                            📅
-                        </div>
-
-                        <strong>
-                            Work Daily
-                        </strong>
-
-                        <p style="font-size:12px;">
-                            Receive morning work reminders
-                        </p>
-
-                    </label>
-
-
-                    <label
-                        class="mode-option"
-                        id="permanentMode"
-                        onclick="chooseMode('permanent')"
-                    >
-
-                        <input
-                            type="radio"
-                            name="workMode"
-                            value="permanent"
-                        >
-
-                        <div style="font-size:30px;">
-                            🏢
-                        </div>
-
-                        <strong>
-                            Work Permanently
-                        </strong>
-
-                        <p style="font-size:12px;">
-                            Fixed work schedule
-                        </p>
-
-                    </label>
-
-                </div>
-
-            </div>
-
-
-            <!-- DAILY REMINDER -->
-
-            <div
-                id="reminderSettings"
-                class="reminder-box hidden"
-            >
-
-                <h4>
-                    🔔 Daily Work Reminder
-                </h4>
-
-                <p>
-                    Since you selected daily work,
-                    Skill Circle will remind you every morning.
-                </p>
-
-                <div class="input-group">
-
-                    <label>
-                        Morning Reminder Time
-                    </label>
-
-                    <select id="reminderTime">
-
-                        <option value="5">
-                            5:00 AM
-                        </option>
-
-                        <option value="6">
-                            6:00 AM
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <button
-                    class="secondary-btn"
-                    onclick="requestNotificationPermission()"
-                >
-                    Enable Notifications 🔔
-                </button>
-
-            </div>
-
-
-            <button
-                class="primary-btn"
-                onclick="saveWorkerProfile()"
-            >
-                Create Worker Profile
+            <button class="active"
+                    onclick="workerTab('overview',this)">
+                🏠 Overview
             </button>
 
-        </div>
+            <button onclick="workerTab('jobs',this)">
+                💼 My Jobs
+            </button>
 
-    </section>
+            <button onclick="workerTab('availability',this)">
+                ⏰ Availability
+            </button>
+
+            <button onclick="workerTab('ratings',this)">
+                ⭐ Ratings
+            </button>
+
+            <button onclick="workerTab('profile',this)">
+                👤 Profile
+            </button>
+
+            <button onclick="logout()">
+                🚪 Logout
+            </button>
+
+        </aside>
+
+        <div>
+
+            <div id="workerOverviewTab" class="worker-tab">
+
+                <div class="hero">
+                    <h1 id="workerWelcome">Hello 👋</h1>
+                    <p>
+                        Manage your work, availability and ratings from here.
+                    </p>
+                </div>
+
+                <div id="dailyNotificationArea"></div>
+
+                <div class="grid">
+
+                    <div class="metric">
+                        ⭐ Rating
+                        <b id="workerRatingMetric">0.0</b>
+                    </div>
+
+                    <div class="metric">
+                        💼 Jobs Accepted
+                        <b id="workerAcceptedMetric">0</b>
+                    </div>
+
+                    <div class="metric">
+                        ✅ Jobs Completed
+                        <b id="workerCompletedMetric">0</b>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <h2>Quick Actions</h2>
+
+                    <button class="btn primary"
+                            onclick="workerTab('availability')">
+                        ⏰ Set Availability
+                    </button>
+
+                    <button class="btn secondary"
+                            onclick="workerTab('jobs')">
+                        📋 View My Jobs
+                    </button>
+
+                </div>
+
+            </div>
 
 
-    <!-- HIRER FORM -->
+            <div id="workerJobsTab" class="worker-tab" style="display:none">
 
-    <section id="hirerSection" class="hidden">
+                <div class="card">
+                    <h2>My Jobs</h2>
+                    <div id="workerJobs"></div>
+                </div>
 
-        <div class="form-container">
+            </div>
 
-            <h2>🏠 Hire Someone</h2>
 
-            <p class="form-subtitle">
-                Tell Skill Circle what kind of worker you need.
-            </p>
+            <div id="workerAvailabilityTab" class="worker-tab" style="display:none">
 
-            <div class="form-grid">
+                <div class="card">
 
-                <div class="input-group">
+                    <h2>Work Availability</h2>
 
-                    <label>
-                        
+                    <div class="notification">
+                        <b>How daily confirmation works</b>
+                        <p class="small">
+                            Temporary workers receive a daily availability
+                            request. Permanent work can be confirmed for a
+                            selected date range.
+                        </p>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label>Availability Type</label>
+                            <select id="availabilityType">
+                                <option value="temporary">Daily / Temporary</option>
+                                <option value="permanent">Permanent / Fixed Period</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>Preferred Start Time</label>
+                            <input id="availabilityStart" type="time"
+                                   value="09:00">
+                        </div>
+
+                        <div class="field">
+                            <label>Preferred End Time</label>
+                            <input id="availabilityEnd" type="time"
+                                   value="17:00">
+                        </div>
+
+                        <div class="field">
+                 
