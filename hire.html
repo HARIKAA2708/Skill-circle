@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillCircle - Hire</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 22px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 7px 0 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 25px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .info {
+            background: #eff6ff;
+            padding: 14px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🔵 SkillCircle</h1>
+    <p>Find the right person for your work</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>📋 Hire Someone</h2>
+
+        <label>Your Name</label>
+        <input type="text" id="ownerName" placeholder="Enter your name">
+
+        <label>Type of Work</label>
+        <select id="workType">
+            <option value="">Select work</option>
+            <option>Student Helper</option>
+            <option>Shop Work</option>
+            <option>Delivery / Local Help</option>
+            <option>Digital Work</option>
+            <option>Data Entry</option>
+            <option>Graphic Design</option>
+            <option>Social Media Help</option>
+            <option>Other</option>
+        </select>
+
+        <label>Work Description</label>
+        <textarea id="description" placeholder="Describe what work you need..."></textarea>
+
+        <label>Work Date</label>
+        <input type="date" id="workDate">
+
+        <label>Preferred Time</label>
+        <select id="timeSlot">
+            <option value="">Select time</option>
+            <option>9:00 AM - 12:00 PM</option>
+            <option>12:00 PM - 4:00 PM</option>
+            <option>4:00 PM - 9:00 PM</option>
+            <option>Flexible</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" id="location" placeholder="Enter work location">
+
+        <label>Budget / Payment</label>
+        <input type="number" id="budget" placeholder="Enter amount in ₹">
+
+        <button onclick="postWork()">Post Work Request</button>
+
+        <div class="info">
+            🔒 Your information will be used only for connecting you with suitable workers.
+        </div>
+    </div>
+
+</div>
+
+<script>
+function postWork() {
+
+    let name = document.getElementById("ownerName").value;
+    let work = document.getElementById("workType").value;
+    let description = document.getElementById("description").value;
+    let date = document.getElementById("workDate").value;
+    let time = document.getElementById("timeSlot").value;
+    let location = document.getElementById("location").value;
+    let budget = document.getElementById("budget").value;
+
+    if (
+        name === "" ||
+        work === "" ||
+        description === "" ||
+        date === "" ||
+        time === "" ||
+        location === "" ||
+        budget === ""
+    ) {
+        alert("⚠️ Please fill all the details.");
+        return;
+    }
+
+    alert(
+        "✅ Work request posted successfully!\n\n" +
+        "You will now be shown suitable workers."
+    );
+
+    window.location.href = "workers-list.html";
+}
+</script>
+
+</body>
+</html>
