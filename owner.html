@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillCircle - Create Work</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7ff;
+    color:#172033;
+    padding:20px;
+}
+
+.container{
+    max-width:850px;
+    margin:auto;
+}
+
+.header{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.logo{
+    color:#3157d5;
+    font-size:30px;
+    font-weight:800;
+}
+
+.subtitle{
+    color:#667085;
+    margin-top:7px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+h1{
+    margin-bottom:8px;
+}
+
+h2{
+    margin-bottom:12px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:16px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    margin-top:7px;
+    border:1px solid #d5dbea;
+    border-radius:10px;
+    font-size:15px;
+    background:white;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.button{
+    display:block;
+    width:100%;
+    padding:15px;
+    margin-top:25px;
+    border-radius:10px;
+    background:#3157d5;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.back{
+    display:inline-block;
+    color:#3157d5;
+    text-decoration:none;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.note{
+    background:#eef2ff;
+    padding:16px;
+    border-radius:12px;
+    margin-top:18px;
+    line-height:1.5;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+        SkillCircle
+    </div>
+
+    <p class="subtitle">
+        Create a Work Request
+    </p>
+
+</div>
+
+
+<a class="back" href="owner.html">
+    ← Back to Owner Details
+</a>
+
+
+<!-- BASIC JOB DETAILS -->
+
+<div class="card">
+
+    <h1>📋 Work Details</h1>
+
+    <p class="subtitle">
+        Tell us what kind of worker you need.
+    </p>
+
+
+    <label>Job Title *</label>
+
+    <input
+        type="text"
+        placeholder="Example: Need computer assistant for shop"
+    >
+
+
+    <label>Work Category *</label>
+
+    <select>
+
+        <option value="">
+            Select category
+        </option>
+
+        <option>
+            Student Work
+        </option>
+
+        <option>
+            Shop Work
+        </option>
+
+        <option>
+            Computer / Digital Work
+        </option>
+
+        <option>
+            Data Entry
+        </option>
+
+        <option>
+            Teaching / Tutoring
+        </option>
+
+        <option>
+            Content Writing
+        </option>
+
+        <option>
+            Office Assistance
+        </option>
+
+        <option>
+            Event Assistance
+        </option>
+
+        <option>
+            Sales / Customer Support
+        </option>
+
+        <option>
+            Delivery Assistance
+        </option>
+
+        <option>
+            Painting
+        </option>
+
+        <option>
+            Other
+        </option>
+
+    </select>
+
+
+    <label>Work Description *</label>
+
+    <textarea
+        placeholder="Clearly explain what the worker has to do">
+    </textarea>
+
+</div>
+
+
+<!-- LOCATION -->
+
+<div class="card">
+
+    <h2>📍 Work Location</h2>
+
+    <p class="subtitle">
+        Workers near this location will be recommended.
+    </p>
+
+
+    <label>Area / Locality *</label>
+
+    <input
+        type="text"
+        placeholder="Example: Kukatpally"
+    >
+
+
+    <label>City *</label>
+
+    <input
+        type="text"
+        placeholder="Example: Hyderabad"
+    >
+
+
+    <label>State</label>
+
+    <input
+        type="text"
+        placeholder="Example: Telangana"
+    >
+
+
+    <label>Maximum Distance</label>
+
+    <select>
+
+        <option>5 km</option>
+
+        <option>10 km</option>
+
+        <option>20 km</option>
+
+        <option>30 km</option>
+
+    </select>
+
+
+    <div class="note">
+
+        📍 <strong>SkillCircle matching:</strong>
+
+        <br><br>
+
+        Workers will be ranked according to
+        location, skills, rating, completed jobs,
+        reliability and suitability for your work.
+
+    </div>
+
+</div>
+
+
+<!-- DATE AND TIME -->
+
+<div class="card">
+
+    <h2>📅 Date & Time</h2>
+
+
+    <label>Work Date *</label>
+
+    <input type="date">
+
+
+    <div class="grid">
+
+        <div>
+
+            <label>Start Time *</label>
+
+            <input type="time">
+
+        </div>
+
+
+        <div>
+
+            <label>End Time *</label>
+
+            <input type="time">
+
+        </div>
+
+    </div>
+
+
+    <label>Work Duration</label>
+
+    <select>
+
+        <option>Less than 2 hours</option>
+
+        <option>2 - 4 hours</option>
+
+        <option>4 - 6 hours</option>
+
+        <option>6 - 8 hours</option>
+
+        <option>More than 8 hours</option>
+
+    </select>
+
+</div>
+
+
+<!-- PAYMENT -->
+
+<div class="card">
+
+    <h2>💰 Payment</h2>
+
+
+    <label>Payment Type</label>
+
+    <select>
+
+        <option>Per Hour</option>
+
+        <option>Per Day</option>
+
+        <option>Per Job</option>
+
+        <option>Monthly</option>
+
+    </select>
+
+
+    <label>Payment Offered *</label>
+
+    <input
+        type="text"
+        placeholder="Example: ₹600 per day"
+    >
+
+
+    <label>Payment Description</label>
+
+    <textarea
+        placeholder="Mention any additional payment information">
+    </textarea>
+
+</div>
+
+
+<!-- WORKER REQUIREMENTS -->
+
+<div class="card">
+
+    <h2>👥 Worker Requirements</h2>
+
+
+    <label>Number of Workers Required</label>
+
+    <select>
+
+        <option>1</option>
+
+        <option>2</option>
+
+        <option>3</option>
+
+        <option>4</option>
+
+        <option>5</option>
+
+        <option>More than 5</option>
+
+    </select>
+
+
+    <label>Minimum Experience</label>
+
+    <select>
+
+        <option>No experience required</option>
+
+        <option>Less than 6 months</option>
+
+        <option>6 months</option>
+
+        <option>1 year</option>
+
+        <option>2 years</option>
+
+        <option>3+ years</option>
+
+    </select>
+
+
+    <label>Required Skills</label>
+
+    <textarea
+        placeholder="Example: Typing, Excel, communication, sales...">
+    </textarea>
+
+
+    <label>Preferred Language</label>
+
+    <input
+        type="text"
+        placeholder="Example: Telugu and English"
+    >
+
+</div>
+
+
+<!-- SCHEDULE -->
+
+<div class="card">
+
+    <h2>🔄 Work Schedule</h2>
+
+
+    <label>Work Type</label>
+
+    <select>
+
+        <option>
+            One-Time Work
+        </option>
+
+        <option>
+            Daily Work
+        </option>
+
+        <option>
+            Weekly Work
+        </option>
+
+        <option>
+            Permanent / Fixed Schedule
+        </option>
+
+    </select>
+
+
+    <label>Schedule End Date</label>
+
+    <input type="date">
+
+
+    <div class="note">
+
+        <strong>Important:</strong>
+
+        <br><br>
+
+        For a permanent/fixed schedule,
+        the worker can follow the agreed schedule
+        during the selected period.
+
+        <br><br>
+
+        For flexible work, the worker can confirm
+        availability for each day's accepted work.
+
+    </div>
+
+</div>
+
+
+<!-- EXTRA INFORMATION -->
+
+<div class="card">
+
+    <h2>📝 Additional Information</h2>
+
+
+    <label>Special Instructions</label>
+
+    <textarea
+        placeholder="Enter any instructions the worker should know">
+    </textarea>
+
+
+    <label>Things Worker Should Bring</label>
+
+    <input
+        type="text"
+        placeholder="Example: Laptop, documents, ID card"
+    >
+
+</div>
+
+
+<!-- FIND WORKERS -->
+
+<div class="card">
+
+    <h2>🔎 Find Suitable Workers</h2>
+
+    <p class="subtitle">
+
+        After submitting this request,
+        SkillCircle will show suitable workers
+        near the selected location.
+
+    </p>
+
+
+    <a
+        class="button"
+        href="workers.html">
+
+        Find Top Workers →
+
+    </a>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
