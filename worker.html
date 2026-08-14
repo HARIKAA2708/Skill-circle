@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillCircle - Worker Profile</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7ff;
+    color:#172033;
+    padding:20px;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+}
+
+.header{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.logo{
+    color:#3157d5;
+    font-size:30px;
+    font-weight:800;
+}
+
+.subtitle{
+    color:#667085;
+    margin-top:7px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+h1{
+    margin-bottom:8px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:16px;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    margin-top:7px;
+    border:1px solid #d5dbea;
+    border-radius:10px;
+    font-size:15px;
+    background:white;
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.button{
+    display:block;
+    width:100%;
+    padding:15px;
+    margin-top:25px;
+    border-radius:10px;
+    background:#3157d5;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+    font-size:16px;
+    border:none;
+}
+
+.back{
+    display:inline-block;
+    color:#3157d5;
+    text-decoration:none;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.note{
+    background:#eef2ff;
+    border-radius:12px;
+    padding:15px;
+    margin-top:20px;
+    color:#344054;
+    line-height:1.5;
+}
+
+@media(max-width:600px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    body{
+        padding:12px;
+    }
+
+    .card{
+        padding:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="logo">
+            SkillCircle
+        </div>
+
+        <p class="subtitle">
+            Worker Profile
+        </p>
+
+    </div>
+
+
+    <a class="back" href="role.html">
+        ← Back to Role Selection
+    </a>
+
+
+    <!-- BASIC DETAILS -->
+
+    <div class="card">
+
+        <h1>👤 Your Details</h1>
+
+        <p class="subtitle">
+            Create your worker profile so employers can understand
+            your skills and experience.
+        </p>
+
+
+        <label>Full Name *</label>
+
+        <input
+            type="text"
+            placeholder="Enter your complete name"
+        >
+
+
+        <label>Phone Number *</label>
+
+        <input
+            type="tel"
+            placeholder="Enter your phone number"
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            placeholder="Enter your email"
+        >
+
+
+        <label>Current Location / Area *</label>
+
+        <input
+            type="text"
+            placeholder="Example: Hyderabad, Kukatpally"
+        >
+
+
+        <label>Permanent Address</label>
+
+        <textarea
+            placeholder="Enter your permanent address">
+        </textarea>
+
+    </div>
+
+
+    <!-- WORK DETAILS -->
+
+    <div class="card">
+
+        <h2>💼 Work Details</h2>
+
+        <p class="subtitle">
+            Select the type of work you are interested in.
+        </p>
+
+
+        <label>Work Category *</label>
+
+        <select>
+
+            <option value="">
+                Select work category
+            </option>
+
+            <option>
+                Student Work
+            </option>
+
+            <option>
+                Shop Work
+            </option>
+
+            <option>
+                Computer / Digital Work
+            </option>
+
+            <option>
+                Data Entry
+            </option>
+
+            <option>
+                Content Writing
+            </option>
+
+            <option>
+                Teaching / Tutoring
+            </option>
+
+            <option>
+                Office Assistance
+            </option>
+
+            <option>
+                Event Assistance
+            </option>
+
+            <option>
+                Sales / Customer Support
+            </option>
+
+            <option>
+                Delivery Assistance
+            </option>
+
+            <option>
+                Painting
+            </option>
+
+            <option>
+                Other
+            </option>
+
+        </select>
+
+
+        <label>Your Skills *</label>
+
+        <textarea
+            placeholder="Example: MS Word, Excel, typing, teaching, Canva, sales, editing...">
+        </textarea>
+
+
+        <label>Previous Profession / Work</label>
+
+        <input
+            type="text"
+            placeholder="Example: Student, shop assistant, tutor"
+        >
+
+
+        <label>Experience</label>
+
+        <select>
+
+            <option>No previous experience</option>
+
+            <option>Less than 6 months</option>
+
+            <option>6 months - 1 year</option>
+
+            <option>1 - 2 years</option>
+
+            <option>2 - 5 years</option>
+
+            <option>More than 5 years</option>
+
+        </select>
+
+
+        <label>Expected Payment</label>
+
+        <input
+            type="text"
+            placeholder="Example: ₹500 per day / ₹200 per hour"
+        >
+
+    </div>
+
+
+    <!-- WORK AREA -->
+
+    <div class="card">
+
+        <h2>📍 Work Area</h2>
+
+        <p class="subtitle">
+            Employers will use this information to find workers
+            near their job location.
+        </p>
+
+
+        <label>Maximum Distance You Can Travel</label>
+
+        <select>
+
+            <option>Within 5 km</option>
+
+            <option>Within 10 km</option>
+
+            <option>Within 20 km</option>
+
+            <option>Within 30 km</option>
+
+        </select>
+
+
+        <label>Preferred Work Area</label>
+
+        <input
+            type="text"
+            placeholder="Enter areas where you are willing to work"
+        >
+
+    </div>
+
+
+    <!-- AVAILABILITY -->
+
+    <div class="card">
+
+        <h2>⏰ Work Availability</h2>
+
+        <p class="subtitle">
+            Choose how you want to receive work requests.
+        </p>
+
+
+        <label>Availability Type *</label>
+
+        <select>
+
+            <option>
+                Flexible / Daily Work
+            </option>
+
+            <option>
+                Permanent / Fixed Schedule
+            </option>
+
+        </select>
+
+
+        <div class="note">
+
+            <strong>How SkillCircle works:</strong>
+
+            <br><br>
+
+            If you choose
+            <strong>Flexible / Daily Work</strong>,
+            SkillCircle can ask you every morning:
+
+            <br><br>
+
+            <strong>
+                "Are you free today for your accepted work?"
+            </strong>
+
+            <br><br>
+
+            If you choose a
+            <strong>Permanent / Fixed Schedule</strong>,
+            you won't need to confirm every day during
+            your selected permanent period.
+
+        </div>
+
+
+        <label>Preferred Start Time</label>
+
+        <input
+            type="time"
+        >
+
+
+        <label>Preferred End Time</label>
+
+        <input
+            type="time"
+        >
+
+
+        <label>Permanent Schedule Until</label>
+
+        <input
+            type="date"
+        >
+
+    </div>
+
+
+    <!-- PROFILE INFORMATION -->
+
+    <div class="card">
+
+        <h2>⭐ Profile Information</h2>
+
+        <label>Short Introduction</label>
+
+        <textarea
+            placeholder="Introduce yourself to employers">
+        </textarea>
+
+
+        <label>Languages You Know</label>
+
+        <input
+            type="text"
+            placeholder="Example: Telugu, Hindi, English"
+        >
+
+
+        <label>Additional Information</label>
+
+        <textarea
+            placeholder="Anything else employers should know">
+        </textarea>
+
+    </div>
+
+
+    <!-- CONTINUE -->
+
+    <div class="card">
+
+        <h2>✅ Ready to Continue?</h2>
+
+        <p class="subtitle">
+            Check your information before continuing.
+        </p>
+
+
+        <a
+            class="button"
+            href="dashboard.html">
+
+            Create Worker Profile →
+
+        </a>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
