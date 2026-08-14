@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillCircle - Available Workers</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin: 7px 0 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .search-box input,
+        .search-box select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            font-size: 15px;
+        }
+
+        .worker-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .worker-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .profile {
+            width: 65px;
+            height: 65px;
+            background: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .worker-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .skill {
+            color: #2563eb;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        .details {
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .rating {
+            color: #eab308;
+            font-weight: bold;
+        }
+
+        .hire-btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 9px;
+            background: #16a34a;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .hire-btn:hover {
+            background: #15803d;
+        }
+
+        .back-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 9px;
+            background: #64748b;
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        #noResults {
+            display: none;
+            text-align: center;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🔵 SkillCircle</h1>
+    <p>Available Workers</p>
+</header>
+
+<div class="container">
+
+    <button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="🔍 Search by skill or work..."
+            onkeyup="filterWorkers()"
+        >
+
+        <select id="filter" onchange="filterWorkers()">
+            <option value="">All Work Types</option>
+            <option value="Student Helper">Student Helper</option>
+            <option value="Shop Work">Shop Work</option>
+            <option value="Digital Work">Digital Work</option>
+            <option value="Data Entry">Data Entry</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Social Media Help">Social Media Help</option>
+        </select>
+
+    </div>
+
+    <!-- Worker 1 -->
+
+    <div class="worker-card" data-skill="Digital Work">
+
+        <div class="worker-top">
+
+            <div class="profile">👩‍💻</div>
+
+            <div>
+                <div class="worker-name">Ananya</div>
+                <div class="skill">Digital Work</div>
+            </div>
+
+        </div>
+
+        <div class="details">
+
+            📍 Location: Hyderabad<br>
+
+            ⏰ Available: 4:00 PM - 9:00 PM<br>
+
+            💰 Expected: ₹300 - ₹500<br>
+
+            ⭐ <span class="rating">4.8 / 5</span><br>
+
+            🏆 Experience: 1 year
+
+        </div>
+
+        <button class="hire-btn" onclick="hireWorker('Ananya')">
+            Hire Ananya
+        </button>
+
+    </div>
+
+
+    <!-- Worker 2 -->
+
+    <div class="worker-card" data-skill="Student Helper">
+
+        <div class="worker-top">
+
+            <div class="profile">👨‍🎓</div>
+
+            <div>
+                <div class="worker-name">Rahul</div>
+                <div class="skill">Student Helper</div>
+            </div>
+
+        </div>
+
+        <div class="details">
+
+            📍 Location: Hyderabad<br>
+
+            ⏰ Available: 9:00 AM - 12:00 PM<br>
+
+            💰 Expected: ₹200 - ₹400<br>
+
+            ⭐ <span class="rating">4.6 / 5</span><br>
+
+            🏆 Experience: 6 months
+
+        </div>
+
+        <button class="hire-btn" onclick="hireWorker('Rahul')">
+            Hire Rahul
+        </button>
+
+    </div>
+
+
+    <!-- Worker 3 -->
+
+    <div class="worker-card" data-skill="Graphic Design">
+
+        <div class="worker-top">
+
+            <div class="profile">🎨</div>
+
+            <div>
+                <div class="worker-name">Sneha</div>
+                <div class="skill">Graphic Design</div>
+            </div>
+
+        </div>
+
+        <div class="details">
+
+            📍 Location: Hyderabad<br>
+
+            ⏰ Available: 12:00 PM - 4:00 PM<br>
+
+            💰 Expected: ₹400 - ₹800<br>
+
+            ⭐ <span class="rating">4.9 / 5</span><br>
+
+            🏆 Experience: 2 years
+
+        </div>
+
+        <button class="hire-btn" onclick="hireWorker('Sneha')">
+            Hire Sneha
+        </button>
+
+    </div>
+
+
+    <!-- Worker 4 -->
+
+    <div class="worker-card" data-skill="Shop Work">
+
+        <div class="worker-top">
+
+            <div class="profile">🧑‍💼</div>
+
+            <div>
+                <div class="worker-name">Arjun</div>
+                <div class="skill">Shop Work</div>
+            </div>
+
+        </div>
+
+        <div class="details">
+
+            📍 Location: Hyderabad<br>
+
+            ⏰ Available: 4:00 PM - 9:00 PM<br>
+
+            💰 Expected: ₹250 - ₹450<br>
+
+            ⭐ <span class="rating">4.7 / 5</span><br>
+
+            🏆 Experience: 1.5 years
+
+        </div>
+
+        <button class="hire-btn" onclick="hireWorker('Arjun')">
+            Hire Arjun
+        </button>
+
+    </div>
+
+
+    <div id="noResults">
+        ❌ No workers found.<br>
+        Try another skill or work type.
+    </div>
+
+</div>
+
+
+<script>
+
+function hireWorker(name) {
+
+    let confirmation = confirm(
+        "Do you want to send a hiring request to " + name + "?"
+    );
+
+    if (confirmation) {
+
+        alert(
+            "✅ Hiring request sent successfully!\n\n" +
+            name + " will receive your request."
+        );
+
+    }
+
+}
+
+
+function filterWorkers() {
+
+    let search =
+        document.getElementById("search").value.toLowerCase();
+
+    let filter =
+        document.getElementById("filter").value;
+
+    let workers =
+        document.querySelectorAll(".worker-card");
+
+    let found = false;
+
+    workers.forEach(function(worker) {
+
+        let skill =
+            worker.getAttribute("data-skill");
+
+        let text =
+            worker.innerText.toLowerCase();
+
+        let matchesSearch =
+            text.includes(search);
+
+        let matchesFilter =
+            filter === "" || skill === filter;
+
+        if (matchesSearch && matchesFilter) {
+
+            worker.style.display = "block";
+            found = true;
+
+        } else {
+
+            worker.style.display = "none";
+
+        }
+
+    });
+
+    if (found) {
+
+        document.getElementById("noResults").style.display = "none";
+
+    } else {
+
+        document.getElementById("noResults").style.display = "block";
+
+    }
+
+}
+
+
+function goBack() {
+
+    window.location.href = "hire.html";
+
+}
+
+</script>
+
+</body>
+</html>
