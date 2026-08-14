@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SkillCircle - Top Owners</title>
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f4f7fb;color:#222}
+header{background:#2563eb;color:white;text-align:center;padding:22px}
+.container{max-width:650px;margin:auto;padding:20px}
+.card{background:white;padding:20px;margin-bottom:18px;border-radius:16px;box-shadow:0 4px 15px #0001}
+.avatar{width:65px;height:65px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:32px;float:left;margin-right:15px}
+.name{font-size:20px;font-weight:bold}
+.work{color:#2563eb;font-weight:bold;margin-top:5px}
+.clear{clear:both}
+.info{line-height:1.8;margin-top:15px}
+button{width:100%;padding:13px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}
+.back{background:#64748b}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🔵 SkillCircle</h1>
+<p>Top Work Opportunities For You</p>
+</header>
+
+<div class="container">
+
+<button class="back" onclick="history.back()">⬅ Back</button>
+
+<div class="card">
+<div class="avatar">👩</div>
+<div class="name">Priya</div>
+<div class="work">Digital Work</div>
+<div class="clear"></div>
+
+<div class="info">
+📍 Hyderabad<br>
+⏰ 4:00 PM - 9:00 PM<br>
+💰 ₹400 - ₹600<br>
+⭐ 4.9 / 5<br>
+🏆 Regular Work Available
+</div>
+
+<button onclick="openOwner('Priya')">View Owner</button>
+</div>
+
+<div class="card">
+<div class="avatar">👨</div>
+<div class="name">Rahul Stores</div>
+<div class="work">Shop Work</div>
+<div class="clear"></div>
+
+<div class="info">
+📍 Hyderabad<br>
+⏰ 9:00 AM - 1:00 PM<br>
+💰 ₹300 - ₹500<br>
+⭐ 4.7 / 5<br>
+🏆 Part-time Opportunity
+</div>
+
+<button onclick="openOwner('Rahul Stores')">View Owner</button>
+</div>
+
+<div class="card">
+<div class="avatar">🏢</div>
+<div class="name">Creative Hub</div>
+<div class="work">Graphic Design</div>
+<div class="clear"></div>
+
+<div class="info">
+📍 Hyderabad<br>
+⏰ Flexible<br>
+💰 ₹500 - ₹1000<br>
+⭐ 4.8 / 5<br>
+🏆 Project-based Work
+</div>
+
+<button onclick="openOwner('Creative Hub')">View Owner</button>
+</div>
+
+</div>
+
+<script>
+function openOwner
