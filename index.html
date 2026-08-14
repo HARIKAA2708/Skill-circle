@@ -1,937 +1,2126 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#5b4bdb">
-<title>KaamSetu - Smart Work Connection</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Login</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
+*{box-sizing:border-box}
 body{
-    background:#f5f6fb;
-    color:#202124;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+    color:#222;
 }
-
-button,input,select,textarea{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-.app{
-    min-height:100vh;
-}
-
-header{
-    background:linear-gradient(135deg,#5b4bdb,#7b61ff);
-    color:white;
-    padding:16px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    top:0;
-    z-index:50;
-    box-shadow:0 3px 15px rgba(0,0,0,.15);
-}
-
-.logo{
-    font-size:24px;
-    font-weight:800;
-}
-
-.logo span{
-    font-size:12px;
-    display:block;
-    opacity:.85;
-    font-weight:normal;
-}
-
-.header-actions{
-    display:flex;
-    gap:8px;
-}
-
-.header-actions button{
-    border:0;
-    background:rgba(255,255,255,.15);
-    color:white;
-    padding:9px 13px;
-    border-radius:10px;
-}
-
-main{
-    max-width:1200px;
-    margin:auto;
-    padding:25px 16px 70px;
-}
-
-.screen{
-    display:none;
-}
-
-.screen.active{
-    display:block;
-}
-
-.hero{
-    background:linear-gradient(135deg,#5b4bdb,#8b78ff);
-    color:white;
-    border-radius:25px;
-    padding:35px 25px;
-    margin-bottom:22px;
-}
-
-.hero h1{
-    font-size:34px;
-    margin-bottom:10px;
-}
-
-.hero p{
-    opacity:.92;
-    line-height:1.6;
-}
-
-.card{
-    background:white;
-    border-radius:18px;
+.container{
+    max-width:500px;
+    margin:50px auto;
     padding:20px;
-    margin-bottom:16px;
-    box-shadow:0 5px 20px rgba(0,0,0,.07);
 }
-
-.card h2,.card h3{
-    margin-bottom:12px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:16px;
-}
-
-.choice{
-    border:2px solid #e4e2f8;
-    padding:25px;
-    border-radius:18px;
-    background:white;
-    transition:.2s;
-    text-align:left;
-}
-
-.choice:hover{
-    transform:translateY(-3px);
-    border-color:#6b5ce7;
-}
-
-.choice .icon{
-    font-size:38px;
-    margin-bottom:12px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:14px;
-}
-
-.field{
-    margin-bottom:14px;
-}
-
-.field label{
-    display:block;
-    font-weight:700;
-    margin-bottom:6px;
-    font-size:14px;
-}
-
-.field input,
-.field select,
-.field textarea{
-    width:100%;
-    border:1px solid #ddd;
-    border-radius:11px;
-    padding:12px;
-    outline:none;
-    background:#fff;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-    border-color:#6b5ce7;
-}
-
-textarea{
-    min-height:90px;
-    resize:vertical;
-}
-
-.btn{
-    border:0;
-    padding:12px 18px;
-    border-radius:11px;
-    font-weight:700;
-    margin:4px;
-}
-
-.primary{
-    background:#5b4bdb;
-    color:white;
-}
-
-.secondary{
-    background:#eeeefe;
-    color:#4b3bb5;
-}
-
-.success{
-    background:#16a085;
-    color:white;
-}
-
-.danger{
-    background:#e74c3c;
-    color:white;
-}
-
-.warning{
-    background:#f39c12;
-    color:white;
-}
-
-.outline{
-    background:white;
-    border:1px solid #5b4bdb;
-    color:#5b4bdb;
-}
-
-.back{
-    margin-bottom:15px;
-}
-
-.worker{
-    position:relative;
-}
-
-.worker-top{
-    display:flex;
-    gap:14px;
-    align-items:center;
-}
-
-.avatar{
-    width:64px;
-    height:64px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#7567e8,#b2a9ff);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:24px;
-    font-weight:800;
-    flex-shrink:0;
-}
-
-.worker-name{
-    font-weight:800;
-    font-size:18px;
-}
-
-.rating{
-    color:#f39c12;
-    font-weight:700;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin:12px 0;
-}
-
-.tag{
-    background:#f0efff;
-    color:#5142c5;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:12px;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:8px;
-    margin:14px 0;
-}
-
-.stat{
-    background:#f7f7fb;
-    border-radius:10px;
-    padding:10px;
+.logo{
     text-align:center;
-}
-
-.stat b{
-    display:block;
-    font-size:18px;
-}
-
-.small{
-    color:#666;
-    font-size:13px;
-}
-
-.status{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:15px;
-    font-size:12px;
+    color:#5b4bdb;
+    font-size:36px;
     font-weight:bold;
 }
-
-.status.available{
-    background:#e1f7ed;
-    color:#14885f;
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
 }
-
-.status.busy{
-    background:#ffe8e5;
-    color:#c0392b;
-}
-
-.status.pending{
-    background:#fff1d6;
-    color:#a56600;
-}
-
-.status.completed{
-    background:#e5e9ff;
-    color:#4b42a8;
-}
-
-.dashboard{
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:18px;
-}
-
-.sidebar{
+.card{
     background:white;
-    border-radius:18px;
-    padding:15px;
-    height:max-content;
-    position:sticky;
-    top:80px;
-}
-
-.sidebar button{
-    width:100%;
-    border:0;
-    background:white;
-    text-align:left;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:5px;
-}
-
-.sidebar button:hover,
-.sidebar button.active{
-    background:#efedff;
-    color:#5142c5;
-}
-
-.metric{
-    background:white;
-    padding:20px;
-    border-radius:17px;
-    box-shadow:0 4px 15px rgba(0,0,0,.06);
-}
-
-.metric b{
-    display:block;
-    font-size:27px;
-    margin-top:5px;
-}
-
-.modal-bg{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:100;
-    padding:15px;
-}
-
-.modal-bg.show{
-    display:flex;
-}
-
-.modal{
-    background:white;
-    width:min(520px,100%);
-    max-height:90vh;
-    overflow:auto;
+    padding:25px;
     border-radius:20px;
-    padding:24px;
-    animation:pop .2s ease;
+    box-shadow:0 5px 20px #0001;
 }
-
-@keyframes pop{
-    from{transform:scale(.94);opacity:0}
-    to{transform:scale(1);opacity:1}
-}
-
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
-}
-
-.close{
-    border:0;
-    background:#eee;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-}
-
-.toast{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    background:#222;
-    color:white;
-    padding:14px 18px;
-    border-radius:12px;
-    display:none;
-    z-index:200;
-    max-width:350px;
-}
-
-.toast.show{
+h2{margin-top:0}
+label{
     display:block;
+    margin-top:14px;
+    font-weight:bold;
 }
-
-.notification{
-    background:#fff6db;
-    border:1px solid #f0cf6d;
-    padding:15px;
-    border-radius:14px;
-    margin-bottom:15px;
+input{
+    width:100%;
+    padding:13px;
+    margin-top:6px;
+    border:1px solid #ddd;
+    border-radius:10px;
 }
-
-.timeline{
-    border-left:3px solid #6b5ce7;
-    padding-left:18px;
-}
-
-.timeline-item{
-    margin-bottom:18px;
-}
-
-.review{
-    border-top:1px solid #eee;
-    padding-top:12px;
-    margin-top:12px;
-}
-
-.stars button{
+button{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
     border:0;
-    background:none;
-    font-size:30px;
-    color:#ddd;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
 }
-
-.stars button.selected{
-    color:#f39c12;
-}
-
-.empty{
-    text-align:center;
-    padding:35px;
-    color:#777;
-}
-
-footer{
-    text-align:center;
-    color:#777;
-    padding:30px 15px;
-}
-
-@media(max-width:700px){
-    .dashboard{
-        grid-template-columns:1fr;
-    }
-
-    .sidebar{
-        position:static;
-    }
-
-    .hero h1{
-        font-size:27px;
-    }
-
-    header{
-        padding:13px;
-    }
+button:hover{background:#4638bd}
+.note{
+    margin-top:15px;
+    padding:12px;
+    background:#f0efff;
+    border-radius:10px;
+    font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<div class="container">
 
-<header>
-    <div class="logo">
-        KaamSetu
-        <span>Smart Work • Smart Hiring • Trusted People</span>
-    </div>
+    <div class="logo">KaamSetu</div>
 
-    <div class="header-actions">
-        <button onclick="goHome()">Home</button>
-        <button onclick="showScreen('helpScreen')">Help</button>
-    </div>
-</header>
-
-<main>
-
-<!-- ================= LOGIN ================= -->
-
-<section id="loginScreen" class="screen active">
-
-    <div class="hero">
-        <h1>Welcome to KaamSetu 👋</h1>
-        <p>
-            A smart platform connecting students, digital workers,
-            shop helpers and other workers with people who need reliable help.
-        </p>
+    <div class="subtitle">
+        Smart Work • Smart Hiring • Trusted People
     </div>
 
     <div class="card">
 
-        <h2>Login / Create Account</h2>
-        <p class="small">Prototype login — no real password is required.</p>
+        <h2>Welcome 👋</h2>
 
-        <div class="form-grid">
+        <p>Login or create your KaamSetu account.</p>
 
-            <div class="field">
-                <label>Full Name *</label>
-                <input id="loginName" placeholder="Enter your full name">
-            </div>
+        <label>Full Name *</label>
+        <input id="name" type="text" placeholder="Enter your name">
 
-            <div class="field">
-                <label>Email *</label>
-                <input id="loginEmail" type="email" placeholder="example@email.com">
-            </div>
+        <label>Email *</label>
+        <input id="email" type="email" placeholder="Enter your email">
 
-            <div class="field">
-                <label>Mobile Number *</label>
-                <input id="loginPhone" maxlength="10" placeholder="10 digit mobile number">
-            </div>
+        <label>Phone Number *</label>
+        <input id="phone" type="tel" maxlength="10" placeholder="10 digit number">
 
-            <div class="field">
-                <label>City / Area *</label>
-                <input id="loginArea" placeholder="Your area">
-            </div>
+        <label>Area / City *</label>
+        <input id="area" type="text" placeholder="Example: Hyderabad">
 
-        </div>
-
-        <button class="btn primary" onclick="login()">
+        <button onclick="continueLogin()">
             Continue →
         </button>
 
-    </div>
-
-    <div class="card">
-        <h3>Why KaamSetu?</h3>
-
-        <div class="grid">
-            <div>
-                <b>⭐ Trusted Ratings</b>
-                <p class="small">See previous ratings before accepting work.</p>
-            </div>
-
-            <div>
-                <b>📍 Local Matching</b>
-                <p class="small">Find workers around your selected area.</p>
-            </div>
-
-            <div>
-                <b>⏰ Smart Availability</b>
-                <p class="small">Workers can confirm daily availability.</p>
-            </div>
-
-            <div>
-                <b>🤝 Two-way Ratings</b>
-                <p class="small">Workers and owners can rate completed jobs.</p>
-            </div>
+        <div class="note">
+            Demo prototype: Please use fictional information while testing.
         </div>
+
     </div>
 
-</section>
+</div>
 
+<script>
 
-<!-- ================= ROLE ================= -->
+function continueLogin(){
 
-<section id="roleScreen" class="screen">
+    const name=document.getElementById("name").value.trim();
+    const email=document.getElementById("email").value.trim();
+    const phone=document.getElementById("phone").value.trim();
+    const area=document.getElementById("area").value.trim();
 
-    <button class="btn secondary back" onclick="showScreen('loginScreen')">
-        ← Back
-    </button>
+    if(!name || !email || !phone || !area){
+        alert("Please fill all the details.");
+        return;
+    }
 
-    <div class="hero">
-        <h1>What do you want to do?</h1>
-        <p>Select whether you want to work or hire someone.</p>
-    </div>
+    localStorage.setItem("kaamsetuUser",JSON.stringify({
+        name:name,
+        email:email,
+        phone:phone,
+        area:area
+    }));
+
+    window.location.href="choice.html";
+}
+
+</script>
+
+</body>
+</html>         
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Choose</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:850px;
+    margin:50px auto;
+    padding:20px;
+}
+h1{
+    text-align:center;
+    color:#5b4bdb;
+}
+.subtitle{
+    text-align:center;
+    color:#666;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+.card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #0001;
+    text-align:center;
+}
+.icon{
+    font-size:60px;
+}
+h2{color:#333}
+button{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    background:#5b4bdb;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    margin-top:15px;
+}
+button:hover{background:#4638bd}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>What do you want to do?</h1>
+
+    <p class="subtitle">
+        Choose your purpose on KaamSetu
+    </p>
 
     <div class="grid">
 
-        <button class="choice" onclick="selectRole('worker')">
+        <div class="card">
+
             <div class="icon">👩‍💻</div>
+
             <h2>I Want to Work</h2>
-            <p class="small">
-                Find suitable jobs, choose your schedule,
-                accept work and build your rating.
-            </p>
-        </button>
 
-        <button class="choice" onclick="selectRole('owner')">
+            <p>
+                Find suitable work, manage your availability,
+                accept jobs and build your rating.
+            </p>
+
+            <button onclick="goWorker()">
+                Work →
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
             <div class="icon">🏢</div>
+
             <h2>I Want to Hire</h2>
-            <p class="small">
-                Post work requirements and find suitable
-                workers near your selected area.
+
+            <p>
+                Post your work requirement and find
+                suitable workers nearby.
             </p>
-        </button>
+
+            <button onclick="goOwner()">
+                Hire →
+            </button>
+
+        </div>
 
     </div>
 
-</section>
+</div>
+
+<script>
+
+function goWorker(){
+
+    localStorage.setItem("kaamsetuRole","worker");
+
+    window.location.href="worker-details.html";
+
+}
+
+function goOwner(){
+
+    localStorage.setItem("kaamsetuRole","owner");
+
+    window.location.href="owner-details.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Worker Details</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:700px;
+    margin:30px auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #0001;
+}
+h1{color:#5b4bdb}
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:14px;
+}
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+textarea{min-height:90px}
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>👩‍💻 Worker Profile</h1>
+
+<p>
+Tell employers about your skills and preferred work.
+</p>
+
+<label>Full Name *</label>
+<input id="name">
+
+<label>Age</label>
+<input id="age" type="number">
+
+<label>Work Category *</label>
+<select id="category">
+<option value="">Select category</option>
+<option>Student Helper</option>
+<option>Shop Helper</option>
+<option>Data Entry</option>
+<option>Digital Work</option>
+<option>Office Assistant</option>
+<option>Tutoring</option>
+<option>Event Helper</option>
+<option>Photography / Video</option>
+<option>Other</option>
+</select>
+
+<label>Skills *</label>
+<input id="skills" placeholder="Typing, Excel, Canva, etc.">
+
+<label>Experience</label>
+<select id="experience">
+<option>New Worker</option>
+<option>Less than 1 year</option>
+<option>1–2 years</option>
+<option>2–5 years</option>
+<option>5+ years</option>
+</select>
+
+<label>Preferred Work Area *</label>
+<input id="area">
+
+<label>Maximum Distance</label>
+<select id="distance">
+<option>5 km</option>
+<option>10 km</option>
+<option>20 km</option>
+<option>30 km</option>
+</select>
+
+<label>Preferred Work Time</label>
+<select id="time">
+<option>Morning</option>
+<option>Afternoon</option>
+<option>Evening</option>
+<option>Flexible</option>
+</select>
+
+<label>Expected Pay Per Day ₹</label>
+<input id="pay" type="number">
+
+<label>About You</label>
+<textarea id="about"
+placeholder="Tell employers about yourself and your skills"></textarea>
+
+<button onclick="saveWorker()">
+Save Profile & Continue →
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const user=JSON.parse(
+    localStorage.getItem("kaamsetuUser") || "{}"
+);
+
+document.getElementById("name").value=user.name || "";
+document.getElementById("area").value=user.area || "";
+
+function saveWorker(){
+
+    const name=document.getElementById("name").value.trim();
+    const category=document.getElementById("category").value;
+    const skills=document.getElementById("skills").value.trim();
+    const area=document.getElementById("area").value.trim();
+
+    if(!name || !category || !skills || !area){
+
+        alert("Please fill all required details.");
+        return;
+
+    }
+
+    const worker={
+
+        name:name,
+
+        age:document.getElementById("age").value,
+
+        category:category,
+
+        skills:skills,
+
+        experience:document.getElementById("experience").value,
+
+        area:area,
+
+        distance:document.getElementById("distance").value,
+
+        time:document.getElementById("time").value,
+
+        pay:document.getElementById("pay").value || 0,
+
+        about:document.getElementById("about").value,
+
+        rating:0,
+
+        accepted:0,
+
+        completed:0
+
+    };
+
+    localStorage.setItem(
+        "kaamsetuWorker",
+        JSON.stringify(worker)
+    );
+
+    window.location.href="worker-dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Worker Dashboard</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+header{
+    background:#5b4bdb;
+    color:white;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+}
+header button{
+    background:white;
+    color:#5b4bdb;
+    border:0;
+    padding:8px 14px;
+    border-radius:8px;
+}
+.container{
+    max-width:1100px;
+    margin:25px auto;
+    padding:15px;
+}
+.hero{
+    background:linear-gradient(135deg,#5b4bdb,#8b7cff);
+    color:white;
+    padding:30px;
+    border-radius:20px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+.card{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 4px 15px #0001;
+}
+.metric{
+    font-size:28px;
+    font-weight:bold;
+    color:#5b4bdb;
+}
+button.action{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+    font-weight:bold;
+    margin-top:10px;
+}
+.notification{
+    background:#fff3d1;
+    padding:18px;
+    border-radius:15px;
+    margin-top:20px;
+}
+.success{
+    background:#159957!important;
+}
+.danger{
+    background:#d93636!important;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<b>KaamSetu</b>
+
+<button onclick="logout()">Logout</button>
+
+</header>
+
+<div class="container">
+
+<div class="hero">
+
+<h1 id="welcome">Hello 👋</h1>
+
+<p>
+Your worker dashboard
+</p>
+
+</div>
+
+<div id="dailyBox"></div>
+
+<div class="grid">
+
+<div class="card">
+<p>⭐ Rating</p>
+<div class="metric" id="rating">0</div>
+</div>
+
+<div class="card">
+<p>💼 Jobs Accepted</p>
+<div class="metric" id="accepted">0</div>
+</div>
+
+<div class="card">
+<p>✅ Jobs Completed</p>
+<div class="metric" id="completed">0</div>
+</div>
+
+</div>
 
 
-<!-- ================= WORKER PROFILE ================= -->
+<div class="card" style="margin-top:20px">
 
-<section id="workerProfileScreen" class="screen">
+<h2>My Profile</h2>
 
-    <button class="btn secondary back" onclick="showScreen('roleScreen')">
-        ← Back
-    </button>
+<p id="profile"></p>
 
-    <div class="card">
-        <h2>Worker Profile</h2>
-        <p class="small">
-            Add the information that helps employers understand your skills.
+<a href="worker-ratings.html">
+<button class="action">
+⭐ My Ratings & Reviews
+</button>
+</a>
+
+</div>
+
+
+<div class="card">
+
+<h2>Availability</h2>
+
+<p>
+Choose how you want to receive daily availability requests.
+</p>
+
+<label>
+<input type="radio"
+       name="availability"
+       value="daily"
+       checked>
+ Daily confirmation
+</label>
+
+<br>
+
+<label>
+<input type="radio"
+       name="availability"
+       value="permanent">
+ Permanent / Fixed period
+</label>
+
+<br><br>
+
+<label>Permanent Until</label>
+
+<input id="until" type="date">
+
+<button class="action"
+        onclick="saveAvailability()">
+Save Availability
+</button>
+
+<p id="availabilityStatus"></p>
+
+</div>
+
+
+<div class="card">
+
+<h2>My Accepted Jobs</h2>
+
+<div id="jobs">
+<p>No jobs accepted yet.</p>
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const worker=JSON.parse(
+    localStorage.getItem("kaamsetuWorker") || "{}"
+);
+
+document.getElementById("welcome").innerText=
+    "Hello, "+(worker.name || "Worker")+" 👋";
+
+document.getElementById("rating").innerText=
+    Number(worker.rating || 0).toFixed(1);
+
+document.getElementById("accepted").innerText=
+    worker.accepted || 0;
+
+document.getElementById("completed").innerText=
+    worker.completed || 0;
+
+document.getElementById("profile").innerHTML=
+`
+<b>Category:</b> ${worker.category || "-"}<br>
+<b>Skills:</b> ${worker.skills || "-"}<br>
+<b>Area:</b> ${worker.area || "-"}<br>
+<b>Experience:</b> ${worker.experience || "-"}<br>
+<b>Preferred Time:</b> ${worker.time || "-"}<br>
+<b>Expected Pay:</b> ₹${worker.pay || 0}/day
+`;
+
+
+function saveAvailability(){
+
+    const selected=document.querySelector(
+        'input[name="availability"]:checked'
+    ).value;
+
+    const until=document.getElementById("until").value;
+
+    localStorage.setItem(
+        "kaamsetuAvailability",
+        JSON.stringify({
+            type:selected,
+            until:until
+        })
+    );
+
+    document.getElementById(
+        "availabilityStatus"
+    ).innerText=
+        "✅ Availability saved successfully.";
+
+}
+
+
+function checkDaily(){
+
+    const availability=JSON.parse(
+        localStorage.getItem(
+            "kaamsetuAvailability"
+        ) || '{"type":"daily"}'
+    );
+
+    const now=new Date();
+
+    const today=
+        now.toISOString().split("T")[0];
+
+    const last=
+        localStorage.getItem(
+            "kaamsetuLastCheck"
+        );
+
+    if(
+        availability.type==="daily" &&
+        now.getHours()>=6 &&
+        last!==today
+    ){
+
+        document.getElementById(
+            "dailyBox"
+        ).innerHTML=`
+
+        <div class="notification">
+
+        <h2>🌅 Good Morning!</h2>
+
+        <p>
+        Are you free today for your accepted work?
         </p>
 
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Full Name *</label>
-                <input id="workerName">
-            </div>
-
-            <div class="field">
-                <label>Phone Number *</label>
-                <input id="workerPhone" maxlength="10">
-            </div>
-
-            <div class="field">
-                <label>Age</label>
-                <input id="workerAge" type="number" min="16" max="80">
-            </div>
-
-            <div class="field">
-                <label>Work Category *</label>
-                <select id="workerCategory">
-                    <option value="">Select category</option>
-                    <option>Student Helper</option>
-                    <option>Shop Helper</option>
-                    <option>Data Entry</option>
-                    <option>Digital Work</option>
-                    <option>Delivery / Local Assistance</option>
-                    <option>Event Helper</option>
-                    <option>Office Assistant</option>
-                    <option>Tutoring</option>
-                    <option>Photography / Video</option>
-                    <option>Other</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>Skills</label>
-                <input id="workerSkills"
-                       placeholder="Example: Excel, typing, sales">
-            </div>
-
-            <div class="field">
-                <label>Experience</label>
-                <select id="workerExperience">
-                    <option>New Worker</option>
-                    <option>Less than 1 year</option>
-                    <option>1–2 years</option>
-                    <option>2–5 years</option>
-                    <option>5+ years</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>Preferred Area *</label>
-                <input id="workerArea">
-            </div>
-
-            <div class="field">
-                <label>Maximum Travel Distance</label>
-                <select id="workerDistance">
-                    <option>5 km</option>
-                    <option selected>10 km</option>
-                    <option>20 km</option>
-                    <option>30 km</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>Preferred Work Time</label>
-                <select id="workerTime">
-                    <option>Morning</option>
-                    <option>Afternoon</option>
-                    <option>Evening</option>
-                    <option>Flexible</option>
-                </select>
-            </div>
-
-            <div class="field">
-                <label>Expected Pay Per Day (₹)</label>
-                <input id="workerPay" type="number" placeholder="Example: 500">
-            </div>
-
-        </div>
-
-        <div class="field">
-            <label>About You</label>
-            <textarea id="workerAbout"
-                      placeholder="Write a short description about your work experience and skills"></textarea>
-        </div>
-
-        <button class="btn primary" onclick="saveWorkerProfile()">
-            Save Profile & Continue →
+        <button
+        class="action success"
+        onclick="availableToday()">
+        ✓ Yes, I am free
         </button>
 
+        <button
+        class="action danger"
+        onclick="notAvailable()">
+        ✕ No, I'm not free
+        </button>
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
+function availableToday(){
+
+    const today=
+        new Date().toISOString().split("T")[0];
+
+    localStorage.setItem(
+        "kaamsetuLastCheck",
+        today
+    );
+
+    document.getElementById(
+        "dailyBox"
+    ).innerHTML=
+    `
+    <div class="notification">
+    ✅ You confirmed your availability for today.
     </div>
+    `;
 
-</section>
+}
 
 
-<!-- ================= OWNER PROFILE ================= -->
+function notAvailable(){
 
-<section id="ownerProfileScreen" class="screen">
+    const today=
+        new Date().toISOString().split("T")[0];
 
-    <button class="btn secondary back" onclick="showScreen('roleScreen')">
-        ← Back
-    </button>
+    localStorage.setItem(
+        "kaamsetuLastCheck",
+        today
+    );
 
+    document.getElementById(
+        "dailyBox"
+    ).innerHTML=
+    `
+    <div class="notification">
+    ⚠️ You are unavailable today.
+    The owner can choose another worker.
+    </div>
+    `;
+
+}
+
+
+function logout(){
+
+    window.location.href="index.html";
+
+}
+
+checkDaily();
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Worker Ratings</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:700px;
+    margin:30px auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    margin-bottom:15px;
+    box-shadow:0 4px 15px #0001;
+}
+h1{color:#5b4bdb}
+.rating{
+    color:#f39c12;
+    font-size:25px;
+}
+button{
+    padding:12px 18px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⭐ My Ratings</h1>
+
+<a href="worker-dashboard.html">
+<button>← Dashboard</button>
+</a>
+
+<div class="card">
+
+<h2>Overall Rating</h2>
+
+<div class="rating" id="overall">
+⭐ 0.0 / 5
+</div>
+
+</div>
+
+<div id="reviews"></div>
+
+</div>
+
+<script>
+
+const worker=JSON.parse(
+    localStorage.getItem("kaamsetuWorker") || "{}"
+);
+
+document.getElementById("overall").innerText=
+"⭐ "+Number(worker.rating || 0).toFixed(1)+" / 5";
+
+const reviews=JSON.parse(
+    localStorage.getItem("kaamsetuReviews") || "[]"
+);
+
+const workerReviews=
+reviews.filter(r=>r.type==="worker");
+
+const box=document.getElementById("reviews");
+
+if(workerReviews.length===0){
+
+    box.innerHTML=
+    `
     <div class="card">
-        <h2>Hiring Profile</h2>
-        <p class="small">
-            Add details about yourself/business so workers know who is hiring.
+    <p>No reviews yet.</p>
+    </div>
+    `;
+
+}else{
+
+    workerReviews.forEach(r=>{
+
+        box.innerHTML+=`
+
+        <div class="card">
+
+        <div class="rating">
+        ${"⭐".repeat(r.rating)}
+        </div>
+
+        <p>
+        ${r.review || "No written review."}
         </p>
 
-        <div class="form-grid">
-
-            <div class="field">
-                <label>Owner / Contact Name *</label>
-                <input id="ownerName">
-            </div>
-
-            <div class="field">
-                <label>Mobile Number *</label>
-                <input id="ownerPhone" maxlength="10">
-            </div>
-
-            <div class="field">
-                <label>Business / Organization Name</label>
-                <input id="ownerBusiness">
-            </div>
-
-            <div class="field">
-                <label>Work Area *</label>
-                <input id="ownerArea">
-            </div>
-
-            <div class="field">
-                <label>Work Address</label>
-                <textarea id="ownerAddress"></textarea>
-            </div>
-
-            <div class="field">
-                <label>Hiring Type</label>
-                <select id="ownerType">
-                    <option>Individual</option>
-                    <option>Shop</option>
-                    <option>Small Business</option>
-                    <option>Startup</option>
-                    <option>Educational Institution</option>
-                    <option>Other</option>
-                </select>
-            </div>
+        <small>
+        From: ${r.from}
+        </small>
 
         </div>
 
-        <button class="btn primary" onclick="saveOwnerProfile()">
-            Save Profile & Continue →
-        </button>
+        `;
 
+    });
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Owner Details</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:700px;
+    margin:30px auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #0001;
+}
+h1{color:#5b4bdb}
+label{
+    display:block;
+    margin-top:14px;
+    font-weight:bold;
+}
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+textarea{min-height:100px}
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>🏢 Hiring Profile</h1>
+
+<p>
+Tell workers about the person or organization hiring.
+</p>
+
+<label>Name *</label>
+<input id="name">
+
+<label>Phone Number *</label>
+<input id="phone">
+
+<label>Business / Organization Name</label>
+<input id="business">
+
+<label>Hiring Type</label>
+
+<select id="type">
+<option>Individual</option>
+<option>Shop</option>
+<option>Small Business</option>
+<option>Startup</option>
+<option>Educational Institution</option>
+<option>Other</option>
+</select>
+
+<label>Work Area *</label>
+<input id="area">
+
+<label>Work Address</label>
+<textarea id="address"></textarea>
+
+<button onclick="saveOwner()">
+Save Profile & Continue →
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const user=JSON.parse(
+    localStorage.getItem("kaamsetuUser") || "{}"
+);
+
+document.getElementById("name").value=user.name || "";
+document.getElementById("phone").value=user.phone || "";
+document.getElementById("area").value=user.area || "";
+
+function saveOwner(){
+
+    const name=document.getElementById("name").value.trim();
+    const phone=document.getElementById("phone").value.trim();
+    const area=document.getElementById("area").value.trim();
+
+    if(!name || !phone || !area){
+
+        alert("Please fill all required details.");
+        return;
+
+    }
+
+    const owner={
+
+        name:name,
+
+        phone:phone,
+
+        business:
+            document.getElementById("business").value,
+
+        type:
+            document.getElementById("type").value,
+
+        area:area,
+
+        address:
+            document.getElementById("address").value,
+
+        rating:0
+
+    };
+
+    localStorage.setItem(
+        "kaamsetuOwner",
+        JSON.stringify(owner)
+    );
+
+    window.location.href="owner-dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Owner Dashboard</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+header{
+    background:#5b4bdb;
+    color:white;
+    padding:16px 6%;
+    display:flex;
+    justify-content:space-between;
+}
+header button{
+    border:0;
+    padding:8px 14px;
+    border-radius:8px;
+}
+.container{
+    max-width:1000px;
+    margin:25px auto;
+    padding:15px;
+}
+.hero{
+    background:linear-gradient(135deg,#5b4bdb,#8b7cff);
+    color:white;
+    padding:30px;
+    border-radius:20px;
+}
+.card{
+    background:white;
+    padding:22px;
+    margin-top:18px;
+    border-radius:18px;
+    box-shadow:0 4px 15px #0001;
+}
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    margin:7px 0 14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+button.primary{
+    background:#5b4bdb;
+    color:white;
+    border:0;
+    padding:13px;
+    border-radius:10px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<b>KaamSetu</b>
+
+<button onclick="logout()">Logout</button>
+
+</header>
+
+<div class="container">
+
+<div class="hero">
+
+<h1 id="welcome">Welcome 👋</h1>
+
+<p>
+Find suitable workers according to area, skills and ratings.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>➕ Post Work</h2>
+
+<label>Work Title *</label>
+<input id="title"
+placeholder="Example: Shop helper required">
+
+<label>Category *</label>
+
+<select id="category">
+
+<option>Student Helper</option>
+<option>Shop Helper</option>
+<option>Data Entry</option>
+<option>Digital Work</option>
+<option>Office Assistant</option>
+<option>Tutoring</option>
+<option>Event Helper</option>
+<option>Photography / Video</option>
+
+</select>
+
+<label>Work Area *</label>
+<input id="area">
+
+<label>Date *</label>
+<input id="date" type="date">
+
+<label>Start Time</label>
+<input id="start" type="time" value="09:00">
+
+<label>End Time</label>
+<input id="end" type="time" value="17:00">
+
+<label>Pay Per Day ₹ *</label>
+<input id="pay" type="number">
+
+<label>Work Description *</label>
+<textarea id="description"></textarea>
+
+<button class="primary"
+        onclick="postWork()">
+Find Top Workers →
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>📋 My Work Requests</h2>
+
+<div id="myJobs">
+No work requests yet.
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const owner=JSON.parse(
+    localStorage.getItem("kaamsetuOwner") || "{}"
+);
+
+document.getElementById("welcome").innerText=
+"Welcome, "+(owner.name || "Owner")+" 👋";
+
+document.getElementById("area").value=
+owner.area || "";
+
+
+function postWork(){
+
+    const title=document.getElementById("title").value.trim();
+    const category=document.getElementById("category").value;
+    const area=document.getElementById("area").value.trim();
+    const date=document.getElementById("date").value;
+    const pay=document.getElementById("pay").value;
+    const description=
+        document.getElementById("description").value.trim();
+
+    if(!title || !category || !area ||
+       !date || !pay || !description){
+
+        alert("Please complete the work details.");
+        return;
+
+    }
+
+    const job={
+
+        id:Date.now(),
+
+        title:title,
+
+        category:category,
+
+        area:area,
+
+        date:date,
+
+        start:
+            document.getElementById("start").value,
+
+        end:
+            document.getElementById("end").value,
+
+        pay:pay,
+
+        description:description,
+
+        status:"Searching for workers",
+
+        worker:null
+
+    };
+
+    const jobs=JSON.parse(
+        localStorage.getItem("kaamsetuJobs") || "[]"
+    );
+
+    jobs.push(job);
+
+    localStorage.setItem(
+        "kaamsetuJobs",
+        JSON.stringify(jobs)
+    );
+
+    localStorage.setItem(
+        "kaamsetuCurrentJob",
+        job.id
+    );
+
+    window.location.href="workers.html";
+
+}
+
+
+function logout(){
+
+    window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Find Workers</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:1100px;
+    margin:25px auto;
+    padding:15px;
+}
+h1{color:#5b4bdb}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+}
+.card{
+    background:white;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 4px 15px #0001;
+}
+.avatar{
+    width:60px;
+    height:60px;
+    background:#6c5ce7;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:24px;
+    font-weight:bold;
+}
+.top{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+.rating{
+    color:#f39c12;
+}
+.tag{
+    display:inline-block;
+    background:#efedff;
+    color:#5142c5;
+    padding:6px 9px;
+    border-radius:15px;
+    font-size:12px;
+    margin:3px;
+}
+button{
+    width:100%;
+    padding:12px;
+    margin-top:9px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+    font-weight:bold;
+}
+.secondary{
+    background:#eee;
+    color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>👥 Top Matching Workers</h1>
+
+<p>
+Workers are ranked using skills, category, location,
+rating and completed jobs.
+</p>
+
+<div id="workers" class="grid"></div>
+
+</div>
+
+<script>
+
+const workers=[
+
+{
+id:1,
+name:"Ananya",
+category:"Student Helper",
+skills:"Typing, Excel, Communication",
+area:"Hyderabad",
+rating:4.9,
+accepted:28,
+completed:26,
+pay:500
+},
+
+{
+id:2,
+name:"Rahul",
+category:"Digital Work",
+skills:"Canva, Data Entry, Typing",
+area:"Hyderabad",
+rating:4.8,
+accepted:35,
+completed:33,
+pay:650
+},
+
+{
+id:3,
+name:"Sneha",
+category:"Shop Helper",
+skills:"Billing, Sales, Customer Support",
+area:"Hyderabad",
+rating:4.7,
+accepted:22,
+completed:20,
+pay:550
+},
+
+{
+id:4,
+name:"Vikram",
+category:"Data Entry",
+skills:"Excel, Word, Typing",
+area:"Hyderabad",
+rating:4.6,
+accepted:40,
+completed:37,
+pay:600
+},
+
+{
+id:5,
+name:"Pooja",
+category:"Tutoring",
+skills:"Mathematics, English",
+area:"Hyderabad",
+rating:4.8,
+accepted:18,
+completed:17,
+pay:700
+},
+
+{
+id:6,
+name:"Kiran",
+category:"Office Assistant",
+skills:"Computer, Documentation",
+area:"Hyderabad",
+rating:4.5,
+accepted:30,
+completed:27,
+pay:650
+},
+
+{
+id:7,
+name:"Meghana",
+category:"Event Helper",
+skills:"Event Support, Communication",
+area:"Hyderabad",
+rating:4.7,
+accepted:24,
+completed:22,
+pay:600
+},
+
+{
+id:8,
+name:"Arjun",
+category:"Photography / Video",
+skills:"Photography, Editing",
+area:"Hyderabad",
+rating:4.9,
+accepted:31,
+completed:30,
+pay:1000
+},
+
+{
+id:9,
+name:"Divya",
+category:"Digital Work",
+skills:"Social Media, Canva",
+area:"Hyderabad",
+rating:4.6,
+accepted:19,
+completed:18,
+pay:600
+},
+
+{
+id:10,
+name:"Sai",
+category:"Shop Helper",
+skills:"Billing, Stock Management",
+area:"Hyderabad",
+rating:4.4,
+accepted:32,
+completed:29,
+pay:500
+},
+
+{
+id:11,
+name:"Lakshmi",
+category:"Student Helper",
+skills:"Typing, Documentation",
+area:"Hyderabad",
+rating:4.5,
+accepted:15,
+completed:14,
+pay:450
+},
+
+{
+id:12,
+name:"Nikhil",
+category:"Delivery / Local Assistance",
+skills:"Local Travel, Communication",
+area:"Hyderabad",
+rating:4.3,
+accepted:25,
+completed:23,
+pay:550
+}
+
+];
+
+
+const jobs=JSON.parse(
+    localStorage.getItem("kaamsetuJobs") || "[]"
+);
+
+const currentId=Number(
+    localStorage.getItem("kaamsetuCurrentJob")
+);
+
+const job=jobs.find(j=>j.id===currentId);
+
+
+workers.sort((a,b)=>{
+
+    let scoreA=a.rating*20+a.completed;
+    let scoreB=b.rating*20+b.completed;
+
+    if(job){
+
+        if(a.category===job.category)
+            scoreA+=50;
+
+        if(b.category===job.category)
+            scoreB+=50;
+
+    }
+
+    return scoreB-scoreA;
+
+});
+
+
+document.getElementById("workers").innerHTML=
+workers.slice(0,20).map(w=>`
+
+<div class="card">
+
+<div class="top">
+
+<div class="avatar">
+${w.name.charAt(0)}
+</div>
+
+<div>
+
+<h2>${w.name}</h2>
+
+<div class="rating">
+⭐ ${w.rating}/5
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<span class="tag">
+${w.category}
+</span>
+
+<span class="tag">
+${w.area}
+</span>
+
+<p>
+<b>Skills:</b> ${w.skills}
+</p>
+
+<p>
+💼 Jobs accepted: <b>${w.accepted}</b>
+</p>
+
+<p>
+✅ Jobs completed: <b>${w.completed}</b>
+</p>
+
+<p>
+💰 Expected: ₹${w.pay}/day
+</p>
+
+<a href="worker-profile.html?id=${w.id}">
+<button>
+View Full Profile
+</button>
+</a>
+
+</div>
+
+`).join("");
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Worker Profile</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:650px;
+    margin:30px auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #0001;
+}
+.avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#5b4bdb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    font-weight:bold;
+}
+.rating{
+    color:#f39c12;
+    font-size:24px;
+}
+.info{
+    padding:12px;
+    background:#f7f7fb;
+    border-radius:10px;
+    margin-top:10px;
+}
+button{
+    width:100%;
+    padding:14px;
+    margin-top:12px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card" id="profile"></div>
+
+</div>
+
+<script>
+
+const workers=[
+
+{
+id:1,name:"Ananya",
+category:"Student Helper",
+skills:"Typing, Excel, Communication",
+area:"Hyderabad",
+rating:4.9,
+accepted:28,
+completed:26,
+pay:500,
+experience:"1–2 years"
+},
+
+{
+id:2,name:"Rahul",
+category:"Digital Work",
+skills:"Canva, Data Entry, Typing",
+area:"Hyderabad",
+rating:4.8,
+accepted:35,
+completed:33,
+pay:650,
+experience:"2–5 years"
+},
+
+{
+id:3,name:"Sneha",
+category:"Shop Helper",
+skills:"Billing, Sales, Customer Support",
+area:"Hyderabad",
+rating:4.7,
+accepted:22,
+completed:20,
+pay:550,
+experience:"1–2 years"
+},
+
+{
+id:4,name:"Vikram",
+category:"Data Entry",
+skills:"Excel, Word, Typing",
+area:"Hyderabad",
+rating:4.6,
+accepted:40,
+completed:37,
+pay:600,
+experience:"2–5 years"
+},
+
+{
+id:5,name:"Pooja",
+category:"Tutoring",
+skills:"Mathematics, English",
+area:"Hyderabad",
+rating:4.8,
+accepted:18,
+completed:17,
+pay:700,
+experience:"1–2 years"
+},
+
+{
+id:6,name:"Kiran",
+category:"Office Assistant",
+skills:"Computer, Documentation",
+area:"Hyderabad",
+rating:4.5,
+accepted:30,
+completed:27,
+pay:650,
+experience:"2–5 years"
+},
+
+{
+id:7,name:"Meghana",
+category:"Event Helper",
+skills:"Event Support, Communication",
+area:"Hyderabad",
+rating:4.7,
+accepted:24,
+completed:22,
+pay:600,
+experience:"1–2 years"
+},
+
+{
+id:8,name:"Arjun",
+category:"Photography / Video",
+skills:"Photography, Editing",
+area:"Hyderabad",
+rating:4.9,
+accepted:31,
+completed:30,
+pay:1000,
+experience:"2–5 years"
+},
+
+{
+id:9,name:"Divya",
+category:"Digital Work",
+skills:"Social Media, Canva",
+area:"Hyderabad",
+rating:4.6,
+accepted:19,
+completed:18,
+pay:600,
+experience:"1–2 years"
+},
+
+{
+id:10,name:"Sai",
+category:"Shop Helper",
+skills:"Billing, Stock Management",
+area:"Hyderabad",
+rating:4.4,
+accepted:32,
+completed:29,
+pay:500,
+experience:"2–5 years"
+}
+
+];
+
+
+const id=Number(
+    new URLSearchParams(location.search).get("id")
+);
+
+const worker=workers.find(w=>w.id===id);
+
+if(!worker){
+
+    document.getElementById("profile").innerHTML=
+    "<h2>Worker not found.</h2>";
+
+}else{
+
+document.getElementById("profile").innerHTML=`
+
+<div class="avatar">
+${worker.name.charAt(0)}
+</div>
+
+<h1>${worker.name}</h1>
+
+<div class="rating">
+⭐ ${worker.rating} / 5
+</div>
+
+<div class="info">
+<b>Work Category:</b>
+${worker.category}
+</div>
+
+<div class="info">
+<b>Skills:</b>
+${worker.skills}
+</div>
+
+<div class="info">
+<b>Experience:</b>
+${worker.experience}
+</div>
+
+<div class="info">
+<b>Preferred Area:</b>
+${worker.area}
+</div>
+
+<div class="info">
+<b>Jobs Accepted:</b>
+${worker.accepted}
+</div>
+
+<div class="info">
+<b>Jobs Completed:</b>
+${worker.completed}
+</div>
+
+<div class="info">
+<b>Expected Pay:</b>
+₹${worker.pay}/day
+</div>
+
+<button onclick="hire()">
+🤝 Hire ${worker.name}
+</button>
+
+<a href="workers.html">
+<button>
+← Back to Workers
+</button>
+</a>
+
+`;
+
+}
+
+
+function hire(){
+
+    const jobs=JSON.parse(
+        localStorage.getItem("kaamsetuJobs") || "[]"
+    );
+
+    const currentId=Number(
+        localStorage.getItem("kaamsetuCurrentJob")
+    );
+
+    const job=jobs.find(j=>j.id===currentId);
+
+    if(!job){
+
+        alert("Please create a work request first.");
+        return;
+
+    }
+
+    const permanent=confirm(
+        "Choose OK for permanent/fixed-period work.\nChoose Cancel for temporary/daily work."
+    );
+
+    job.worker=worker.name;
+    job.workerId=worker.id;
+    job.status="Hiring request sent";
+    job.type=permanent ? "Permanent" : "Temporary";
+
+    localStorage.setItem(
+        "kaamsetuJobs",
+        JSON.stringify(jobs)
+    );
+
+    alert(
+        "Hiring request sent to "+worker.name+"!"
+    );
+
+    window.location.href="owner-dashboard.html";
+
+}
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KaamSetu - Owner Ratings</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f3ff;
+}
+.container{
+    max-width:700px;
+    margin:30px auto;
+    padding:20px;
+}
+.card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    margin-bottom:15px;
+    box-shadow:0 4px 15px #0001;
+}
+h1{color:#5b4bdb}
+.rating{
+    color:#f39c12;
+    font-size:25px;
+}
+button{
+    padding:12px 18px;
+    border:0;
+    border-radius:10px;
+    background:#5b4bdb;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⭐ Owner Ratings</h1>
+
+<a href="owner-dashboard.html">
+<button>← Dashboard</button>
+</a>
+
+<div class="card">
+
+<h2>Your Rating</h2>
+
+<div class="rating" id="rating">
+⭐ 0.0 / 5
+</div>
+
+</div>
+
+<div id="reviews"></div>
+
+</div>
+
+<script>
+
+const owner=JSON.parse(
+    localStorage.getItem("kaamsetuOwner") || "{}"
+);
+
+document.getElementById("rating").innerText=
+"⭐ "+Number(owner.rating || 0).toFixed(1)+" / 5";
+
+const reviews=JSON.parse(
+    localStorage.getItem("kaamsetuReviews") || "[]"
+);
+
+const ownerReviews=
+reviews.filter(r=>r.type==="owner");
+
+const box=document.getElementById("reviews");
+
+if(ownerReviews.length===0){
+
+    box.innerHTML=
+    `
+    <div class="card">
+    <p>No ratings yet.</p>
     </div>
+    `;
 
-</section>
+}else{
 
+    ownerReviews.forEach(r=>{
 
-<!-- ================= WORKER DASHBOARD ================= -->
+        box.innerHTML+=`
 
-<section id="workerDashboardScreen" class="screen">
+        <div class="card">
 
-    <div class="dashboard">
+        <div class="rating">
+        ${"⭐".repeat(r.rating)}
+        </div>
 
-        <aside class="sidebar">
+        <p>
+        ${r.review || "No written review."}
+        </p>
 
-            <button class="active"
-                    onclick="workerTab('overview',this)">
-                🏠 Overview
-            </button>
+        <small>
+        From: ${r.from}
+        </small>
 
-            <button onclick="workerTab('jobs',this)">
-                💼 My Jobs
-            </button>
+        </div>
 
-            <button onclick="workerTab('availability',this)">
-                ⏰ Availability
-            </button>
+        `;
 
-            <button onclick="workerTab('ratings',this)">
-                ⭐ Ratings
-            </button>
+    });
 
-            <button onclick="workerTab('profile',this)">
-                👤 Profile
-            </button>
+}
 
-            <button onclick="logout()">
-                🚪 Logout
-            </button>
+</script>
 
-        </aside>
-
-        <div>
-
-            <div id="workerOverviewTab" class="worker-tab">
-
-                <div class="hero">
-                    <h1 id="workerWelcome">Hello 👋</h1>
-                    <p>
-                        Manage your work, availability and ratings from here.
-                    </p>
-                </div>
-
-                <div id="dailyNotificationArea"></div>
-
-                <div class="grid">
-
-                    <div class="metric">
-                        ⭐ Rating
-                        <b id="workerRatingMetric">0.0</b>
-                    </div>
-
-                    <div class="metric">
-                        💼 Jobs Accepted
-                        <b id="workerAcceptedMetric">0</b>
-                    </div>
-
-                    <div class="metric">
-                        ✅ Jobs Completed
-                        <b id="workerCompletedMetric">0</b>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2>Quick Actions</h2>
-
-                    <button class="btn primary"
-                            onclick="workerTab('availability')">
-                        ⏰ Set Availability
-                    </button>
-
-                    <button class="btn secondary"
-                            onclick="workerTab('jobs')">
-                        📋 View My Jobs
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <div id="workerJobsTab" class="worker-tab" style="display:none">
-
-                <div class="card">
-                    <h2>My Jobs</h2>
-                    <div id="workerJobs"></div>
-                </div>
-
-            </div>
-
-
-            <div id="workerAvailabilityTab" class="worker-tab" style="display:none">
-
-                <div class="card">
-
-                    <h2>Work Availability</h2>
-
-                    <div class="notification">
-                        <b>How daily confirmation works</b>
-                        <p class="small">
-                            Temporary workers receive a daily availability
-                            request. Permanent work can be confirmed for a
-                            selected date range.
-                        </p>
-                    </div>
-
-                    <div class="form-grid">
-
-                        <div class="field">
-                            <label>Availability Type</label>
-                            <select id="availabilityType">
-                                <option value="temporary">Daily / Temporary</option>
-                                <option value="permanent">Permanent / Fixed Period</option>
-                            </select>
-                        </div>
-
-                        <div class="field">
-                            <label>Preferred Start Time</label>
-                            <input id="availabilityStart" type="time"
-                                   value="09:00">
-                        </div>
-
-                        <div class="field">
-                            <label>Preferred End Time</label>
-                            <input id="availabilityEnd" type="time"
-                                   value="17:00">
-                        </div>
-
-                        <div class="field">
-                 
+</body>
+</html>
