@@ -3,1205 +3,940 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#5b4bdb">
-<title>Skill Circle - Smart Work & Hiring</title>
+<title>SkillCircle</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-:root{
- --primary:#5b4bdb;
- --primary2:#7667e8;
- --light:#f5f3ff;
- --dark:#202033;
- --muted:#6d6d7d;
- --white:#fff;
- --green:#159957;
- --red:#d93636;
- --orange:#f39c12;
- --border:#e5e3ee;
- --shadow:0 8px 25px rgba(40,30,100,.10);
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
- font-family:Arial,Helvetica,sans-serif;
- background:var(--light);
- color:var(--dark);
- min-height:100vh;
+    background:#f4f7fb;
+    color:#172033;
 }
-
-button,input,select,textarea{font:inherit}
 
 button{
- cursor:pointer;
- border:none;
+    border:0;
+    cursor:pointer;
 }
 
-a{text-decoration:none;color:inherit}
-
-.hidden{display:none!important}
-
-.screen{
- display:none;
- min-height:100vh;
+.page{
+    display:none;
+    min-height:100vh;
+    padding:25px;
 }
 
-.screen.active{display:block}
+.page.active{
+    display:block;
+}
 
 .container{
- width:min(1100px,94%);
- margin:auto;
- padding:25px 0 50px;
-}
-
-.center-container{
- width:min(600px,94%);
- margin:auto;
- padding:35px 0 60px;
+    max-width:1100px;
+    margin:auto;
 }
 
 .logo{
- font-size:30px;
- font-weight:900;
- color:var(--primary);
- letter-spacing:-1px;
+    font-size:30px;
+    font-weight:800;
+    color:#3157d5;
 }
 
-.logo span{color:#f39c12}
-
-.topbar{
- background:white;
- box-shadow:0 2px 15px rgba(0,0,0,.06);
- padding:14px 5%;
- display:flex;
- justify-content:space-between;
- align-items:center;
- position:sticky;
- top:0;
- z-index:50;
+.subtitle{
+    color:#68738a;
+    margin-top:7px;
 }
-
-.topbar-actions{
- display:flex;
- gap:8px;
- align-items:center;
-}
-
-.btn{
- padding:12px 18px;
- border-radius:10px;
- font-weight:700;
- transition:.2s;
-}
-
-.btn-primary{
- background:var(--primary);
- color:white;
-}
-
-.btn-primary:hover{background:#4638bd}
-
-.btn-secondary{
- background:#eee;
- color:#333;
-}
-
-.btn-success{
- background:var(--green);
- color:white;
-}
-
-.btn-danger{
- background:var(--red);
- color:white;
-}
-
-.btn-warning{
- background:#f39c12;
- color:white;
-}
-
-.btn-full{width:100%}
 
 .card{
- background:white;
- border-radius:18px;
- padding:22px;
- box-shadow:var(--shadow);
- border:1px solid rgba(0,0,0,.03);
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-top:20px;
+    box-shadow:0 5px 25px rgba(0,0,0,.08);
 }
 
-.form-card{
- width:min(650px,100%);
- margin:25px auto;
-}
-
-.page-title{
- margin-bottom:8px;
- font-size:30px;
-}
-
-.page-subtitle{
- color:var(--muted);
- margin-bottom:25px;
- line-height:1.5;
-}
-
-label{
- display:block;
- font-weight:700;
- margin:15px 0 7px;
+.center{
+    text-align:center;
 }
 
 input,select,textarea{
- width:100%;
- padding:13px;
- border:1px solid var(--border);
- border-radius:10px;
- outline:none;
- background:#fff;
-}
-
-input:focus,select:focus,textarea:focus{
- border-color:var(--primary);
- box-shadow:0 0 0 3px rgba(91,75,219,.10);
+    width:100%;
+    padding:14px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border:1px solid #d8deea;
+    border-radius:10px;
+    font-size:15px;
 }
 
 textarea{
- min-height:100px;
- resize:vertical;
+    min-height:100px;
+    resize:vertical;
 }
 
-.field-help{
- color:var(--muted);
- font-size:12px;
- margin-top:5px;
+label{
+    font-weight:600;
+    display:block;
+    margin-top:10px;
 }
 
-.hero{
- background:linear-gradient(135deg,var(--primary),var(--primary2));
- color:white;
- border-radius:22px;
- padding:32px;
- margin-bottom:22px;
+.btn{
+    background:#3157d5;
+    color:white;
+    padding:14px 22px;
+    border-radius:10px;
+    font-weight:700;
+    margin-top:8px;
 }
 
-.hero h1{
- font-size:32px;
- margin-bottom:8px;
+.btn:hover{
+    opacity:.9;
 }
 
-.hero p{
- opacity:.9;
- line-height:1.6;
+.btn.secondary{
+    background:#e9edff;
+    color:#3157d5;
+}
+
+.btn.green{
+    background:#159447;
+}
+
+.btn.red{
+    background:#d63b3b;
+}
+
+.btn.gray{
+    background:#667085;
 }
 
 .grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:18px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
 }
 
-.two-grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
- gap:20px;
+.option{
+    padding:30px 20px;
+    border:2px solid #e0e5f0;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    background:white;
+    transition:.2s;
 }
 
-.three-grid{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
- gap:15px;
+.option:hover{
+    border-color:#3157d5;
+    transform:translateY(-3px);
 }
 
-.choice-card{
- text-align:center;
- padding:35px 25px;
+.option h2{
+    margin:12px 0;
 }
 
-.choice-icon{
- font-size:60px;
- margin-bottom:15px;
+.icon{
+    font-size:45px;
 }
 
-.choice-card h2{
- margin-bottom:10px;
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
 }
 
-.choice-card p{
- color:var(--muted);
- line-height:1.6;
- margin-bottom:20px;
-}
-
-.stat{
- padding:20px;
-}
-
-.stat-icon{
- font-size:25px;
-}
-
-.stat-value{
- font-size:30px;
- font-weight:900;
- color:var(--primary);
- margin:7px 0;
-}
-
-.stat-label{
- color:var(--muted);
-}
-
-.badge{
- display:inline-block;
- padding:6px 10px;
- background:#eeecff;
- color:var(--primary);
- border-radius:20px;
- font-size:12px;
- font-weight:700;
- margin:3px;
-}
-
-.badge-green{
- background:#e6f7ed;
- color:var(--green);
-}
-
-.badge-orange{
- background:#fff2dc;
- color:#a66000;
-}
-
-.badge-red{
- background:#ffe8e8;
- color:var(--red);
-}
-
-.rating{
- color:var(--orange);
- font-weight:800;
-}
-
-.worker-card{
- position:relative;
-}
-
-.worker-head{
- display:flex;
- gap:14px;
- align-items:center;
- margin-bottom:15px;
+.worker{
+    border:1px solid #e0e5ef;
+    border-radius:15px;
+    padding:18px;
+    background:#fff;
 }
 
 .avatar{
- width:58px;
- height:58px;
- min-width:58px;
- border-radius:50%;
- background:linear-gradient(135deg,var(--primary),var(--primary2));
- color:white;
- display:flex;
- justify-content:center;
- align-items:center;
- font-size:22px;
- font-weight:900;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#dfe6ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:27px;
+    font-weight:bold;
+    color:#3157d5;
+    margin-bottom:10px;
 }
 
-.worker-card h3{
- margin-bottom:4px;
+.rating{
+    color:#e39b00;
+    font-weight:bold;
 }
 
-.worker-meta{
- color:var(--muted);
- font-size:13px;
+.tag{
+    display:inline-block;
+    padding:6px 10px;
+    background:#eef1ff;
+    color:#3157d5;
+    border-radius:20px;
+    margin:4px;
+    font-size:13px;
 }
 
-.info-row{
- display:flex;
- justify-content:space-between;
- gap:15px;
- padding:10px 0;
- border-bottom:1px solid #eee;
+.stat{
+    background:#f6f8fc;
+    padding:18px;
+    border-radius:13px;
+    text-align:center;
 }
 
-.info-row:last-child{border-bottom:0}
-
-.info-label{
- color:var(--muted);
-}
-
-.info-value{
- font-weight:700;
- text-align:right;
-}
-
-.section-title{
- margin:25px 0 14px;
- font-size:21px;
+.stat strong{
+    display:block;
+    font-size:25px;
+    color:#3157d5;
 }
 
 .alert{
- padding:16px;
- border-radius:14px;
- margin-bottom:18px;
- line-height:1.5;
+    padding:18px;
+    border-radius:12px;
+    background:#fff6d9;
+    border:1px solid #f1d36b;
+    margin-bottom:15px;
 }
 
-.alert-info{
- background:#eeecff;
- color:#4035a0;
+.success{
+    background:#e6f7ed;
+    border-color:#8ad4a6;
 }
 
-.alert-success{
- background:#e7f8ee;
- color:#126d3d;
-}
-
-.alert-warning{
- background:#fff4df;
- color:#855300;
-}
-
-.alert-danger{
- background:#ffe8e8;
- color:#9d2020;
-}
-
-.action-row{
- display:flex;
- gap:10px;
- flex-wrap:wrap;
- margin-top:15px;
-}
-
-.action-row .btn{
- flex:1;
- min-width:130px;
-}
-
-.empty{
- text-align:center;
- padding:35px 20px;
- color:var(--muted);
-}
-
-.empty-icon{
- font-size:45px;
- margin-bottom:10px;
-}
-
-.login-page{
- background:
- radial-gradient(circle at 15% 20%,#ddd8ff 0,transparent 30%),
- radial-gradient(circle at 90% 80%,#d9f5e8 0,transparent 28%),
- var(--light);
-}
-
-.login-wrap{
- width:min(1100px,94%);
- margin:auto;
- min-height:100vh;
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:40px;
- align-items:center;
- padding:30px 0;
-}
-
-.login-intro h1{
- font-size:52px;
- line-height:1.05;
- margin:18px 0;
-}
-
-.login-intro h1 span{
- color:var(--primary);
-}
-
-.login-intro p{
- color:var(--muted);
- font-size:18px;
- line-height:1.7;
- max-width:520px;
-}
-
-.feature-list{
- margin-top:25px;
- display:grid;
- gap:12px;
-}
-
-.feature{
- display:flex;
- gap:10px;
- align-items:center;
-}
-
-.login-card{
- background:white;
- border-radius:24px;
- padding:30px;
- box-shadow:0 15px 45px rgba(50,40,120,.15);
+.danger{
+    background:#ffe9e9;
+    border-color:#efa0a0;
 }
 
 .small{
- font-size:13px;
- color:var(--muted);
- line-height:1.5;
+    font-size:13px;
+    color:#6b7280;
 }
 
-.checkbox-row{
- display:flex;
- align-items:flex-start;
- gap:9px;
- margin-top:14px;
+.hidden{
+    display:none!important;
 }
 
-.checkbox-row input{
- width:auto;
- margin-top:3px;
+hr{
+    border:0;
+    border-top:1px solid #e5e7eb;
+    margin:20px 0;
 }
 
-.radio-grid{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:12px;
-}
-
-.radio-card{
- border:1px solid var(--border);
- padding:15px;
- border-radius:12px;
- cursor:pointer;
-}
-
-.radio-card input{
- width:auto;
- margin-right:7px;
-}
-
-.search-bar{
- display:flex;
- gap:10px;
- margin-bottom:18px;
-}
-
-.search-bar input{flex:1}
-
-.profile-big{
- text-align:center;
- padding:30px;
-}
-
-.profile-big .avatar{
- width:90px;
- height:90px;
- margin:auto;
- font-size:34px;
-}
-
-.job-card{
- border-left:5px solid var(--primary);
-}
-
-.job-status{
- font-weight:800;
-}
-
-.timeline{
- display:grid;
- gap:10px;
-}
-
-.timeline-item{
- padding:15px;
- border-radius:12px;
- background:#faf9ff;
- border:1px solid var(--border);
-}
-
-.modal-backdrop{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.5);
- display:none;
- align-items:center;
- justify-content:center;
- z-index:100;
- padding:20px;
-}
-
-.modal-backdrop.show{display:flex}
-
-.modal{
- width:min(500px,100%);
- background:white;
- border-radius:20px;
- padding:25px;
- max-height:90vh;
- overflow:auto;
-}
-
-.modal h2{margin-bottom:10px}
-
-.stars{
- display:flex;
- gap:7px;
- font-size:30px;
- margin:15px 0;
-}
-
-.star{
- cursor:pointer;
- color:#ccc;
-}
-
-.star.selected{
- color:var(--orange);
-}
-
-.notification{
- border:2px solid #f0c15b;
- background:#fff9e9;
- padding:20px;
- border-radius:18px;
- margin-bottom:20px;
-}
-
-.notification h2{
- margin-bottom:8px;
-}
-
-.footer-note{
- text-align:center;
- color:var(--muted);
- font-size:12px;
- margin-top:30px;
- line-height:1.6;
-}
-
-@media(max-width:800px){
- .login-wrap{
-  grid-template-columns:1fr;
-  padding-top:40px;
- }
- .login-intro{
-  text-align:center;
- }
- .login-intro h1{
-  font-size:40px;
- }
- .feature-list{
-  text-align:left;
- }
-}
-
-@media(max-width:500px){
- .container,.center-container{
-  width:92%;
- }
- .topbar{
-  padding:12px 4%;
- }
- .topbar .btn{
-  padding:9px 11px;
-  font-size:12px;
- }
- .hero{
-  padding:24px;
- }
- .hero h1{
-  font-size:26px;
- }
- .radio-grid{
-  grid-template-columns:1fr;
- }
+@media(max-width:600px){
+    .page{
+        padding:15px;
+    }
+    .card{
+        padding:18px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =========================================================
-     LOGIN
-========================================================= -->
-
-<section id="loginScreen" class="screen active login-page">
-
-<div class="login-wrap">
-
-<div class="login-intro">
-
-<div class="logo">Skill<span>Circle</span></div>
-
-<h1>Skills meet <span>opportunity.</span></h1>
-
-<p>
-A smart platform connecting students, skilled workers,
-shops, businesses and people who need reliable help.
-Find work. Find talent. Build your reputation.
-</p>
-
-<div class="feature-list">
-
-<div class="feature">✅ Find suitable work nearby</div>
-<div class="feature">✅ Discover trusted workers</div>
-<div class="feature">⭐ Ratings and completed-job history</div>
-<div class="feature">📅 Flexible and permanent schedules</div>
-<div class="feature">🔔 Daily availability confirmation</div>
-
-</div>
-
-</div>
-
-
-<div class="login-card">
-
-<h2>Welcome to Skill Circle 👋</h2>
-
-<p class="small" style="margin-top:7px">
-Create your demo account to continue.
-</p>
-
-<label>Full Name *</label>
-<input id="loginName" placeholder="Enter full name">
-
-<label>Email *</label>
-<input id="loginEmail" type="email" placeholder="example@email.com">
-
-<label>Phone Number *</label>
-<input id="loginPhone" type="tel" maxlength="10"
-placeholder="10 digit mobile number">
-
-<label>Your Area / City *</label>
-<input id="loginArea" placeholder="Example: Hyderabad">
-
-<div class="checkbox-row">
-<input id="terms" type="checkbox">
-<label for="terms" style="margin:0;font-weight:normal">
-I agree to use demo information for this prototype.
-</label>
-</div>
-
-<button class="btn btn-primary btn-full"
-style="margin-top:20px"
-onclick="login()">
-Continue →
-</button>
-
-<p class="footer-note">
-Prototype for demonstration. Do not enter real Aadhaar
-numbers, identity documents or other sensitive information.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     CHOICE
-========================================================= -->
-
-<section id="choiceScreen" class="screen">
-
-<div class="topbar">
-<div class="logo">Skill<span>Circle</span></div>
-<button class="btn btn-secondary" onclick="logout()">Logout</button>
-</div>
-
-<div class="center-container">
-
-<div style="text-align:center;margin-bottom:25px">
-
-<h1 class="page-title">What do you want to do?</h1>
-
-<p class="page-subtitle">
-Choose how you want to use Skill Circle today.
-</p>
-
-</div>
-
-<div class="two-grid">
-
-<div class="card choice-card">
-
-<div class="choice-icon">👩‍💻</div>
-
-<h2>I Want to Work</h2>
-
-<p>
-Create your worker profile, show your skills,
-find jobs, accept work and build your rating.
-</p>
-
-<button class="btn btn-primary btn-full"
-onclick="openWorkerDetails()">
-Start Working →
-</button>
-
-</div>
-
-
-<div class="card choice-card">
-
-<div class="choice-icon">🏢</div>
-
-<h2>I Want to Hire</h2>
-
-<p>
-Post your requirement and find suitable workers
-using skills, location, ratings and experience.
-</p>
-
-<button class="btn btn-primary btn-full"
-onclick="openOwnerDetails()">
-Start Hiring →
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     WORKER DETAILS
-========================================================= -->
-
-<section id="workerDetailsScreen" class="screen">
-
-<div class="topbar">
-<div class="logo">Skill<span>Circle</span></div>
-<button class="btn btn-secondary" onclick="showScreen('choiceScreen')">Back</button>
-</div>
-
-<div class="center-container">
-
-<div class="card form-card">
-
-<h1 class="page-title">👩‍💻 Worker Profile</h1>
-
-<p class="page-subtitle">
-Tell employers about your skills and the kind of work you prefer.
-</p>
-
-<label>Full Name *</label>
-<input id="workerName">
-
-<label>Age</label>
-<input id="workerAge" type="number" min="13" max="100">
-
-<label>Work Category *</label>
-<select id="workerCategory">
-<option value="">Select category</option>
-<option>Student Helper</option>
-<option>Shop Helper</option>
-<option>Digital Work</option>
-<option>Data Entry</option>
-<option>Office Assistant</option>
-<option>Tutoring</option>
-<option>Event Helper</option>
-<option>Photography / Video</option>
-<option>Social Media Work</option>
-<option>Other</option>
-</select>
-
-<label>Skills *</label>
-<input id="workerSkills"
-placeholder="Typing, Excel, Canva, communication...">
-
-<label>Experience</label>
-<select id="workerExperience">
-<option>New Worker</option>
-<option>Less than 1 year</option>
-<option>1–2 years</option>
-<option>2–5 years</option>
-<option>5+ years</option>
-</select>
-
-<label>Preferred Work Area *</label>
-<input id="workerArea">
-
-<label>Maximum Travel Distance</label>
-<select id="workerDistance">
-<option>5 km</option>
-<option>10 km</option>
-<option>20 km</option>
-<option>30 km</option>
-</select>
-
-<label>Preferred Work Time</label>
-<select id="workerTime">
-<option>Morning</option>
-<option>Afternoon</option>
-<option>Evening</option>
-<option>Flexible</option>
-</select>
-
-<label>Expected Pay Per Day ₹</label>
-<input id="workerPay" type="number" min="0">
-
-<label>About You</label>
-<textarea id="workerAbout"
-placeholder="Describe your strengths, interests and experience."></textarea>
-
-<button class="btn btn-primary btn-full"
-onclick="saveWorkerProfile()">
-Save Profile & Continue →
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     WORKER DASHBOARD
-========================================================= -->
-
-<section id="workerDashboardScreen" class="screen">
-
-<div class="topbar">
-
-<div class="logo">Skill<span>Circle</span></div>
-
-<div class="topbar-actions">
-<button class="btn btn-secondary"
-onclick="showWorkerProfile()">
-My Profile
-</button>
-<button class="btn btn-secondary"
-onclick="logout()">
-Logout
-</button>
-</div>
-
-</div>
-
+<!-- =====================================================
+     PAGE 1 : LOGIN
+===================================================== -->
+
+<section id="loginPage" class="page active">
 <div class="container">
 
-<div id="workerDailyNotification"></div>
+    <div class="card center" style="max-width:600px;margin:70px auto;">
 
-<div class="hero">
+        <div class="logo">SkillCircle</div>
+        <p class="subtitle">
+            Connect skills with opportunities
+        </p>
 
-<h1 id="workerWelcome">Hello 👋</h1>
+        <div style="font-size:70px;margin:25px;">⭕</div>
 
-<p>
-Manage your work, availability, accepted jobs and reputation.
-</p>
+        <h1>Welcome to SkillCircle</h1>
 
+        <p class="subtitle" style="margin:15px 0 25px;">
+            Find work. Hire skilled people. Build trust.
+        </p>
+
+        <label>Full Name</label>
+        <input id="loginName" type="text" placeholder="Enter your full name">
+
+        <label>Email</label>
+        <input id="loginEmail" type="email" placeholder="Enter email">
+
+        <label>Phone Number</label>
+        <input id="loginPhone" type="tel" placeholder="Enter phone number">
+
+        <label>Your Area</label>
+        <input id="loginArea" type="text" placeholder="City / Area / Village">
+
+        <button class="btn" style="width:100%;" onclick="goToRolePage()">
+            Continue →
+        </button>
+
+    </div>
 </div>
-
-
-<div class="three-grid">
-
-<div class="card stat">
-<div class="stat-icon">⭐</div>
-<div class="stat-value" id="workerRatingStat">0.0</div>
-<div class="stat-label">Rating</div>
-</div>
-
-<div class="card stat">
-<div class="stat-icon">🤝</div>
-<div class="stat-value" id="workerAcceptedStat">0</div>
-<div class="stat-label">Jobs Accepted</div>
-</div>
-
-<div class="card stat">
-<div class="stat-icon">✅</div>
-<div class="stat-value" id="workerCompletedStat">0</div>
-<div class="stat-label">Jobs Completed</div>
-</div>
-
-</div>
-
-
-<div class="section-title">Availability</div>
-
-<div class="card">
-
-<p style="color:var(--muted);line-height:1.5">
-Choose whether you want to confirm availability every day
-or stay available for a fixed permanent period.
-</p>
-
-<div class="radio-grid" style="margin-top:15px">
-
-<label class="radio-card">
-<input type="radio" name="availabilityType"
-value="daily" checked>
-<b>Daily</b><br>
-<span class="small">Receive daily availability confirmation.</span>
-</label>
-
-<label class="radio-card">
-<input type="radio" name="availabilityType"
-value="permanent">
-<b>Permanent / Fixed</b><br>
-<span class="small">No daily prompt until your selected date.</span>
-</label>
-
-</div>
-
-<label>Permanent Until</label>
-<input id="permanentUntil" type="date">
-
-<button class="btn btn-primary"
-onclick="saveAvailability()">
-Save Availability
-</button>
-
-<p id="availabilityMessage"
-style="margin-top:10px;color:var(--green)"></p>
-
-</div>
-
-
-<div class="section-title">My Jobs</div>
-
-<div id="workerJobs"></div>
-
-
-<div class="section-title">Reputation</div>
-
-<div class="card">
-
-<div class="info-row">
-<span class="info-label">Rating</span>
-<span class="info-value" id="workerRatingDetail">0.0 ⭐</span>
-</div>
-
-<div class="info-row">
-<span class="info-label">Jobs Accepted</span>
-<span class="info-value" id="workerAcceptedDetail">0</span>
-</div>
-
-<div class="info-row">
-<span class="info-label">Jobs Completed</span>
-<span class="info-value" id="workerCompletedDetail">0</span>
-</div>
-
-<button class="btn btn-primary"
-style="margin-top:15px"
-onclick="openWorkerReviews()">
-View Ratings & Reviews
-</button>
-
-</div>
-
-</div>
-
 </section>
 
 
-<!-- =========================================================
-     WORKER PROFILE SCREEN
-========================================================= -->
+<!-- =====================================================
+     PAGE 2 : WORK OR HIRE
+===================================================== -->
 
-<section id="workerProfileScreen" class="screen">
-
-<div class="topbar">
-<div class="logo">Skill<span>Circle</span></div>
-<button class="btn btn-secondary"
-onclick="showScreen('workerDashboardScreen')">
-Back
-</button>
-</div>
-
-<div class="center-container">
-
-<div class="card profile-big">
-
-<div class="avatar" id="myWorkerAvatar">W</div>
-
-<h1 id="myWorkerName" style="margin-top:15px">Worker</h1>
-
-<div class="rating" id="myWorkerRating">⭐ 0.0 / 5</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>Profile Details</h2>
-
-<div id="myWorkerProfileDetails"
-style="margin-top:15px"></div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     WORKER REVIEWS
-========================================================= -->
-
-<section id="workerReviewsScreen" class="screen">
-
-<div class="topbar">
-<div class="logo">Skill<span>Circle</span></div>
-<button class="btn btn-secondary"
-onclick="showScreen('workerDashboardScreen')">
-Back
-</button>
-</div>
-
+<section id="rolePage" class="page">
 <div class="container">
 
-<h1 class="page-title">⭐ My Ratings & Reviews</h1>
+    <div class="topbar">
+        <div>
+            <div class="logo">SkillCircle</div>
+            <p class="subtitle">Choose what you want to do</p>
+        </div>
+    </div>
 
-<p class="page-subtitle">
-See how owners have rated your completed work.
-</p>
+    <div class="card center">
+        <h1>What would you like to do?</h1>
+        <p class="subtitle">You can work, hire, or use both options.</p>
+    </div>
 
-<div class="card">
+    <div class="grid" style="margin-top:25px;">
 
-<h2 id="workerOverallRating">⭐ 0.0 / 5</h2>
+        <div class="option" onclick="chooseRole('worker')">
+            <div class="icon">💼</div>
+            <h2>I Want to Work</h2>
+            <p class="subtitle">
+                Find suitable jobs and earn money using your skills.
+            </p>
+            <button class="btn">Work</button>
+        </div>
 
-<p class="small" style="margin-top:6px">
-Your public reputation is based on completed jobs.
-</p>
+        <div class="option" onclick="chooseRole('owner')">
+            <div class="icon">🔎</div>
+            <h2>I Want to Hire</h2>
+            <p class="subtitle">
+                Find skilled people near your area.
+            </p>
+            <button class="btn secondary">Hire</button>
+        </div>
+
+    </div>
 
 </div>
-
-<div id="workerReviewList" style="margin-top:18px"></div>
-
-</div>
-
 </section>
 
 
-<!-- =========================================================
-     OWNER DETAILS
-========================================================= -->
+<!-- =====================================================
+     PAGE 3 : WORKER DETAILS
+===================================================== -->
 
-<section id="ownerDetailsScreen" class="screen">
-
-<div class="topbar">
-<div class="logo">Skill<span>Circle</span></div>
-<button class="btn btn-secondary"
-onclick="showScreen('choiceScreen')">
-Back
-</button>
-</div>
-
-<div class="center-container">
-
-<div class="card form-card">
-
-<h1 class="page-title">🏢 Hiring Profile</h1>
-
-<p class="page-subtitle">
-Tell workers who is hiring and where the work is located.
-</p>
-
-<label>Name *</label>
-<input id="ownerName">
-
-<label>Phone Number *</label>
-<input id="ownerPhone">
-
-<label>Business / Organization Name</label>
-<input id="ownerBusiness">
-
-<label>Hiring Type</label>
-<select id="ownerType">
-<option>Individual</option>
-<option>Shop</option>
-<option>Small Business</option>
-<option>Startup</option>
-<option>Educational Institution</option>
-<option>Other</option>
-</select>
-
-<label>Work Area *</label>
-<input id="ownerArea">
-
-<label>Work Address</label>
-<textarea id="ownerAddress"></textarea>
-
-<button class="btn btn-primary btn-full"
-onclick="saveOwnerProfile()">
-Save Profile & Continue →
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     OWNER DASHBOARD
-========================================================= -->
-
-<section id="ownerDashboardScreen" class="screen">
-
-<div class="topbar">
-
-<div class="logo">Skill<span>Circle</span></div>
-
-<div class="topbar-actions">
-
-<button class="btn btn-secondary"
-onclick="showOwnerProfile()">
-My Profile
-</button>
-
-<button class="btn btn-secondary"
-onclick="logout()">
-Logout
-</button>
-
-</div>
-
-</div>
-
-
+<section id="workerDetailsPage" class="page">
 <div class="container">
 
-<div class="hero">
+    <div class="card">
 
-<h1 id="ownerWelcome">Welcome 👋</h1>
+        <h1>Worker Profile</h1>
+        <p class="subtitle">
+            Tell us about your skills and availability.
+        </p>
 
-<p>
-Post a requirement and find the most suitable workers.
-</p>
+        <label>Full Name</label>
+        <input id="workerName" type="text">
+
+        <label>Phone Number</label>
+        <input id="workerPhone" type="tel">
+
+        <label>Location</label>
+        <input id="workerLocation" type="text">
+
+        <label>Work Category</label>
+        <select id="workerCategory">
+            <option value="">Select category</option>
+            <option>Student Work</option>
+            <option>Shop Work</option>
+            <option>Computer / Digital Work</option>
+            <option>Data Entry</option>
+            <option>Delivery Assistance</option>
+            <option>Painting</option>
+            <option>Office Assistance</option>
+            <option>Event Assistance</option>
+            <option>Other</option>
+        </select>
+
+        <label>Skills</label>
+        <textarea id="workerSkills"
+        placeholder="Example: MS Office, typing, teaching, sales, editing..."></textarea>
+
+        <label>Experience</label>
+        <input id="workerExperience"
+        type="text"
+        placeholder="Example: 1 year">
+
+        <label>Expected Payment</label>
+        <input id="workerPayment"
+        type="text"
+        placeholder="Example: ₹500/day">
+
+        <label>Maximum Working Distance</label>
+        <select id="workerDistance">
+            <option>5 km</option>
+            <option>10 km</option>
+            <option>20 km</option>
+            <option>30 km</option>
+        </select>
+
+        <label>Availability Type</label>
+        <select id="availabilityType">
+            <option value="daily">Daily / Flexible</option>
+            <option value="permanent">Permanent Schedule</option>
+        </select>
+
+        <label>Preferred Start Time</label>
+        <input id="workerStart" type="time">
+
+        <label>Preferred End Time</label>
+        <input id="workerEnd" type="time">
+
+        <button class="btn" onclick="saveWorkerProfile()">
+            Save Worker Profile →
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 4 : OWNER DETAILS
+===================================================== -->
+
+<section id="ownerDetailsPage" class="page">
+<div class="container">
+
+    <div class="card">
+
+        <h1>Owner / Employer Details</h1>
+        <p class="subtitle">
+            Tell us about yourself before creating a job.
+        </p>
+
+        <label>Full Name</label>
+        <input id="ownerName" type="text">
+
+        <label>Phone Number</label>
+        <input id="ownerPhone" type="tel">
+
+        <label>Area / Location</label>
+        <input id="ownerLocation" type="text">
+
+        <label>Type of Employer</label>
+        <select id="ownerType">
+            <option>Individual</option>
+            <option>Shop Owner</option>
+            <option>Business</option>
+            <option>Office</option>
+            <option>Student</option>
+            <option>Other</option>
+        </select>
+
+        <label>About You</label>
+        <textarea id="ownerAbout"
+        placeholder="Briefly describe yourself or your organization"></textarea>
+
+        <button class="btn" onclick="saveOwnerProfile()">
+            Continue to Create Job →
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 5 : CREATE JOB
+===================================================== -->
+
+<section id="jobPage" class="page">
+<div class="container">
+
+    <div class="card">
+
+        <h1>Create Work Request</h1>
+
+        <label>Job Title</label>
+        <input id="jobTitle"
+        placeholder="Example: Need computer assistant">
+
+        <label>Work Category</label>
+        <select id="jobCategory">
+            <option>Student Work</option>
+            <option>Shop Work</option>
+            <option>Computer / Digital Work</option>
+            <option>Data Entry</option>
+            <option>Delivery Assistance</option>
+            <option>Painting</option>
+            <option>Office Assistance</option>
+            <option>Event Assistance</option>
+            <option>Other</option>
+        </select>
+
+        <label>Work Description</label>
+        <textarea id="jobDescription"
+        placeholder="Explain what the worker has to do"></textarea>
+
+        <label>Work Location</label>
+        <input id="jobLocation"
+        placeholder="Area / locality">
+
+        <label>Work Date</label>
+        <input id="jobDate" type="date">
+
+        <label>Start Time</label>
+        <input id="jobStart" type="time">
+
+        <label>End Time</label>
+        <input id="jobEnd" type="time">
+
+        <label>Payment Offered</label>
+        <input id="jobPayment"
+        placeholder="Example: ₹600">
+
+        <label>Number of Workers Needed</label>
+        <input id="jobWorkers" type="number" value="1" min="1">
+
+        <button class="btn" onclick="findWorkers()">
+            Find Suitable Workers →
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 6 : WORKER LIST
+===================================================== -->
+
+<section id="workersPage" class="page">
+<div class="container">
+
+    <div class="topbar">
+        <div>
+            <div class="logo">SkillCircle</div>
+            <p class="subtitle">Recommended workers near your location</p>
+        </div>
+        <button class="btn gray" onclick="showPage('jobPage')">
+            ← Back
+        </button>
+    </div>
+
+    <div class="card">
+
+        <h2 id="searchResultTitle">
+            Top Workers
+        </h2>
+
+        <p class="subtitle">
+            Workers are ranked using rating, completed work,
+            reliability and suitability.
+        </p>
+
+        <hr>
+
+        <div id="workerList" class="grid"></div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 7 : WORKER PROFILE
+===================================================== -->
+
+<section id="workerProfilePage" class="page">
+<div class="container">
+
+    <div class="card">
+
+        <button class="btn gray" onclick="showPage('workersPage')">
+            ← Back
+        </button>
+
+        <div id="selectedWorker"></div>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 8 : HIRE REQUEST
+===================================================== -->
+
+<section id="hirePage" class="page">
+<div class="container">
+
+    <div class="card">
+
+        <h1>Confirm Hiring</h1>
+
+        <div id="hireSummary"></div>
+
+        <hr>
+
+        <h3>Work Schedule</h3>
+
+        <label>Work Type</label>
+        <select id="hireType">
+            <option value="oneTime">One Time Work</option>
+            <option value="permanent">Permanent / Fixed Schedule</option>
+        </select>
+
+        <label>Start Time</label>
+        <input id="hireStart" type="time">
+
+        <label>End Time</label>
+        <input id="hireEnd" type="time">
+
+        <label>Permanent Until</label>
+        <input id="permanentUntil" type="date">
+
+        <button class="btn green" onclick="sendHireRequest()">
+            Send Hire Request
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 9 : WORKER DASHBOARD
+===================================================== -->
+
+<section id="workerDashboardPage" class="page">
+<div class="container">
+
+    <div class="topbar">
+        <div>
+            <div class="logo">SkillCircle</div>
+            <p>Worker Dashboard</p>
+        </div>
+
+        <button class="btn gray" onclick="logout()">
+            Logout
+        </button>
+    </div>
+
+    <div id="availabilityAlert"></div>
+
+    <div class="grid">
+
+        <div class="stat">
+            <strong id="workerJobsDone">0</strong>
+            Jobs Completed
+        </div>
+
+        <div class="stat">
+            <strong id="workerRating">5.0</strong>
+            Rating
+        </div>
+
+        <div class="stat">
+            <strong id="workerJobsAccepted">0</strong>
+            Jobs Accepted
+        </div>
+
+        <div class="stat">
+            <strong id="workerReliability">100%</strong>
+            Reliability
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Current Work</h2>
+
+        <div id="currentWorkerJob">
+            <p class="subtitle">
+                No accepted work currently.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>My Availability</h2>
+
+        <label>Availability Type</label>
+
+        <select id="dashboardAvailability">
+            <option value="daily">Daily / Flexible</option>
+            <option value="permanent">Permanent Schedule</option>
+        </select>
+
+        <label>Permanent Until</label>
+        <input id="dashboardPermanentUntil" type="date">
+
+        <button class="btn" onclick="saveAvailability()">
+            Save Availability
+        </button>
+
+    </div>
 
 </div>
+</section>
 
 
-<div class="two-grid">
+<!-- =====================================================
+     PAGE 10 : OWNER DASHBOARD
+===================================================== -->
 
-<div class="card">
+<section id="ownerDashboardPage" class="page">
+<div class="container">
 
-<h2>➕ Post New Work</h2>
+    <div class="topbar">
+        <div>
+            <div class="logo">SkillCircle</div>
+            <p>Owner Dashboard</p>
+        </div>
 
-<label>Work Title *</label>
-<input id="jobTitle"
-placeholder="Example: Shop helper required">
+        <button class="btn gray" onclick="logout()">
+            Logout
+        </button>
+    </div>
 
-<label>Category *</label>
-<select id="jobCategory">
-<option>Student Helper</option>
-<option>Shop Helper</option>
-<option>Digital Work</option>
-<opti
+    <div class="grid">
 
+        <div class="stat">
+            <strong id="ownerJobs">0</strong>
+            Jobs Created
+        </div>
+
+        <div class="stat">
+            <strong id="ownerHires">0</strong>
+            Workers Hired
+        </div>
+
+        <div class="stat">
+            <strong id="ownerRating">5.0</strong>
+            Owner Rating
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Need Another Worker?</h2>
+
+        <p class="subtitle">
+            Create a new work request and find workers nearby.
+        </p>
+
+        <button class="btn" onclick="showPage('jobPage')">
+            + Create New Job
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Current Hiring</h2>
+
+        <div id="ownerCurrentJob">
+            <p class="subtitle">
+                No current hiring.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 11 : ACCEPT JOB
+===================================================== -->
+
+<section id="acceptPage" class="page">
+<div class="container">
+
+    <div class="card">
+
+        <h1>New Work Request</h1>
+
+        <div id="incomingJob"></div>
+
+        <hr>
+
+        <button class="btn green" onclick="acceptJob()">
+            ✓ Accept Work
+        </button>
+
+        <button class="btn red" onclick="rejectJob()">
+            ✕ Reject
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 12 : WORK COMPLETION
+===================================================== -->
+
+<section id="completionPage" class="page">
+<div class="container">
+
+    <div class="card center">
+
+        <div style="font-size:65px;">🎉</div>
+
+        <h1>Work Completed?</h1>
+
+        <p class="subtitle">
+            Mark the job as completed after the work is finished.
+        </p>
+
+        <button class="btn green" onclick="completeWork()">
+            Mark Work Completed
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     PAGE 13 : RATING
+===================================================== -->
+
+<section id="ratingPage" class="page">
+<div class="container">
+
+    <div class="card">
+
+        <h1>Rate Your Experience ⭐</h1>
+
+        <p class="subtitle">
+            Ratings help trustworthy workers and owners build
+            a good reputation.
+        </p>
+
+        <label>Rating</label>
+
+        <select id="ratingValue">
+            <option value="5">★★★★★ 5 - Excellent</option>
+            <option value="4">★★★★☆ 4 - Good</option>
+            <option value="3">★★★☆☆ 3 - Average</option>
+            <option value="2">★★☆☆☆ 2 - Poor</option>
+            <option value="1">★☆☆☆☆ 1 - Very Poor</option>
+        </select>
+
+        <label>Review</label>
+
+        <textarea id="ratingReview"
+        placeholder="Write a short review"></textarea>
+
+        <button class="btn green" onclick="submitRating()">
+            Submit Rating
+        </button>
+
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+let currentRole = "";
+let selectedWorkerIndex = 0;
+
+let appData = {
+    user:{},
+    workerProfile:{},
+    ownerProfile:{},
+    job:null,
+    selectedWorker:null,
+    hiredWorker:null,
+    completed:false,
+    ratingSubmitted:false
+};
+
+
+/* =====================================================
+   DEMO WORKER DATABASE
+===================================================== */
+
+const workers = [
+
+{
+name:"Akhila Reddy",
+area:"Nearby Area",
+category:"Computer / Digital Work",
+skills:"Typing, MS Office, Data Entry",
+rating:4.9,
+completed:48,
+accepted:52,
+reliability:"98%",
+experience:"2 years",
+payment:"₹500/day",
+distance:"2.4 km"
+},
+
+{
+name:"Sravani",
+area:"Nearby Area",
+category:"Student Work",
+skills:"Teaching, Notes Preparation, Typing",
+rating:4.8,
+completed:41,
+accepted:45,
+reliability:"97%",
+experience:"1.5 years",
+payment:"₹400/day",
+distance:"3.1 km"
+},
+
+{
+name:"Keerthana",
+area:"Nearby Area",
+category:"Shop Work",
+skills:"Billing, Customer Support, Stock Management",
+rating:4.7,
+completed:37,
+accepted:42,
+reliability:"95%",
+experience:"2 years",
+payment:"₹600/day",
+distance:"4.0 km"
+},
+
+{
+name:"Pravallika",
+area:"Nearby Area",
+category:"Data Entry",
+skills:"Typing, Excel, Documentation",
+rating:4.9,
+completed:55,
+accepted:59,
+reliability:"99%"
 
 
 
