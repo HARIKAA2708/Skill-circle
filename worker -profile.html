@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillCircle - Worker Profile</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+        }
+
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            background: #dbeafe;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .skill {
+            text-align: center;
+            color: #2563eb;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .rating {
+            text-align: center;
+            margin-top: 8px;
+            color: #eab308;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .section h2 {
+            color: #2563eb;
+            font-size: 19px;
+        }
+
+        .detail {
+            padding: 9px 0;
+            line-height: 1.5;
+        }
+
+        .hire-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #16a34a;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+
+        .hire-btn:hover {
+            background: #15803d;
+        }
+
+        .back-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #64748b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 18px;
+        }
+
+        .verified {
+            background: #ecfdf5;
+            color: #15803d;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🔵 SkillCircle</h1>
+    <p>Worker Profile</p>
+</header>
+
+<div class="container">
+
+    <button class="back-btn" onclick="goBack()">
+        ⬅ Back to Workers
+    </button>
+
+    <div class="profile-card">
+
+        <div class="profile-photo">
+            👩‍💻
+        </div>
+
+        <div class="name">
+            Ananya
+        </div>
+
+        <div class="skill">
+            Digital Work Specialist
+        </div>
+
+        <div class="rating">
+            ⭐ 4.8 / 5
+        </div>
+
+        <div class="verified">
+            ✅ Profile Verified
+        </div>
+
+        <div class="section">
+
+            <h2>👤 Personal Information</h2>
+
+            <div class="detail">
+                📍 Location: Hyderabad
+            </div>
+
+            <div class="detail">
+                🗺️ Work Radius: Up to 20 km
+            </div>
+
+            <div class="detail">
+                🗣️ Languages: Telugu, Hindi, English
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>💼 Skills & Experience</h2>
+
+            <div class="detail">
+                💻 Digital Work
+            </div>
+
+            <div class="detail">
+                📱 Social Media Assistance
+            </div>
+
+            <div class="detail">
+                ⌨️ Data Entry
+            </div>
+
+            <div class="detail">
+                🏆 Experience: 1 year
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>⏰ Availability</h2>
+
+            <div class="detail">
+                🌅 9:00 AM - 12:00 PM: Available
+            </div>
+
+            <div class="detail">
+                ☀️ 12:00 PM - 4:00 PM: Not Available
+            </div>
+
+            <div class="detail">
+                🌙 4:00 PM - 9:00 PM: Available
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>💰 Payment</h2>
+
+            <div class="detail">
+                Expected Payment: ₹300 - ₹500
+            </div>
+
+            <div class="detail">
+                Payment Type: Per Task / Per Hour
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <h2>📝 About</h2>
+
+            <div class="detail">
+                I am a student with experience in digital work,
+                data entry and social media assistance. I am
+                available for part-time work and flexible tasks.
+            </div>
+
+        </div>
+
+        <button class="hire-btn" onclick="sendRequest()">
+            🤝 Send Hiring Request
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+function sendRequest() {
+
+    let confirmRequest = confirm(
+        "Send a hiring request to Ananya?"
+    );
+
+    if (confirmRequest) {
+
+        alert(
+            "✅ Hiring request sent successfully!\n\n" +
+            "Ananya will receive your request."
+        );
+
+    }
+
+}
+
+function goBack() {
+
+    window.location.href = "workers-list.html";
+
+}
+
+</script>
+
+</body>
+</html>
