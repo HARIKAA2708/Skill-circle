@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SkillCircle - Owner Profile</title>
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#f4f7fb;color:#222}
+header{background:#2563eb;color:white;text-align:center;padding:22px}
+.container{max-width:650px;margin:auto;padding:20px}
+.card{background:white;padding:25px;border-radius:18px;box-shadow:0 4px 15px #0001}
+.avatar{width:100px;height:100px;border-radius:50%;background:#dbeafe;margin:auto;display:flex;align-items:center;justify-content:center;font-size:50px}
+h2{text-align:center;margin-bottom:5px}
+.type{text-align:center;color:#2563eb;font-weight:bold}
+.rating{text-align:center;color:#eab308;margin:10px}
+.section{border-top:1px solid #eee;margin-top:20px;padding-top:15px}
+.detail{padding:8px 0;line-height:1.5}
+button{width:100%;padding:14px;border:0;border-radius:10px;color:white;font-size:16px;font-weight:bold;margin-top:20px;background:#16a34a}
+.back{background:#64748b}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🔵 SkillCircle</h1>
+<p>Owner Profile</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<div class="avatar">👩</div>
+
+<h2 id="ownerName">Priya</h2>
+
+<div class="type">Verified Work Provider</div>
+
+<div class="rating">⭐ 4.9 / 5</div>
+
+<div class="section">
+<h3>📋 Work Details</h3>
+
+<div class="detail">💼 Work: Digital Work</div>
+<div class="detail">📍 Location: Hyderabad</div>
+<div class="detail">⏰ Time: 4:00 PM - 9:00 PM</div>
+<div class="detail">💰 Payment: ₹400 - ₹600</div>
+<div class="detail">🏆 Previous workers hired: 12</div>
+</div>
+
+<div class="section">
+<h3>📝 About</h3>
+<div class="detail">
+Looking for reliable students and skilled workers for
+part-time and project-based work.
+</div>
+</div>
+
+<button onclick="acceptWork()">🤝 Request This Work</button>
+
+<button class="back" onclick="window.location.href='owners-list.html'">
+⬅ Back to Owners
+</button>
+
+</div>
+</div>
+
+<script>
+const params=new URLSearchParams(window.location.search);
+const owner=params.get("owner");
+
+if(owner){
+document.getElementById("ownerName").innerText=owner;
+}
+
+function acceptWork(){
+let ok=confirm("Do you want to send a request for this work?");
+
+if(ok){
+alert("✅ Work request sent successfully!\n\nThe owner will receive your request.");
+window.location.href="work-success.html";
+}
+}
+</script>
+
+</body>
+</html>
