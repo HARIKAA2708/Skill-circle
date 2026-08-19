@@ -1,131 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SkillCircle - Choose Role</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    min-height:100vh;
-    background:#f4f7ff;
-    color:#172033;
-    padding:20px;
+body {
+    min-height: 100vh;
+    background: #f4f7ff;
+    color: #172033;
+    padding: 20px;
 }
 
-.container{
-    width:100%;
-    max-width:900px;
-    margin:auto;
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
 }
 
-.header{
-    background:white;
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    margin-bottom:25px;
+.header {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    margin-bottom: 25px;
 }
 
-.logo{
-    font-size:30px;
-    font-weight:800;
-    color:#3157d5;
+.logo {
+    font-size: 30px;
+    font-weight: 800;
+    color: #3157d5;
 }
 
-.subtitle{
-    color:#667085;
-    margin-top:7px;
+.subtitle {
+    color: #667085;
+    margin-top: 7px;
 }
 
-.title-card{
-    background:white;
-    padding:30px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    margin-bottom:25px;
+.title-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    margin-bottom: 25px;
 }
 
-.title-card h1{
-    margin-bottom:10px;
+.title-card h1 {
+    margin-bottom: 10px;
 }
 
-.options{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
+.options {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px, 1fr)
+    );
+
+    gap: 20px;
 }
 
-.option{
-    background:white;
-    border:2px solid #e1e5ef;
-    border-radius:20px;
-    padding:30px 20px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.07);
+.option {
+    background: white;
+    border: 2px solid #e1e5ef;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
 }
 
-.option:hover{
-    border-color:#3157d5;
+.option:hover {
+    border-color: #3157d5;
 }
 
-.icon{
-    font-size:55px;
-    margin-bottom:15px;
+.icon {
+    font-size: 55px;
+    margin-bottom: 15px;
 }
 
-.option h2{
-    margin-bottom:12px;
+.option h2 {
+    margin-bottom: 12px;
 }
 
-.option p{
-    color:#667085;
-    line-height:1.5;
-    margin-bottom:22px;
+.option p {
+    color: #667085;
+    line-height: 1.5;
+    margin-bottom: 22px;
 }
 
-.button{
-    display:block;
-    width:100%;
-    padding:15px;
-    border-radius:10px;
-    background:#3157d5;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    font-size:16px;
-    border:none;
-    cursor:pointer;
+.button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background: #3157d5;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.button.hire{
-    background:#159447;
+.button.hire {
+    background: #159447;
 }
 
-.back{
-    display:inline-block;
-    margin-top:25px;
-    color:#3157d5;
-    text-decoration:none;
-    font-weight:bold;
+.back {
+    display: inline-block;
+    margin-top: 25px;
+    color: #3157d5;
+    text-decoration: none;
+    font-weight: bold;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-    <!-- HEADER -->
     <div class="header">
 
         <div class="logo">
@@ -139,7 +144,6 @@ body{
     </div>
 
 
-    <!-- TITLE -->
     <div class="title-card">
 
         <h1>
@@ -153,13 +157,9 @@ body{
     </div>
 
 
-    <!-- OPTIONS -->
     <div class="options">
 
-
-        <!-- =========================
-             WORKER
-        ========================== -->
+        <!-- WORKER -->
 
         <div class="option">
 
@@ -173,8 +173,7 @@ body{
 
             <p>
                 Create your worker profile, add your skills,
-                previous experience, availability and
-                preferred work area.
+                previous experience and availability.
             </p>
 
             <a
@@ -188,9 +187,7 @@ body{
         </div>
 
 
-        <!-- =========================
-             OWNER
-        ========================== -->
+        <!-- OWNER -->
 
         <div class="option">
 
@@ -203,8 +200,8 @@ body{
             </h2>
 
             <p>
-                Create a work request and find suitable
-                skilled workers near your area.
+                Post your work requirement and find suitable
+                skilled workers.
             </p>
 
             <a
@@ -217,11 +214,8 @@ body{
 
         </div>
 
-
     </div>
 
-
-    <!-- BACK -->
 
     <a
         class="back"
