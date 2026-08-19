@@ -1,410 +1,382 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillCircle - Available Workers</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            margin: 0;
-            background: #f4f7fb;
-            color: #222;
-        }
-
-        header {
-            background: #2563eb;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        header p {
-            margin: 7px 0 0;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .search-box {
-            background: white;
-            padding: 18px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .search-box input,
-        .search-box select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 9px;
-            font-size: 15px;
-        }
-
-        .worker-card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 18px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        .worker-top {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .profile {
-            width: 65px;
-            height: 65px;
-            background: #dbeafe;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-        }
-
-        .worker-name {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .skill {
-            color: #2563eb;
-            font-weight: bold;
-            margin-top: 4px;
-        }
-
-        .details {
-            margin-top: 15px;
-            line-height: 1.8;
-        }
-
-        .rating {
-            color: #eab308;
-            font-weight: bold;
-        }
-
-        .hire-btn {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 9px;
-            background: #16a34a;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 15px;
-            cursor: pointer;
-        }
 
-        .hire-btn:hover {
-            background: #15803d;
-        }
+if (workers.length === 0) {
 
-        .back-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 9px;
-            background: #64748b;
-            color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
+    workers = [
 
-        #noResults {
-            display: none;
-            text-align: center;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-        }
-    </style>
-</head>
+        /* =========================
+           WORKER 1
+        ========================= */
 
-<body>
+        {
+            id: 1,
 
-<header>
-    <h1>🔵 SkillCircle</h1>
-    <p>Available Workers</p>
-</header>
+            name: "Lakshmi",
 
-<div class="container">
+            photo: "",
 
-    <button class="back-btn" onclick="goBack()">⬅ Back</button>
+            rating: 4.9,
 
-    <div class="search-box">
+            skills: [
+                "House Cleaning",
+                "Cooking"
+            ],
 
-        <input
-            type="text"
-            id="search"
-            placeholder="🔍 Search by skill or work..."
-            onkeyup="filterWorkers()"
-        >
+            jobsCompleted: 42,
 
-        <select id="filter" onchange="filterWorkers()">
-            <option value="">All Work Types</option>
-            <option value="Student Helper">Student Helper</option>
-            <option value="Shop Work">Shop Work</option>
-            <option value="Digital Work">Digital Work</option>
-            <option value="Data Entry">Data Entry</option>
-            <option value="Graphic Design">Graphic Design</option>
-            <option value="Social Media Help">Social Media Help</option>
-        </select>
+            location: "Hyderabad",
 
-    </div>
+            experience: [
 
-    <!-- Worker 1 -->
+                {
+                    skill: "House Cleaning",
 
-    <div class="worker-card" data-skill="Digital Work">
+                    duration: "5 years",
 
-        <div class="worker-top">
+                    description:
+                        "Experienced in residential house cleaning, kitchen cleaning and regular home maintenance.",
 
-            <div class="profile">👩‍💻</div>
+                    evidence: [
 
-            <div>
-                <div class="worker-name">Ananya</div>
-                <div class="skill">Digital Work</div>
-            </div>
+                        {
+                            type: "image",
+                            url: ""
+                        },
 
-        </div>
+                        {
+                            type: "certificate",
+                            url: ""
+                        }
 
-        <div class="details">
+                    ]
 
-            📍 Location: Hyderabad<br>
+                },
 
-            ⏰ Available: 4:00 PM - 9:00 PM<br>
+                {
+                    skill: "Cooking",
 
-            💰 Expected: ₹300 - ₹500<br>
+                    duration: "3 years",
 
-            ⭐ <span class="rating">4.8 / 5</span><br>
+                    description:
+                        "Experienced in preparing regular home meals and traditional dishes.",
 
-            🏆 Experience: 1 year
+                    evidence: []
 
-        </div>
+                }
 
-        <button class="hire-btn" onclick="hireWorker('Ananya')">
-            Hire Ananya
-        </button>
+            ]
 
-    </div>
+        },
 
 
-    <!-- Worker 2 -->
+        /* =========================
+           WORKER 2
+        ========================= */
 
-    <div class="worker-card" data-skill="Student Helper">
+        {
+            id: 2,
 
-        <div class="worker-top">
+            name: "Ravi Kumar",
 
-            <div class="profile">👨‍🎓</div>
+            photo: "",
 
-            <div>
-                <div class="worker-name">Rahul</div>
-                <div class="skill">Student Helper</div>
-            </div>
+            rating: 4.8,
 
-        </div>
+            skills: [
+                "Gardening",
+                "Plant Care"
+            ],
 
-        <div class="details">
+            jobsCompleted: 36,
 
-            📍 Location: Hyderabad<br>
+            location: "Secunderabad",
 
-            ⏰ Available: 9:00 AM - 12:00 PM<br>
+            experience: [
 
-            💰 Expected: ₹200 - ₹400<br>
+                {
+                    skill: "Gardening",
 
-            ⭐ <span class="rating">4.6 / 5</span><br>
+                    duration: "4 years",
 
-            🏆 Experience: 6 months
+                    description:
+                        "Experienced in home gardening, plant maintenance, watering and garden cleaning.",
 
-        </div>
+                    evidence: [
 
-        <button class="hire-btn" onclick="hireWorker('Rahul')">
-            Hire Rahul
-        </button>
+                        {
+                            type: "image",
+                            url: ""
+                        },
 
-    </div>
+                        {
+                            type: "video",
+                            url: ""
+                        }
 
+                    ]
 
-    <!-- Worker 3 -->
+                }
 
-    <div class="worker-card" data-skill="Graphic Design">
+            ]
 
-        <div class="worker-top">
+        },
 
-            <div class="profile">🎨</div>
 
-            <div>
-                <div class="worker-name">Sneha</div>
-                <div class="skill">Graphic Design</div>
-            </div>
+        /* =========================
+           WORKER 3
+        ========================= */
 
-        </div>
+        {
+            id: 3,
 
-        <div class="details">
+            name: "Suresh",
 
-            📍 Location: Hyderabad<br>
+            photo: "",
 
-            ⏰ Available: 12:00 PM - 4:00 PM<br>
+            rating: 4.7,
 
-            💰 Expected: ₹400 - ₹800<br>
+            skills: [
+                "Painting",
+                "Wall Repair"
+            ],
 
-            ⭐ <span class="rating">4.9 / 5</span><br>
+            jobsCompleted: 28,
 
-            🏆 Experience: 2 years
+            location: "Kukatpally",
 
-        </div>
+            experience: [
 
-        <button class="hire-btn" onclick="hireWorker('Sneha')">
-            Hire Sneha
-        </button>
+                {
+                    skill: "Painting",
 
-    </div>
+                    duration: "6 years",
 
+                    description:
+                        "Experienced in interior wall painting, exterior painting and basic wall preparation.",
 
-    <!-- Worker 4 -->
+                    evidence: [
 
-    <div class="worker-card" data-skill="Shop Work">
+                        {
+                            type: "image",
+                            url: ""
+                        },
 
-        <div class="worker-top">
+                        {
+                            type: "certificate",
+                            url: ""
+                        }
 
-            <div class="profile">🧑‍💼</div>
+                    ]
 
-            <div>
-                <div class="worker-name">Arjun</div>
-                <div class="skill">Shop Work</div>
-            </div>
+                },
 
-        </div>
+                {
+                    skill: "Wall Repair",
 
-        <div class="details">
+                    duration: "4 years",
 
-            📍 Location: Hyderabad<br>
+                    description:
+                        "Experienced in minor wall repairs and surface preparation.",
 
-            ⏰ Available: 4:00 PM - 9:00 PM<br>
+                    evidence: []
 
-            💰 Expected: ₹250 - ₹450<br>
+                }
 
-            ⭐ <span class="rating">4.7 / 5</span><br>
+            ]
 
-            🏆 Experience: 1.5 years
+        },
 
-        </div>
 
-        <button class="hire-btn" onclick="hireWorker('Arjun')">
-            Hire Arjun
-        </button>
+        /* =========================
+           WORKER 4
+        ========================= */
 
-    </div>
+        {
+            id: 4,
 
+            name: "Anitha",
 
-    <div id="noResults">
-        ❌ No workers found.<br>
-        Try another skill or work type.
-    </div>
+            photo: "",
 
-</div>
+            rating: 4.9,
 
+            skills: [
+                "Babysitting",
+                "Child Care"
+            ],
 
-<script>
+            jobsCompleted: 51,
 
-function hireWorker(name) {
+            location: "Madhapur",
 
-    let confirmation = confirm(
-        "Do you want to send a hiring request to " + name + "?"
-    );
+            experience: [
 
-    if (confirmation) {
+                {
+                    skill: "Babysitting",
 
-        alert(
-            "✅ Hiring request sent successfully!\n\n" +
-            name + " will receive your request."
-        );
+                    duration: "5 years",
 
-    }
+                    description:
+                        "Experienced in caring for children, preparing meals and maintaining a safe environment.",
 
-}
+                    evidence: [
 
+                        {
+                            type: "certificate",
+                            url: ""
+                        }
 
-function filterWorkers() {
+                    ]
 
-    let search =
-        document.getElementById("search").value.toLowerCase();
+                }
 
-    let filter =
-        document.getElementById("filter").value;
+            ]
 
-    let workers =
-        document.querySelectorAll(".worker-card");
+        },
 
-    let found = false;
 
-    workers.forEach(function(worker) {
+        /* =========================
+           WORKER 5
+        ========================= */
 
-        let skill =
-            worker.getAttribute("data-skill");
+        {
+            id: 5,
 
-        let text =
-            worker.innerText.toLowerCase();
+            name: "Priya",
 
-        let matchesSearch =
-            text.includes(search);
+            photo: "",
 
-        let matchesFilter =
-            filter === "" || skill === filter;
+            rating: 4.6,
 
-        if (matchesSearch && matchesFilter) {
+            skills: [
+                "Video Editing",
+                "Graphic Design"
+            ],
 
-            worker.style.display = "block";
-            found = true;
+            jobsCompleted: 19,
 
-        } else {
+            location: "Gachibowli",
 
-            worker.style.display = "none";
+            experience: [
 
-        }
+                {
+                    skill: "Video Editing",
 
-    });
+                    duration: "2 years",
 
-    if (found) {
+                    description:
+                        "Experienced in editing short videos, social media content and promotional videos.",
 
-        document.getElementById("noResults").style.display = "none";
+                    evidence: [
 
-    } else {
+                        {
+                            type: "video",
+                            url: ""
+                        },
 
-        document.getElementById("noResults").style.display = "block";
+                        {
+                            type: "image",
+                            url: ""
+                        }
 
-    }
+                    ]
 
-}
+                },
 
+                {
+                    skill: "Graphic Design",
 
-function goBack() {
+                    duration: "1 year",
 
-    window.location.href = "hire.html";
+                    description:
+                        "Created posters, social media graphics and simple promotional designs.",
 
-}
+                    evidence: []
 
-</script>
+                }
 
-</body>
-</html>
+            ]
+
+        },
+
+
+        /* =========================
+           WORKER 6
+        ========================= */
+
+        {
+            id: 6,
+
+            name: "Mahesh",
+
+            photo: "",
+
+            rating: 4.5,
+
+            skills: [
+                "Electrical Work",
+                "Home Maintenance"
+            ],
+
+            jobsCompleted: 33,
+
+            location: "Miyapur",
+
+            experience: [
+
+                {
+                    skill: "Electrical Work",
+
+                    duration: "7 years",
+
+                    description:
+                        "Experienced in basic household electrical maintenance, switch replacement and wiring-related work.",
+
+                    evidence: [
+
+                        {
+                            type: "certificate",
+                            url: ""
+                        },
+
+                        {
+                            type: "image",
+                            url: ""
+                        }
+
+                    ]
+
+                }
+
+            ]
+
+        },
+
+
+        /* =========================
+           WORKER 7
+        ========================= */
+
+        {
+            id: 7,
+
+            name: "Kavitha",
+
+            photo: "",
+
+            rating: 4.8,
+
+            skills: [
+                "Tailoring",
+                "Clothing Alteration"
+            ],
+
+            jobsCompleted: 27,
+
+            location: "LB Nagar",
+
+            experience: [
+
+                {
+                    skill: "Tailoring",
+
+                    duration: "
