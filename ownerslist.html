@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>SkillCircle - Owner List</title>
+<title>SkillCircle - Owner Details</title>
 
 <style>
 
@@ -27,27 +27,14 @@ body {
 }
 
 header {
-    background: white;
-    padding: 18px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-.logo {
-    color: #5b3cc4;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.back-btn {
-    border: none;
     background: #5b3cc4;
     color: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 6px;
 }
 
 .container {
@@ -69,16 +56,32 @@ header {
     margin-bottom: 25px;
 }
 
-.profile-card {
-    background: #eee8ff;
-    padding: 18px;
-    border-radius: 14px;
+.worker-summary {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.08);
     margin-bottom: 25px;
 }
 
-.profile-card h3 {
+.worker-summary h2 {
     color: #5b3cc4;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.skill {
+    background: #eee8ff;
+    color: #5b3cc4;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 13px;
 }
 
 .owner-grid {
@@ -93,20 +96,20 @@ header {
     background: white;
     padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 15px rgba(0,0,0,.08);
 }
 
 .owner-name {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: bold;
     color: #5b3cc4;
     margin-bottom: 8px;
 }
 
 .work {
-    color: #333;
+    font-size: 17px;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .info {
@@ -125,49 +128,51 @@ header {
     line-height: 1.5;
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 8px;
-}
-
-.skill {
-    background: #eee8ff;
-    color: #5b3cc4;
-    padding: 7px 10px;
+.match {
+    display: inline-block;
+    background: #e8f7ed;
+    color: #16803c;
+    padding: 6px 10px;
     border-radius: 20px;
     font-size: 12px;
+    font-weight: bold;
+    margin-top: 12px;
 }
 
-.view-btn {
-    display: block;
+.contact-btn {
     width: 100%;
     margin-top: 18px;
-    padding: 12px;
-    background: #5b3cc4;
-    color: white;
+    padding: 13px;
     border: none;
     border-radius: 9px;
+    background: #5b3cc4;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.back-btn {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 25px auto;
+    padding: 13px;
+    border-radius: 9px;
+    background: white;
+    border: 2px solid #5b3cc4;
+    color: #5b3cc4;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
 }
 
-.empty {
+.no-jobs {
     background: white;
     padding: 30px;
-    border-radius: 14px;
     text-align: center;
+    border-radius: 15px;
     color: #777;
-}
-
-@media(max-width:600px) {
-
-    .title {
-        font-size: 24px;
-    }
-
 }
 
 </style>
@@ -177,20 +182,15 @@ header {
 
 <body>
 
-
 <header>
 
-    <div class="logo">
-        SkillCircle
-    </div>
+    <h1>
+        🔎 SkillCircle
+    </h1>
 
-    <button
-        class="back-btn"
-        onclick="history.back()">
-
-        ← Back
-
-    </button>
+    <p>
+        Owner Details & Available Work
+    </p>
 
 </header>
 
@@ -198,24 +198,37 @@ header {
 <div class="container">
 
     <h1 class="title">
-        Available Work
+        Owners Looking for Workers
     </h1>
 
     <p class="subtitle">
-        Find work opportunities matching your skills
+        Jobs matching your skills
     </p>
 
 
+    <!-- WORKER SUMMARY -->
+
     <div
-        class="profile-card"
+        class="worker-summary"
         id="workerSummary">
     </div>
 
+
+    <!-- OWNER LIST -->
 
     <div
         class="owner-grid"
         id="ownerGrid">
     </div>
+
+
+    <a
+        class="back-btn"
+        href="role.html">
+
+        ← Back to Role Selection
+
+    </a>
 
 </div>
 
@@ -223,99 +236,79 @@ header {
 <script>
 
 /*
-========================================
-SAMPLE OWNER / JOB DATA
-========================================
+=========================================
+OWNER / JOB DATA
+=========================================
 */
 
 const owners = [
 
     {
-        id: 1,
-
         name: "Ramesh",
-
         work: "House Cleaning",
-
         area: "Kukatpally",
-
         date: "Today",
-
         time: "9:00 AM - 12:00 PM",
-
-        budget: "₹800",
-
+        payment: "₹800",
         description:
-            "Need help with house cleaning."
+            "Looking for a worker for house cleaning."
     },
 
 
     {
-        id: 2,
-
         name: "Srinivas",
-
         work: "Gardening",
-
         area: "Miyapur",
-
         date: "Tomorrow",
-
         time: "12:00 PM - 4:00 PM",
-
-        budget: "₹700",
-
+        payment: "₹700",
         description:
-            "Looking for someone for garden maintenance."
+            "Need help with garden maintenance."
     },
 
 
     {
-        id: 3,
-
         name: "Anjali",
-
         work: "Video Editing",
-
         area: "Gachibowli",
-
         date: "Today",
-
         time: "Flexible",
-
-        budget: "₹1,500",
-
+        payment: "₹1500",
         description:
-            "Need a video editor for a small project."
+            "Looking for a video editor for a project."
     },
 
 
     {
-        id: 4,
-
         name: "Kiran",
-
         work: "Painting",
-
         area: "Madhapur",
-
         date: "This Week",
-
         time: "4:00 PM - 9:00 PM",
-
-        budget: "₹1,200",
-
+        payment: "₹1200",
         description:
-            "Need assistance with home painting."
+            "Need a worker for home painting."
+    },
+
+
+    {
+        name: "Lakshmi",
+        work: "Cooking",
+        area: "Dilsukhnagar",
+        date: "Tomorrow",
+        time: "9:00 AM - 12:00 PM",
+        payment: "₹900",
+        description:
+            "Looking for someone who can help with cooking."
     }
 
 ];
 
 
 /*
-========================================
+=========================================
 GET WORKER PROFILE
-========================================
+=========================================
 */
 
 const savedProfile =
@@ -336,14 +329,14 @@ if (savedProfile) {
 
 
 /*
-========================================
-SHOW WORKER SUMMARY
-========================================
+=========================================
+DISPLAY WORKER
+=========================================
 */
 
-function displayWorkerSummary() {
+function displayWorker() {
 
-    const box =
+    const summary =
         document.getElementById(
             "workerSummary"
         );
@@ -351,12 +344,14 @@ function displayWorkerSummary() {
 
     if (!worker) {
 
-        box.innerHTML = `
+        summary.innerHTML = `
 
-            <h3>Worker Profile</h3>
+            <h2>
+                Worker Profile
+            </h2>
 
             <p>
-                No saved worker profile found.
+                No worker profile was found.
             </p>
 
         `;
@@ -366,21 +361,33 @@ function displayWorkerSummary() {
     }
 
 
-    box.innerHTML = `
+    summary.innerHTML = `
 
-        <h3>
+        <h2>
             👋 Welcome, ${worker.name}
-        </h3>
+        </h2>
 
         <p>
-            <strong>Your skills:</strong>
-            ${worker.skills.join(", ")}
+            📍 ${worker.area}
         </p>
 
-        <p>
-            <strong>Area:</strong>
-            ${worker.area}
+        <p style="margin-top:8px;">
+            🛠️ Your Skills
         </p>
+
+        <div class="skills">
+
+            ${worker.skills.map(function(skill) {
+
+                return `
+                    <span class="skill">
+                        ${skill}
+                    </span>
+                `;
+
+            }).join("")}
+
+        </div>
 
     `;
 
@@ -388,9 +395,9 @@ function displayWorkerSummary() {
 
 
 /*
-========================================
+=========================================
 DISPLAY OWNER JOBS
-========================================
+=========================================
 */
 
 function displayOwners() {
@@ -401,29 +408,30 @@ function displayOwners() {
         );
 
 
-    grid.innerHTML = "";
-
-
-    let matchingOwners = owners;
-
-
     /*
-    FILTER JOBS BY WORKER SKILLS
+    MATCH WORKER SKILLS WITH OWNER WORK
     */
+
+    let matchingOwners = [];
+
 
     if (worker && worker.skills) {
 
         matchingOwners =
-            owners.filter(owner =>
+            owners.filter(function(owner) {
 
-                worker.skills.some(skill =>
+                return worker.skills.some(
+                    function(skill) {
 
-                    skill.toLowerCase() ===
-                    owner.work.toLowerCase()
+                        return (
+                            skill.toLowerCase() ===
+                            owner.work.toLowerCase()
+                        );
 
-                )
+                    }
+                );
 
-            );
+            });
 
     }
 
@@ -436,15 +444,17 @@ function displayOwners() {
 
         grid.innerHTML = `
 
-            <div class="empty">
+            <div class="no-jobs">
 
-                <h3>
-                    No matching work found
-                </h3>
+                <h2>
+                    No matching jobs right now
+                </h2>
 
-                <p>
-                    We couldn't find a job matching
-                    your selected skills right now.
+                <p style="margin-top:10px;">
+
+                    Try adding more skills to your
+                    worker profile to see more opportunities.
+
                 </p>
 
             </div>
@@ -457,10 +467,10 @@ function displayOwners() {
 
 
     /*
-    CREATE CARDS
+    CREATE OWNER CARDS
     */
 
-    matchingOwners.forEach(owner => {
+    matchingOwners.forEach(function(owner) {
 
         const card =
             document.createElement("div");
@@ -473,16 +483,12 @@ function displayOwners() {
         card.innerHTML = `
 
             <div class="owner-name">
-
                 ${owner.name}
-
             </div>
 
 
             <div class="work">
-
                 💼 ${owner.work}
-
             </div>
 
 
@@ -502,7 +508,7 @@ function displayOwners() {
             <div class="info">
 
                 <div class="label">
-                    📅 Work Date
+                    📅 Date
                 </div>
 
                 <div class="value">
@@ -532,7 +538,7 @@ function displayOwners() {
                 </div>
 
                 <div class="value">
-                    ${owner.budget}
+                    ${owner.payment}
                 </div>
 
             </div>
@@ -541,7 +547,7 @@ function displayOwners() {
             <div class="info">
 
                 <div class="label">
-                    📝 Description
+                    📝 Work Details
                 </div>
 
                 <div class="value">
@@ -551,13 +557,18 @@ function displayOwners() {
             </div>
 
 
-            <a
-                class="view-btn"
-                href="owner-details.html?id=${owner.id}">
+            <span class="match">
+                ✓ Matches your skill
+            </span>
 
-                View Owner Details →
 
-            </a>
+            <button
+                class="contact-btn"
+                onclick="contactOwner('${owner.name}')">
+
+                View Owner Details
+
+            </button>
 
         `;
 
@@ -569,12 +580,28 @@ function displayOwners() {
 }
 
 
-displayWorkerSummary();
+/*
+=========================================
+OWNER DETAILS BUTTON
+=========================================
+*/
+
+function contactOwner(name) {
+
+    alert(
+        "Owner: " +
+        name +
+        "\n\nThis prototype can connect you with the owner."
+    );
+
+}
+
+
+displayWorker();
 
 displayOwners();
 
 </script>
-
 
 </body>
 
