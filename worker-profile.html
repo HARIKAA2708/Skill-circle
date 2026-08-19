@@ -171,7 +171,6 @@ button:hover {
             type="text"
             id="workerName"
             placeholder="Enter your full name"
-            required
         >
 
 
@@ -181,7 +180,6 @@ button:hover {
             type="tel"
             id="phone"
             placeholder="Enter your phone number"
-            required
         >
 
 
@@ -191,13 +189,12 @@ button:hover {
             type="text"
             id="area"
             placeholder="Example: Kukatpally"
-            required
         >
 
 
         <label>Preferred Work Type</label>
 
-        <select id="workType" required>
+        <select id="workType">
 
             <option value="">
                 Select work type
@@ -314,13 +311,11 @@ button:hover {
 
         <h2>📋 Previous Experience</h2>
 
-
         <label>Experience Description</label>
 
         <textarea
             id="experience"
             placeholder="Example: Worked as a house cleaner for 3 years..."
-            required
         ></textarea>
 
 
@@ -330,7 +325,6 @@ button:hover {
             type="text"
             id="experienceDuration"
             placeholder="Example: 3 years"
-            required
         >
 
     </div>
@@ -342,21 +336,17 @@ button:hover {
 
         <h2>🕒 Availability</h2>
 
-
         <label>Preferred Time</label>
 
-        <select id="availability" required>
+        <select id="availability">
 
             <option value="">
                 Select availability
             </option>
 
             <option>9:00 AM - 12:00 PM</option>
-
             <option>12:00 PM - 4:00 PM</option>
-
             <option>4:00 PM - 9:00 PM</option>
-
             <option>Flexible</option>
 
         </select>
@@ -364,16 +354,14 @@ button:hover {
 
         <label>Work Preference</label>
 
-        <select id="workPreference" required>
+        <select id="workPreference">
 
             <option value="">
                 Select preference
             </option>
 
             <option>Daily Work</option>
-
             <option>Part-time Work</option>
-
             <option>Temporary Work</option>
 
         </select>
@@ -397,9 +385,8 @@ button:hover {
 
         <div class="note">
 
-            🔒 Your profile information is stored locally
-            for this prototype and is used to connect you
-            with suitable work opportunities.
+            🔒 This prototype stores profile information
+            locally on your device.
 
         </div>
 
@@ -440,15 +427,6 @@ document
             )
         )
         .map(input => input.value);
-
-
-    if (selectedSkills.length === 0) {
-
-        alert("⚠️ Please select at least one skill.");
-
-        return;
-
-    }
 
 
     const workerProfile = {
@@ -524,8 +502,9 @@ document
     );
 
 
-    window.location.href =
-        "ownerlist.html";
+    /* GO TO OWNER LIST */
+
+    window.location.href = "ownerlist.html";
 
 });
 
