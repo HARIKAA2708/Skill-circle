@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,65 +18,46 @@
 }
 
 body {
-    background: #f5f6fb;
+    background: #f4f7fb;
     color: #222;
+    padding-bottom: 40px;
 }
 
 header {
-    background: white;
-    padding: 16px 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    background: #5b3cc4;
+    color: white;
+    padding: 22px;
+    text-align: center;
 }
 
-.logo {
-    color: #5b3cc4;
-    font-size: 24px;
-    font-weight: bold;
+header h1 {
+    margin-bottom: 6px;
 }
 
 .container {
     width: 94%;
     max-width: 700px;
-    margin: auto;
-    padding: 25px 0 40px;
+    margin: 25px auto;
 }
 
-.title {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 8px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #777;
-    margin-bottom: 25px;
-}
-
-.form-card {
+.card {
     background: white;
-    padding: 22px;
+    padding: 24px;
     border-radius: 16px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
 }
 
-.section {
-    margin-bottom: 25px;
-}
-
-.section-title {
-    font-size: 19px;
-    font-weight: bold;
+.card h2 {
     color: #5b3cc4;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    font-weight: bold;
-    font-size: 14px;
     margin-top: 15px;
     margin-bottom: 7px;
+    font-weight: bold;
 }
 
 input,
@@ -83,8 +66,8 @@ textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #d5d5d5;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 9px;
+    font-size: 15px;
     outline: none;
 }
 
@@ -93,438 +76,350 @@ textarea {
     resize: vertical;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #5b3cc4;
-}
-
-.skill-grid {
+.skills-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    margin-top: 10px;
 }
 
 .skill-option {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 11px;
     border-radius: 8px;
-    cursor: pointer;
+    background: #fafafa;
 }
 
-.skill-option input {
-    width: auto;
-    margin-right: 6px;
+.skill-option label {
+    margin: 0;
+    font-weight: normal;
 }
 
-.experience-box {
-    background: #f8f7ff;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-.evidence-note {
-    background: #fff8e7;
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 10px;
-    font-size: 13px;
-    color: #765800;
-    line-height: 1.5;
-}
-
-.save-btn {
+button {
     width: 100%;
-    padding: 14px;
     border: none;
-    border-radius: 9px;
+    padding: 15px;
+    margin-top: 22px;
+    border-radius: 10px;
     background: #5b3cc4;
     color: white;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10px;
 }
 
-.save-btn:hover {
-    background: #452da0;
+button:hover {
+    background: #472ca3;
 }
 
-.required {
-    color: red;
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: #5b3cc4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.note {
+    background: #f0ecff;
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 15px;
+    line-height: 1.5;
 }
 
 @media(max-width:500px) {
 
-    .skill-grid {
+    .skills-box {
         grid-template-columns: 1fr;
     }
 
-    .title {
-        font-size: 24px;
-    }
 }
 
 </style>
+
 </head>
 
 <body>
 
 <header>
 
-    <div class="logo">
-        SkillCircle
-    </div>
+    <h1>💼 SkillCircle Worker Profile</h1>
+
+    <p>
+        Tell owners about your skills and experience
+    </p>
 
 </header>
 
 
 <div class="container">
 
-    <h1 class="title">
-        Worker Profile
-    </h1>
+<form id="workerForm">
 
-    <p class="subtitle">
-        Tell us about yourself and the work you can do
-    </p>
 
+    <!-- BASIC DETAILS -->
 
-    <div class="form-card">
+    <div class="card">
 
-        <form id="workerForm">
+        <h2>👤 Basic Details</h2>
 
+        <label>Full Name</label>
 
-            <!-- BASIC DETAILS -->
+        <input
+            type="text"
+            id="workerName"
+            placeholder="Enter your full name"
+            required
+        >
 
-            <div class="section">
 
-                <div class="section-title">
-                    👤 Personal Details
-                </div>
+        <label>Phone Number</label>
 
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Enter your phone number"
+            required
+        >
 
-                <label>
-                    Full Name <span class="required">*</span>
-                </label>
 
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your full name"
-                    required
-                >
+        <label>Location / Area</label>
 
+        <input
+            type="text"
+            id="area"
+            placeholder="Example: Kukatpally"
+            required
+        >
 
-                <label>
-                    Area / Location <span class="required">*</span>
-                </label>
 
-                <input
-                    type="text"
-                    id="area"
-                    placeholder="Example: Kukatpally"
-                    required
-                >
+        <label>Preferred Work Type</label>
 
+        <select id="workType" required>
 
-                <label>
-                    Phone Number
-                </label>
+            <option value="">
+                Select work type
+            </option>
 
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter phone number"
-                >
+            <option>House Cleaning</option>
+            <option>Cooking</option>
+            <option>Gardening</option>
+            <option>Painting</option>
+            <option>Babysitting</option>
+            <option>Tailoring</option>
+            <option>Electrical Work</option>
+            <option>Digital Work</option>
+            <option>Video Editing</option>
+            <option>Graphic Design</option>
+            <option>Student Helper</option>
+            <option>Other</option>
 
-            </div>
-
-
-            <!-- WORK DETAILS -->
-
-            <div class="section">
-
-                <div class="section-title">
-                    🛠️ Work Details
-                </div>
-
-
-                <label>
-                    What work do you want to do?
-                    <span class="required">*</span>
-                </label>
-
-                <div class="skill-grid">
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="House Cleaning"
-                        >
-                        House Cleaning
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Cooking"
-                        >
-                        Cooking
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Gardening"
-                        >
-                        Gardening
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Painting"
-                        >
-                        Painting
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Babysitting"
-                        >
-                        Babysitting
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Tailoring"
-                        >
-                        Tailoring
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Electrical Work"
-                        >
-                        Electrical Work
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Video Editing"
-                        >
-                        Video Editing
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Graphic Design"
-                        >
-                        Graphic Design
-                    </label>
-
-
-                    <label class="skill-option">
-                        <input
-                            type="checkbox"
-                            name="skills"
-                            value="Other"
-                        >
-                        Other
-                    </label>
-
-                </div>
-
-
-                <label>
-                    Other Skill
-                </label>
-
-                <input
-                    type="text"
-                    id="otherSkill"
-                    placeholder="If your skill is not listed"
-                >
-
-
-                <label>
-                    How do you want to work?
-                </label>
-
-                <select id="workType">
-
-                    <option value="">
-                        Select work type
-                    </option>
-
-                    <option value="Daily">
-                        Daily
-                    </option>
-
-                    <option value="Part Time">
-                        Part Time
-                    </option>
-
-                    <option value="Full Time">
-                        Full Time
-                    </option>
-
-                    <option value="Temporary">
-                        Temporary
-                    </option>
-
-                </select>
-
-
-                <label>
-                    Preferred Working Hours
-                </label>
-
-                <select id="workingHours">
-
-                    <option value="">
-                        Select time
-                    </option>
-
-                    <option>
-                        9 AM - 12 PM
-                    </option>
-
-                    <option>
-                        12 PM - 4 PM
-                    </option>
-
-                    <option>
-                        4 PM - 9 PM
-                    </option>
-
-                </select>
-
-
-                <label>
-                    Expected Payment / Salary
-                </label>
-
-                <input
-                    type="text"
-                    id="salary"
-                    placeholder="Example: ₹500 per day"
-                >
-
-            </div>
-
-
-            <!-- PREVIOUS EXPERIENCE -->
-
-            <div class="section">
-
-                <div class="section-title">
-                    📋 Previous Experience
-                </div>
-
-
-                <label>
-                    Do you have previous experience?
-                </label>
-
-                <select id="hasExperience">
-
-                    <option value="No">
-                        No
-                    </option>
-
-                    <option value="Yes">
-                        Yes
-                    </option>
-
-                </select>
-
-
-                <div class="experience-box">
-
-                    <label>
-                        Experience Description
-                    </label>
-
-                    <textarea
-                        id="experienceDescription"
-                        placeholder="Describe your previous work experience..."
-                    ></textarea>
-
-
-                    <label>
-                        Experience Duration
-                    </label>
-
-                    <input
-                        type="text"
-                        id="experienceDuration"
-                        placeholder="Example: 3 years"
-                    >
-
-
-                    <label>
-                        Evidence of Previous Experience
-                    </label>
-
-                    <input
-                        type="file"
-                        id="evidence"
-                        accept="image/*,video/*,.pdf"
-                    >
-
-
-                    <div class="evidence-note">
-
-                        📎 You can submit a certificate,
-                        previous work photo, or previous
-                        work video as evidence.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- SUBMIT -->
-
-            <button
-                type="submit"
-                class="save-btn">
-
-                Save Profile & View Owners
-
-            </button>
-
-
-        </form>
+        </select>
 
     </div>
+
+
+    <!-- SKILLS -->
+
+    <div class="card">
+
+        <h2>🛠️ Your Skills</h2>
+
+        <p>
+            Select the work you can perform.
+        </p>
+
+        <div class="skills-box">
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="House Cleaning">
+                    House Cleaning
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Cooking">
+                    Cooking
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Gardening">
+                    Gardening
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Painting">
+                    Painting
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Babysitting">
+                    Babysitting
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Tailoring">
+                    Tailoring
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Electrical Work">
+                    Electrical Work
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Video Editing">
+                    Video Editing
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Graphic Design">
+                    Graphic Design
+                </label>
+            </div>
+
+            <div class="skill-option">
+                <label>
+                    <input type="checkbox" value="Student Helper">
+                    Student Helper
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE -->
+
+    <div class="card">
+
+        <h2>📋 Previous Experience</h2>
+
+
+        <label>Experience Description</label>
+
+        <textarea
+            id="experience"
+            placeholder="Example: Worked as a house cleaner for 3 years..."
+            required
+        ></textarea>
+
+
+        <label>Experience Duration</label>
+
+        <input
+            type="text"
+            id="experienceDuration"
+            placeholder="Example: 3 years"
+            required
+        >
+
+    </div>
+
+
+    <!-- AVAILABILITY -->
+
+    <div class="card">
+
+        <h2>🕒 Availability</h2>
+
+
+        <label>Preferred Time</label>
+
+        <select id="availability" required>
+
+            <option value="">
+                Select availability
+            </option>
+
+            <option>9:00 AM - 12:00 PM</option>
+
+            <option>12:00 PM - 4:00 PM</option>
+
+            <option>4:00 PM - 9:00 PM</option>
+
+            <option>Flexible</option>
+
+        </select>
+
+
+        <label>Work Preference</label>
+
+        <select id="workPreference" required>
+
+            <option value="">
+                Select preference
+            </option>
+
+            <option>Daily Work</option>
+
+            <option>Part-time Work</option>
+
+            <option>Temporary Work</option>
+
+        </select>
+
+    </div>
+
+
+    <!-- EXTRA DETAILS -->
+
+    <div class="card">
+
+        <h2>📝 About Your Work</h2>
+
+        <label>Additional Information</label>
+
+        <textarea
+            id="description"
+            placeholder="Tell owners anything important about your work..."
+        ></textarea>
+
+
+        <div class="note">
+
+            🔒 Your profile information is stored locally
+            for this prototype and is used to connect you
+            with suitable work opportunities.
+
+        </div>
+
+
+        <button type="submit">
+            Save Profile & Find Work →
+        </button>
+
+    </div>
+
+</form>
+
+
+<a
+    class="back"
+    href="role.html">
+
+    ← Back to Role Selection
+
+</a>
 
 </div>
 
@@ -538,63 +433,29 @@ document
     event.preventDefault();
 
 
-    /* GET SELECTED SKILLS */
+    const selectedSkills =
+        Array.from(
+            document.querySelectorAll(
+                '.skill-option input:checked'
+            )
+        )
+        .map(input => input.value);
 
-    const selectedSkills = [];
-
-    document
-    .querySelectorAll(
-        'input[name="skills"]:checked'
-    )
-    .forEach(function(item) {
-
-        selectedSkills.push(item.value);
-
-    });
-
-
-    /* ADD OTHER SKILL */
-
-    const otherSkill =
-        document
-        .getElementById("otherSkill")
-        .value
-        .trim();
-
-
-    if (otherSkill !== "") {
-
-        selectedSkills.push(otherSkill);
-
-    }
-
-
-    /* REQUIRE AT LEAST ONE SKILL */
 
     if (selectedSkills.length === 0) {
 
-        alert(
-            "Please select at least one skill."
-        );
+        alert("⚠️ Please select at least one skill.");
 
         return;
 
     }
 
 
-    /* WORKER PROFILE */
-
     const workerProfile = {
 
         name:
             document
-            .getElementById("name")
-            .value
-            .trim(),
-
-        area:
-            document
-            .getElementById("area")
+            .getElementById("workerName")
             .value
             .trim(),
 
@@ -604,33 +465,23 @@ document
             .value
             .trim(),
 
-        skills:
-            selectedSkills,
+        area:
+            document
+            .getElementById("area")
+            .value
+            .trim(),
 
         workType:
             document
             .getElementById("workType")
             .value,
 
-        workingHours:
-            document
-            .getElementById("workingHours")
-            .value,
+        skills:
+            selectedSkills,
 
-        salary:
+        experience:
             document
-            .getElementById("salary")
-            .value
-            .trim(),
-
-        hasExperience:
-            document
-            .getElementById("hasExperience")
-            .value,
-
-        experienceDescription:
-            document
-            .getElementById("experienceDescription")
+            .getElementById("experience")
             .value
             .trim(),
 
@@ -640,18 +491,27 @@ document
             .value
             .trim(),
 
+        availability:
+            document
+            .getElementById("availability")
+            .value,
+
+        workPreference:
+            document
+            .getElementById("workPreference")
+            .value,
+
+        description:
+            document
+            .getElementById("description")
+            .value
+            .trim(),
+
         savedAt:
             new Date().toISOString()
 
     };
 
-
-    /*
-    SAVE PROFILE
-
-    This keeps the worker's information
-    in the browser for this prototype.
-    */
 
     localStorage.setItem(
         "skillCircleWorkerProfile",
@@ -659,11 +519,10 @@ document
     );
 
 
-    /*
-    GO DIRECTLY TO OWNER LIST
+    alert(
+        "✅ Worker profile saved successfully!"
+    );
 
-    NO LOGIN
-    */
 
     window.location.href =
         "ownerlist.html";
@@ -673,4 +532,4 @@ document
 </script>
 
 </body>
-</html>>
+</html>
