@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,304 +14,129 @@
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    background:#f5f6fb;
-    color:#222;
+body {
+    background: #f4f7fb;
+    color: #222;
+    padding-bottom: 40px;
 }
 
-
-/* HEADER */
-
-.header{
-
-    background:white;
-
-    padding:16px 20px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
-
+header {
+    background: #5b3cc4;
+    color: white;
+    text-align: center;
+    padding: 22px;
 }
 
-.logo{
-
-    font-size:24px;
-
-    font-weight:bold;
-
-    color:#5b3cc4;
-
+header h1 {
+    margin-bottom: 7px;
 }
 
-.back-btn{
-
-    background:#5b3cc4;
-
-    color:white;
-
-    border:none;
-
-    padding:10px 16px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
+.container {
+    width: 94%;
+    max-width: 700px;
+    margin: 25px auto;
 }
 
-
-/* CONTAINER */
-
-.container{
-
-    width:95%;
-
-    max-width:800px;
-
-    margin:auto;
-
-    padding:25px 0;
-
+.card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.08);
 }
 
-
-/* PROFILE */
-
-.profile{
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    box-shadow:
-    0 3px 15px rgba(0,0,0,0.08);
-
+.card h2 {
+    color: #5b3cc4;
+    margin-bottom: 18px;
 }
 
-.worker-name{
-
-    font-size:29px;
-
-    font-weight:bold;
-
-    margin-bottom:8px;
-
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 7px;
 }
 
-.area{
-
-    color:#777;
-
-    margin-bottom:10px;
-
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d5d5d5;
+    border-radius: 9px;
+    font-size: 15px;
 }
 
-.rating{
-
-    color:#f39c12;
-
-    font-size:17px;
-
+textarea {
+    min-height: 100px;
+    resize: vertical;
 }
 
-
-/* SECTION */
-
-.section{
-
-    background:white;
-
-    margin-top:18px;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    box-shadow:
-    0 3px 12px rgba(0,0,0,0.06);
-
+.skills {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.section-title{
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    margin-bottom:15px;
-
+.skill {
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    padding: 12px;
+    background: #fafafa;
 }
 
-
-/* SKILLS */
-
-.skills{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:8px;
-
+.skill label {
+    margin: 0;
+    font-weight: normal;
 }
 
-.skill{
-
-    background:#eee8ff;
-
-    color:#5b3cc4;
-
-    padding:8px 12px;
-
-    border-radius:20px;
-
-    font-size:13px;
-
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: #5b3cc4;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-
-/* JOBS */
-
-.jobs-number{
-
-    font-size:35px;
-
-    color:#5b3cc4;
-
-    font-weight:bold;
-
+button:hover {
+    background: #472ca3;
 }
 
-.jobs-text{
-
-    color:#777;
-
-    margin-top:4px;
-
+.note {
+    background: #f0ecff;
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 15px;
+    line-height: 1.5;
 }
 
-
-/* EXPERIENCE */
-
-.experience{
-
-    background:#f8f7ff;
-
-    padding:15px;
-
-    border-radius:10px;
-
-    margin-bottom:15px;
-
+.back {
+    display: block;
+    text-align: center;
+    color: #5b3cc4;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 18px;
 }
 
-.experience-name{
+@media(max-width:500px) {
 
-    font-size:18px;
-
-    font-weight:bold;
-
-    color:#333;
-
-}
-
-.duration{
-
-    color:#5b3cc4;
-
-    margin-top:6px;
-
-}
-
-.description{
-
-    color:#666;
-
-    font-size:14px;
-
-    line-height:1.6;
-
-    margin-top:8px;
-
-}
-
-
-/* EVIDENCE */
-
-.evidence-title{
-
-    font-weight:bold;
-
-    margin-top:15px;
-
-    margin-bottom:8px;
-
-}
-
-.evidence{
-
-    border:1px solid #ddd;
-
-    padding:11px;
-
-    border-radius:8px;
-
-    margin-top:8px;
-
-}
-
-.evidence-name{
-
-    font-size:14px;
-
-    font-weight:bold;
-
-}
-
-.no-evidence{
-
-    color:#888;
-
-    font-size:13px;
-
-    margin-top:10px;
-
-}
-
-
-/* VERIFIED */
-
-.verified{
-
-    background:#e7f7ed;
-
-    color:#168346;
-
-    padding:8px;
-
-    border-radius:7px;
-
-    margin-top:12px;
-
-    font-size:13px;
-
-    font-weight:bold;
+    .skills {
+        grid-template-columns: 1fr;
+    }
 
 }
 
@@ -321,631 +147,448 @@ body{
 
 <body>
 
+<header>
 
-<!-- HEADER -->
+    <h1>💼 SkillCircle</h1>
 
-<div class="header">
+    <p>
+        Worker Details
+    </p>
 
-    <div class="logo">
-
-        SkillCircle
-
-    </div>
-
-
-    <button
-        class="back-btn"
-        onclick="goBack()"
-    >
-
-        ← Workers
-
-    </button>
-
-</div>
+</header>
 
 
 <div class="container">
 
-    <div id="details"></div>
+<form id="workerForm">
+
+
+    <!-- BASIC DETAILS -->
+
+    <div class="card">
+
+        <h2>👤 Basic Details</h2>
+
+        <label>
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+        >
+
+
+        <label>
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Enter phone number"
+            required
+        >
+
+
+        <label>
+            Work Area / Location
+        </label>
+
+        <input
+            type="text"
+            id="area"
+            placeholder="Example: Kukatpally"
+            required
+        >
+
+    </div>
+
+
+    <!-- SKILLS -->
+
+    <div class="card">
+
+        <h2>🛠️ Skills You Can Perform</h2>
+
+        <p>
+            Select all types of work you can do.
+        </p>
+
+
+        <div class="skills">
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="House Cleaning"
+                    >
+                    House Cleaning
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Cooking"
+                    >
+                    Cooking
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Gardening"
+                    >
+                    Gardening
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Painting"
+                    >
+                    Painting
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Babysitting"
+                    >
+                    Babysitting
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Tailoring"
+                    >
+                    Tailoring
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Electrical Work"
+                    >
+                    Electrical Work
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Video Editing"
+                    >
+                    Video Editing
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Graphic Design"
+                    >
+                    Graphic Design
+                </label>
+            </div>
+
+
+            <div class="skill">
+                <label>
+                    <input
+                        type="checkbox"
+                        value="Student Helper"
+                    >
+                    Student Helper
+                </label>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE -->
+
+    <div class="card">
+
+        <h2>📋 Previous Experience</h2>
+
+
+        <label>
+            Previous Experience
+        </label>
+
+        <textarea
+            id="experience"
+            placeholder="Example: Worked as a house cleaner for 3 years"
+            required
+        ></textarea>
+
+
+        <label>
+            Experience Duration
+        </label>
+
+        <input
+            type="text"
+            id="experienceDuration"
+            placeholder="Example: 3 years"
+            required
+        >
+
+    </div>
+
+
+    <!-- AVAILABILITY -->
+
+    <div class="card">
+
+        <h2>🕒 Availability</h2>
+
+
+        <label>
+            Preferred Time
+        </label>
+
+        <select id="availability" required>
+
+            <option value="">
+                Select time
+            </option>
+
+            <option>
+                9:00 AM - 12:00 PM
+            </option>
+
+            <option>
+                12:00 PM - 4:00 PM
+            </option>
+
+            <option>
+                4:00 PM - 9:00 PM
+            </option>
+
+            <option>
+                Flexible
+            </option>
+
+        </select>
+
+
+        <label>
+            Work Preference
+        </label>
+
+        <select id="workPreference" required>
+
+            <option value="">
+                Select preference
+            </option>
+
+            <option>
+                Daily Work
+            </option>
+
+            <option>
+                Part-time Work
+            </option>
+
+            <option>
+                Temporary Work
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <!-- EXTRA -->
+
+    <div class="card">
+
+        <h2>📝 Additional Details</h2>
+
+        <label>
+            Tell owners about your work
+        </label>
+
+        <textarea
+            id="description"
+            placeholder="Any additional information..."
+        ></textarea>
+
+
+        <div class="note">
+
+            Your selected skills will be used to show you
+            suitable work opportunities.
+
+        </div>
+
+
+        <button type="submit">
+
+            Save Profile & View Owner Details →
+
+        </button>
+
+    </div>
+
+
+</form>
+
+
+<a
+    class="back"
+    href="role.html">
+
+    ← Back to Role Selection
+
+</a>
 
 </div>
 
 
 <script>
 
+document
+.getElementById("workerForm")
+.addEventListener("submit", function(event) {
 
-/*
-================================================
-WORKER DATABASE
-================================================
-*/
+    event.preventDefault();
 
-const workers = [
 
-{
-    id:1,
-    name:"Lakshmi",
-    area:"Kukatpally",
-    rating:"4.9",
-    skills:["House Cleaning","Cooking"],
-    jobs:42,
+    /*
+    GET SELECTED SKILLS
+    */
 
-    previousExperience:[
+    const skills =
+        Array.from(
+            document.querySelectorAll(
+                '.skill input:checked'
+            )
+        )
+        .map(function(input) {
+            return input.value;
+        });
 
-        {
-            skill:"House Cleaning",
-            duration:"5 years",
-            description:
-            "Experienced in residential house cleaning, kitchen cleaning and regular home maintenance.",
 
-            evidence:[
+    if (skills.length === 0) {
 
-                {
-                    type:"certificate",
-                    name:"House Cleaning Training Certificate"
-                }
-
-            ]
-
-        },
-
-        {
-            skill:"Cooking",
-            duration:"3 years",
-            description:
-            "Experienced in preparing regular home meals and traditional dishes.",
-
-            evidence:[]
-
-        }
-
-    ]
-},
-
-
-{
-    id:2,
-    name:"Ravi Kumar",
-    area:"Secunderabad",
-    rating:"4.8",
-    skills:["Gardening","Plant Care"],
-    jobs:36,
-
-    previousExperience:[
-
-        {
-            skill:"Gardening",
-            duration:"4 years",
-            description:
-            "Experienced in home gardening, plant maintenance, watering and garden cleaning.",
-
-            evidence:[
-
-                {
-                    type:"photo",
-                    name:"Previous Gardening Work"
-                },
-
-                {
-                    type:"video",
-                    name:"Gardening Work Video"
-                }
-
-            ]
-
-        }
-
-    ]
-},
-
-
-{
-    id:3,
-    name:"Suresh",
-    area:"Miyapur",
-    rating:"4.7",
-    skills:["Painting","Wall Repair"],
-    jobs:28,
-
-    previousExperience:[
-
-        {
-            skill:"Painting",
-            duration:"6 years",
-            description:
-            "Experienced in interior painting, exterior painting and wall preparation.",
-
-            evidence:[
-
-                {
-                    type:"photo",
-                    name:"Previous Painting Work"
-                },
-
-                {
-                    type:"certificate",
-                    name:"Painting Training Certificate"
-                }
-
-            ]
-
-        },
-
-        {
-            skill:"Wall Repair",
-            duration:"4 years",
-            description:
-            "Experienced in minor wall repairs and surface preparation.",
-
-            evidence:[]
-
-        }
-
-    ]
-},
-
-
-{
-    id:4,
-    name:"Anitha",
-    area:"Madhapur",
-    rating:"4.9",
-    skills:["Babysitting","Child Care"],
-    jobs:51,
-
-    previousExperience:[
-
-        {
-            skill:"Babysitting",
-            duration:"5 years",
-            description:
-            "Experienced in child care, preparing meals and maintaining a safe environment.",
-
-            evidence:[
-
-                {
-                    type:"certificate",
-                    name:"Child Care Certificate"
-                }
-
-            ]
-
-        }
-
-    ]
-},
-
-
-{
-    id:5,
-    name:"Priya",
-    area:"Gachibowli",
-    rating:"4.6",
-    skills:["Video Editing","Graphic Design"],
-    jobs:19,
-
-    previousExperience:[
-
-        {
-            skill:"Video Editing",
-            duration:"2 years",
-            description:
-            "Experienced in editing short videos, social media content and promotional videos.",
-
-            evidence:[
-
-                {
-                    type:"video",
-                    name:"Previous Video Editing Work"
-                },
-
-                {
-                    type:"photo",
-                    name:"Edited Design Sample"
-                }
-
-            ]
-
-        },
-
-        {
-            skill:"Graphic Design",
-            duration:"1 year",
-            description:
-            "Created posters, social media graphics and promotional designs.",
-
-            evidence:[]
-
-        }
-
-    ]
-},
-
-
-{
-    id:6,
-    name:"Mahesh",
-    area:"LB Nagar",
-    rating:"4.5",
-    skills:["Electrical Work","Home Maintenance"],
-    jobs:33,
-
-    previousExperience:[
-
-        {
-            skill:"Electrical Work",
-            duration:"7 years",
-            description:
-            "Experienced in basic household electrical maintenance and home electrical work.",
-
-            evidence:[
-
-                {
-                    type:"certificate",
-                    name:"Electrical Training Certificate"
-                },
-
-                {
-                    type:"photo",
-                    name:"Previous Electrical Work"
-                }
-
-            ]
-
-        }
-
-    ]
-},
-
-
-{
-    id:7,
-    name:"Kavitha",
-    area:"Dilsukhnagar",
-    rating:"4.8",
-    skills:["Tailoring","Clothing Alteration"],
-    jobs:27,
-
-    previousExperience:[
-
-        {
-            skill:"Tailoring",
-            duration:"6 years",
-            description:
-            "Experienced in stitching dresses, blouse alterations and clothing repairs.",
-
-            evidence:[
-
-                {
-                    type:"photo",
-                    name:"Previous Tailoring Work"
-                }
-
-            ]
-
-        },
-
-        {
-            skill:"Clothing Alteration",
-            duration:"5 years",
-            description:
-            "Experienced in fitting and altering different types of clothing.",
-
-            evidence:[]
-
-        }
-
-    ]
-}
-
-];
-
-
-/*
-================================================
-GET SELECTED WORKER
-================================================
-*/
-
-const selectedId =
-    localStorage.getItem(
-        "selectedWorkerId"
-    );
-
-
-const worker =
-    workers.find(
-        w =>
-        String(w.id) ===
-        String(selectedId)
-    );
-
-
-/*
-================================================
-DISPLAY WORKER
-================================================
-*/
-
-function displayWorker(){
-
-    const container =
-        document.getElementById(
-            "details"
+        alert(
+            "Please select at least one skill."
         );
-
-
-    if(!worker){
-
-        container.innerHTML=`
-
-            <div class="section">
-
-                <div class="section-title">
-
-                    Worker Not Found
-
-                </div>
-
-                <p>
-                    Please return to the worker list
-                    and select a worker again.
-                </p>
-
-            </div>
-
-        `;
 
         return;
 
     }
 
 
-    const skillsHTML =
-        worker.skills
-        .map(skill=>`
-
-            <span class="skill">
-
-                ${skill}
-
-            </span>
-
-        `)
-        .join("");
-
-
-    let experienceHTML="";
-
-
-    worker.previousExperience
-    .forEach(exp=>{
-
-        let evidenceHTML="";
-
-
-        if(
-            exp.evidence &&
-            exp.evidence.length>0
-        ){
-
-            evidenceHTML = `
-
-                <div class="verified">
-
-                    ✓ Previous experience evidence submitted
-
-                </div>
-
-
-                <div class="evidence-title">
-
-                    📎 Evidence
-
-                </div>
-
-            `;
-
-
-            exp.evidence
-            .forEach(item=>{
-
-                evidenceHTML += `
-
-                    <div class="evidence">
-
-                        <div class="evidence-name">
-
-                            ${item.type==="certificate"
-                            ? "📜 "
-                            : item.type==="video"
-                            ? "🎥 "
-                            : "📷 "
-                            }
-
-                            ${item.name}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            });
-
-        }
-
-        else{
-
-            evidenceHTML=`
-
-                <div class="no-evidence">
-
-                    No evidence submitted for this
-                    experience.
-
-                </div>
-
-            `;
-
-        }
-
-
-        experienceHTML += `
-
-            <div class="experience">
-
-                <div class="experience-name">
-
-                    ${exp.skill}
-
-                </div>
-
-
-                <div class="duration">
-
-                    Experience:
-                    ${exp.duration}
-
-                </div>
-
-
-                <div class="description">
-
-                    ${exp.description}
-
-                </div>
-
-
-                ${evidenceHTML}
-
-            </div>
-
-        `;
-
-    });
-
-
-    container.innerHTML=`
-
-        <!-- WORKER BASIC DETAILS -->
-
-        <div class="profile">
-
-            <div class="worker-name">
-
-                ${worker.name}
-
-            </div>
-
-
-            <div class="area">
-
-                📍 ${worker.area}
-
-            </div>
-
-
-            <div class="rating">
-
-                ⭐ ${worker.rating} Rating
-
-            </div>
-
-        </div>
-
-
-        <!-- SKILLS -->
-
-        <div class="section">
-
-            <div class="section-title">
-
-                🛠️ SkillCircle Skills
-
-            </div>
-
-
-            <div class="skills">
-
-                ${skillsHTML}
-
-            </div>
-
-        </div>
-
-
-        <!-- JOBS -->
-
-        <div class="section">
-
-            <div class="section-title">
-
-                💼 SkillCircle Jobs
-
-            </div>
-
-
-            <div class="jobs-number">
-
-                ${worker.jobs}
-
-            </div>
-
-
-            <div class="jobs-text">
-
-                Jobs completed through SkillCircle
-
-            </div>
-
-        </div>
-
-
-        <!-- EXPERIENCE -->
-
-        <div class="section">
-
-            <div class="section-title">
-
-                📋 Previous Experience
-
-            </div>
-
-
-            ${experienceHTML}
-
-        </div>
-
-    `;
-
-}
-
-
-/*
-================================================
-BACK
-================================================
-*/
-
-function goBack(){
+    /*
+    CREATE WORKER PROFILE
+    */
+
+    const workerProfile = {
+
+        name:
+            document
+            .getElementById("name")
+            .value
+            .trim(),
+
+        phone:
+            document
+            .getElementById("phone")
+            .value
+            .trim(),
+
+        area:
+            document
+            .getElementById("area")
+            .value
+            .trim(),
+
+        skills: skills,
+
+        experience:
+            document
+            .getElementById("experience")
+            .value
+            .trim(),
+
+        experienceDuration:
+            document
+            .getElementById("experienceDuration")
+            .value
+            .trim(),
+
+        availability:
+            document
+            .getElementById("availability")
+            .value,
+
+        workPreference:
+            document
+            .getElementById("workPreference")
+            .value,
+
+        description:
+            document
+            .getElementById("description")
+            .value
+            .trim()
+
+    };
+
+
+    /*
+    SAVE PROFILE
+    */
+
+    localStorage.setItem(
+        "skillCircleWorkerProfile",
+        JSON.stringify(workerProfile)
+    );
+
+
+    /*
+    GO TO OWNER DETAILS / OWNER LIST
+    */
 
     window.location.href =
-        "workers.html";
+        "ownerlist.html";
 
-}
-
-
-/*
-================================================
-START
-================================================
-*/
-
-displayWorker();
+});
 
 </script>
 
 </body>
+
 </html>
