@@ -1,498 +1,545 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SkillCircle - Worker Profile</title>
+<title>SkillCircle - Workers</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    background:#f4f7ff;
-    color:#172033;
-    padding:20px;
+body {
+    background: #f5f6fb;
+    color: #222;
 }
 
-.container{
-    max-width:800px;
-    margin:auto;
+/* HEADER */
+
+header {
+    background: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-.header{
-    background:white;
-    padding:20px;
-    border-radius:16px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    margin-bottom:20px;
+.logo {
+    color: #5b3cc4;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.logo{
-    color:#3157d5;
-    font-size:30px;
-    font-weight:800;
+.back-btn {
+    border: none;
+    background: #5b3cc4;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.subtitle{
-    color:#667085;
-    margin-top:7px;
+/* MAIN */
+
+.container {
+    width: 94%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 0;
 }
 
-.card{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    margin-bottom:20px;
+.title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 8px;
 }
 
-h1{
-    margin-bottom:8px;
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
 }
 
-h2{
-    margin-bottom:15px;
+/* SEARCH */
+
+.search-box {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
 }
 
-label{
-    display:block;
-    font-weight:bold;
-    margin-top:16px;
+.search-box input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
 }
 
-input,
-select,
-textarea{
-    width:100%;
-    padding:14px;
-    margin-top:7px;
-    border:1px solid #d5dbea;
-    border-radius:10px;
-    font-size:15px;
-    background:white;
+/* WORKER GRID */
+
+.worker-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(290px, 1fr)
+    );
+
+    gap: 20px;
 }
 
-textarea{
-    min-height:110px;
-    resize:vertical;
+/* CARD */
+
+.worker-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
+/* NAME */
+
+.worker-name {
+    display: inline-block;
+
+    color: #5b3cc4;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+    margin-bottom: 7px;
+
+    cursor: pointer;
 }
 
-.button{
-    display:block;
-    width:100%;
-    padding:15px;
-    margin-top:25px;
-    border-radius:10px;
-    background:#3157d5;
-    color:white;
-    text-decoration:none;
-    text-align:center;
-    font-weight:bold;
-    font-size:16px;
-    border:none;
+.worker-name:hover {
+    text-decoration: underline;
 }
 
-.back{
-    display:inline-block;
-    color:#3157d5;
-    text-decoration:none;
-    font-weight:bold;
-    margin-bottom:15px;
+/* RATING */
+
+.rating {
+    color: #f39c12;
+    margin-bottom: 15px;
 }
 
-.note{
-    background:#eef2ff;
-    border-radius:12px;
-    padding:15px;
-    margin-top:20px;
-    color:#344054;
-    line-height:1.5;
+/* INFORMATION */
+
+.info {
+    margin-top: 13px;
 }
 
-@media(max-width:600px){
-    .grid{
-        grid-template-columns:1fr;
+.label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 7px;
+}
+
+.value {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* SKILLS */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.skill {
+    background: #eee8ff;
+    color: #5b3cc4;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* EXPERIENCE */
+
+.experience {
+    background: #f8f7ff;
+    padding: 11px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    .title {
+        font-size: 24px;
     }
 
-    body{
-        padding:12px;
-    }
-
-    .card{
-        padding:18px;
-    }
 }
+
 </style>
+
 </head>
 
 <body>
 
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo">
+        SkillCircle
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="history.back()">
+
+        ← Back
+
+    </button>
+
+</header>
+
+
+<!-- MAIN -->
+
 <div class="container">
 
-    <!-- HEADER -->
+    <h1 class="title">
+        Find Workers
+    </h1>
 
-    <div class="header">
-
-        <div class="logo">
-            SkillCircle
-        </div>
-
-        <p class="subtitle">
-            Worker Profile
-        </p>
-
-    </div>
+    <p class="subtitle">
+        View workers and their experience
+    </p>
 
 
-    <a class="back" href="role.html">
-        ← Back to Role Selection
-    </a>
+    <!-- SEARCH -->
 
-
-    <!-- BASIC DETAILS -->
-
-    <div class="card">
-
-        <h1>👤 Your Details</h1>
-
-        <p class="subtitle">
-            Create your worker profile so employers can understand
-            your skills and experience.
-        </p>
-
-
-        <label>Full Name *</label>
+    <div class="search-box">
 
         <input
             type="text"
-            placeholder="Enter your complete name"
-        >
-
-
-        <label>Phone Number *</label>
-
-        <input
-            type="tel"
-            placeholder="Enter your phone number"
-        >
-
-
-        <label>Email</label>
-
-        <input
-            type="email"
-            placeholder="Enter your email"
-        >
-
-
-        <label>Current Location / Area *</label>
-
-        <input
-            type="text"
-            placeholder="Example: Hyderabad, Kukatpally"
-        >
-
-
-        <label>Permanent Address</label>
-
-        <textarea
-            placeholder="Enter your permanent address">
-        </textarea>
-
-    </div>
-
-
-    <!-- WORK DETAILS -->
-
-    <div class="card">
-
-        <h2>💼 Work Details</h2>
-
-        <p class="subtitle">
-            Select the type of work you are interested in.
-        </p>
-
-
-        <label>Work Category *</label>
-
-        <select>
-
-            <option value="">
-                Select work category
-            </option>
-
-            <option>
-                Student Work
-            </option>
-
-            <option>
-                Shop Work
-            </option>
-
-            <option>
-                Computer / Digital Work
-            </option>
-
-            <option>
-                Data Entry
-            </option>
-
-            <option>
-                Content Writing
-            </option>
-
-            <option>
-                Teaching / Tutoring
-            </option>
-
-            <option>
-                Office Assistance
-            </option>
-
-            <option>
-                Event Assistance
-            </option>
-
-            <option>
-                Sales / Customer Support
-            </option>
-
-            <option>
-                Delivery Assistance
-            </option>
-
-            <option>
-                Painting
-            </option>
-
-            <option>
-                Other
-            </option>
-
-        </select>
-
-
-        <label>Your Skills *</label>
-
-        <textarea
-            placeholder="Example: MS Word, Excel, typing, teaching, Canva, sales, editing...">
-        </textarea>
-
-
-        <label>Previous Profession / Work</label>
-
-        <input
-            type="text"
-            placeholder="Example: Student, shop assistant, tutor"
-        >
-
-
-        <label>Experience</label>
-
-        <select>
-
-            <option>No previous experience</option>
-
-            <option>Less than 6 months</option>
-
-            <option>6 months - 1 year</option>
-
-            <option>1 - 2 years</option>
-
-            <option>2 - 5 years</option>
-
-            <option>More than 5 years</option>
-
-        </select>
-
-
-        <label>Expected Payment</label>
-
-        <input
-            type="text"
-            placeholder="Example: ₹500 per day / ₹200 per hour"
+            id="search"
+            placeholder="Search worker or skill..."
+            oninput="displayWorkers()"
         >
 
     </div>
 
 
-    <!-- WORK AREA -->
+    <!-- WORKERS -->
 
-    <div class="card">
-
-        <h2>📍 Work Area</h2>
-
-        <p class="subtitle">
-            Employers will use this information to find workers
-            near their job location.
-        </p>
-
-
-        <label>Maximum Distance You Can Travel</label>
-
-        <select>
-
-            <option>Within 5 km</option>
-
-            <option>Within 10 km</option>
-
-            <option>Within 20 km</option>
-
-            <option>Within 30 km</option>
-
-        </select>
-
-
-        <label>Preferred Work Area</label>
-
-        <input
-            type="text"
-            placeholder="Enter areas where you are willing to work"
-        >
-
+    <div
+        class="worker-grid"
+        id="workerGrid">
     </div>
-
-
-    <!-- AVAILABILITY -->
-
-    <div class="card">
-
-        <h2>⏰ Work Availability</h2>
-
-        <p class="subtitle">
-            Choose how you want to receive work requests.
-        </p>
-
-
-        <label>Availability Type *</label>
-
-        <select>
-
-            <option>
-                Flexible / Daily Work
-            </option>
-
-            <option>
-                Permanent / Fixed Schedule
-            </option>
-
-        </select>
-
-
-        <div class="note">
-
-            <strong>How SkillCircle works:</strong>
-
-            <br><br>
-
-            If you choose
-            <strong>Flexible / Daily Work</strong>,
-            SkillCircle can ask you every morning:
-
-            <br><br>
-
-            <strong>
-                "Are you free today for your accepted work?"
-            </strong>
-
-            <br><br>
-
-            If you choose a
-            <strong>Permanent / Fixed Schedule</strong>,
-            you won't need to confirm every day during
-            your selected permanent period.
-
-        </div>
-
-
-        <label>Preferred Start Time</label>
-
-        <input
-            type="time"
-        >
-
-
-        <label>Preferred End Time</label>
-
-        <input
-            type="time"
-        >
-
-
-        <label>Permanent Schedule Until</label>
-
-        <input
-            type="date"
-        >
-
-    </div>
-
-
-    <!-- PROFILE INFORMATION -->
-
-    <div class="card">
-
-        <h2>⭐ Profile Information</h2>
-
-        <label>Short Introduction</label>
-
-        <textarea
-            placeholder="Introduce yourself to employers">
-        </textarea>
-
-
-        <label>Languages You Know</label>
-
-        <input
-            type="text"
-            placeholder="Example: Telugu, Hindi, English"
-        >
-
-
-        <label>Additional Information</label>
-
-        <textarea
-            placeholder="Anything else employers should know">
-        </textarea>
-
-    </div>
-
-
-    <!-- CONTINUE -->
-
-    <div class="card">
-
-        <h2>✅ Ready to Continue?</h2>
-
-        <p class="subtitle">
-            Check your information before continuing.
-        </p>
-
-
-        <a
-            class="button"
-            href="ownerslist.html">
-
-            Owner Details 
-
-        </a>
-
-    </div>
-
 
 </div>
+
+
+<script>
+
+/* ==========================================
+   WORKER DATA
+========================================== */
+
+const workers = [
+
+    {
+        id: 1,
+
+        name: "Lakshmi",
+
+        area: "Kukatpally",
+
+        rating: "4.9",
+
+        skills: [
+            "House Cleaning",
+            "Cooking"
+        ],
+
+        jobs: 42,
+
+        previousExperience: "5 years - House Cleaning"
+    },
+
+
+    {
+        id: 2,
+
+        name: "Ravi Kumar",
+
+        area: "Secunderabad",
+
+        rating: "4.8",
+
+        skills: [
+            "Gardening",
+            "Plant Care"
+        ],
+
+        jobs: 36,
+
+        previousExperience: "4 years - Gardening"
+    },
+
+
+    {
+        id: 3,
+
+        name: "Suresh",
+
+        area: "Miyapur",
+
+        rating: "4.7",
+
+        skills: [
+            "Painting",
+            "Wall Repair"
+        ],
+
+        jobs: 28,
+
+        previousExperience: "6 years - Painting"
+    },
+
+
+    {
+        id: 4,
+
+        name: "Anitha",
+
+        area: "Madhapur",
+
+        rating: "4.9",
+
+        skills: [
+            "Babysitting",
+            "Child Care"
+        ],
+
+        jobs: 51,
+
+        previousExperience: "5 years - Babysitting"
+    },
+
+
+    {
+        id: 5,
+
+        name: "Priya",
+
+        area: "Gachibowli",
+
+        rating: "4.6",
+
+        skills: [
+            "Video Editing",
+            "Graphic Design"
+        ],
+
+        jobs: 19,
+
+        previousExperience: "2 years - Video Editing"
+    },
+
+
+    {
+        id: 6,
+
+        name: "Mahesh",
+
+        area: "LB Nagar",
+
+        rating: "4.5",
+
+        skills: [
+            "Electrical Work",
+            "Home Maintenance"
+        ],
+
+        jobs: 33,
+
+        previousExperience: "7 years - Electrical Work"
+    },
+
+
+    {
+        id: 7,
+
+        name: "Kavitha",
+
+        area: "Dilsukhnagar",
+
+        rating: "4.8",
+
+        skills: [
+            "Tailoring",
+            "Clothing Alteration"
+        ],
+
+        jobs: 27,
+
+        previousExperience: "6 years - Tailoring"
+    }
+
+];
+
+
+/* ==========================================
+   DISPLAY WORKERS
+========================================== */
+
+function displayWorkers() {
+
+    const grid =
+        document.getElementById("workerGrid");
+
+    const search =
+        document.getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    grid.innerHTML = "";
+
+
+    workers
+    .filter(worker => {
+
+        const nameMatch =
+            worker.name
+            .toLowerCase()
+            .includes(search);
+
+
+        const skillMatch =
+            worker.skills.some(skill =>
+                skill
+                .toLowerCase()
+                .includes(search)
+            );
+
+
+        return nameMatch || skillMatch;
+
+    })
+    .forEach(worker => {
+
+
+        const card =
+            document.createElement("div");
+
+        card.className = "worker-card";
+
+
+        const skills =
+            worker.skills
+            .map(skill => `
+                <span class="skill">
+                    ${skill}
+                </span>
+            `)
+            .join("");
+
+
+        card.innerHTML = `
+
+            <!-- ONLY NAME IS CLICKABLE -->
+
+            <a
+                href="worker-details.html?id=${worker.id}"
+                class="worker-name">
+
+                ${worker.name}
+
+            </a>
+
+
+            <div class="rating">
+
+                ⭐ ${worker.rating}
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="label">
+                    🛠️ SkillCircle Skills
+                </div>
+
+                <div class="skills">
+                    ${skills}
+                </div>
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="label">
+                    💼 SkillCircle Jobs
+                </div>
+
+                <div class="value">
+
+                    ${worker.jobs}
+                    jobs completed
+
+                </div>
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="label">
+                    📋 Previous Experience
+                </div>
+
+                <div class="experience">
+
+                    ${worker.previousExperience}
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* START */
+
+displayWorkers();
+
+</script>
 
 </body>
 </html>
