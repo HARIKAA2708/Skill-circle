@@ -1,289 +1,653 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillCircle - Worker Profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worker Profile - SkillCircle</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            margin: 0;
-            background: #f4f7fb;
-            color: #222;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
 
-        header {
-            background: #2563eb;
-            color: white;
-            text-align: center;
-            padding: 22px;
-        }
+    .header {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-        header h1 {
-            margin: 0;
-        }
+    .back-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+    }
 
-        .container {
-            max-width: 650px;
-            margin: auto;
-            padding: 20px;
-        }
+    .header h1 {
+      font-size: 20px;
+    }
 
-        .profile-card {
-            background: white;
-            border-radius: 18px;
-            padding: 25px;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-        }
+    .container {
+      max-width: 650px;
+      margin: auto;
+      padding: 20px;
+    }
 
-        .profile-photo {
-            width: 100px;
-            height: 100px;
-            background: #dbeafe;
-            border-radius: 50%;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 50px;
-        }
+    .profile-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 18px;
+    }
 
-        .name {
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            margin-top: 12px;
-        }
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #e0e7ff;
+      margin-bottom: 12px;
+    }
 
-        .skill {
-            text-align: center;
-            color: #2563eb;
-            font-weight: bold;
-            margin-top: 5px;
-        }
+    .name {
+      font-size: 25px;
+      font-weight: bold;
+      color: #111827;
+    }
 
-        .rating {
-            text-align: center;
-            margin-top: 8px;
-            color: #eab308;
-            font-weight: bold;
-        }
+    .verified {
+      display: inline-block;
+      margin-left: 5px;
+      color: #2563eb;
+      font-size: 18px;
+    }
 
-        .section {
-            margin-top: 25px;
-            padding-top: 18px;
-            border-top: 1px solid #eee;
-        }
+    .occupation {
+      color: #6b7280;
+      margin-top: 5px;
+    }
 
-        .section h2 {
-            color: #2563eb;
-            font-size: 19px;
-        }
+    .rating {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #f59e0b;
+    }
 
-        .detail {
-            padding: 9px 0;
-            line-height: 1.5;
-        }
+    .location {
+      color: #6b7280;
+      margin-top: 7px;
+    }
 
-        .hire-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            background: #16a34a;
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            margin-top: 25px;
-            cursor: pointer;
-        }
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
 
-        .hire-btn:hover {
-            background: #15803d;
-        }
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: #111827;
+    }
 
-        .back-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background: #64748b;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            margin-bottom: 18px;
-        }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-        .verified {
-            background: #ecfdf5;
-            color: #15803d;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-    </style>
+    .skill {
+      background: #eef2ff;
+      color: #4338ca;
+      padding: 8px 13px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      color: #6b7280;
+    }
+
+    .value {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .experience-box {
+      background: #f8fafc;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 12px;
+      border-left: 4px solid #6366f1;
+    }
+
+    .experience-title {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .experience-description {
+      color: #6b7280;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .stat {
+      background: #f8fafc;
+      padding: 15px 8px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      color: #2563eb;
+    }
+
+    .stat span {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .evidence {
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 12px;
+    }
+
+    .evidence-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .evidence-title {
+      font-weight: bold;
+    }
+
+    .verified-evidence {
+      color: #16a34a;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .evidence-description {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 7px;
+      line-height: 1.4;
+    }
+
+    .evidence-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #eef2ff;
+      color: #4338ca;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .about {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+
+    .hire-btn {
+      width: 100%;
+      border: none;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      padding: 16px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .hire-btn:hover {
+      opacity: 0.92;
+    }
+
+    .message-btn {
+      width: 100%;
+      border: 2px solid #2563eb;
+      background: white;
+      color: #2563eb;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .notice {
+      background: #eff6ff;
+      color: #1d4ed8;
+      padding: 13px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 14px;
+      }
+
+      .profile-card {
+        padding: 20px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🔵 SkillCircle</h1>
-    <p>Worker Profile</p>
-</header>
+  <div class="header">
+    <button class="back-btn" onclick="goBack()">←</button>
+    <h1>Worker Details</h1>
+  </div>
 
-<div class="container">
+  <div class="container">
 
-    <button class="back-btn" onclick="goBack()">
-        ⬅ Back to Workers
-    </button>
-
+    <!-- WORKER PROFILE -->
     <div class="profile-card">
 
-        <div class="profile-photo">
-            👩‍💻
-        </div>
+      <img
+        id="workerPhoto"
+        class="profile-img"
+        src="mylogo.png"
+        alt="Worker">
 
-        <div class="name">
-            Ananya
-        </div>
+      <div class="name">
+        <span id="workerName">Lakshmi</span>
+        <span class="verified">✓</span>
+      </div>
 
-        <div class="skill">
-            Digital Work Specialist
-        </div>
+      <div class="occupation" id="workerOccupation">
+        Skilled Worker
+      </div>
 
-        <div class="rating">
-            ⭐ 4.8 / 5
-        </div>
+      <div class="rating">
+        ⭐ <span id="workerRating">4.8</span>
+        (<span id="reviewCount">42</span> reviews)
+      </div>
 
-        <div class="verified">
-            ✅ Profile Verified
-        </div>
-
-        <div class="section">
-
-            <h2>👤 Personal Information</h2>
-
-            <div class="detail">
-                📍 Location: Hyderabad
-            </div>
-
-            <div class="detail">
-                🗺️ Work Radius: Up to 20 km
-            </div>
-
-            <div class="detail">
-                🗣️ Languages: Telugu, Hindi, English
-            </div>
-
-        </div>
-
-        <div class="section">
-
-            <h2>💼 Skills & Experience</h2>
-
-            <div class="detail">
-                💻 Digital Work
-            </div>
-
-            <div class="detail">
-                📱 Social Media Assistance
-            </div>
-
-            <div class="detail">
-                ⌨️ Data Entry
-            </div>
-
-            <div class="detail">
-                🏆 Experience: 1 year
-            </div>
-
-        </div>
-
-        <div class="section">
-
-            <h2>⏰ Availability</h2>
-
-            <div class="detail">
-                🌅 9:00 AM - 12:00 PM: Available
-            </div>
-
-            <div class="detail">
-                ☀️ 12:00 PM - 4:00 PM: Not Available
-            </div>
-
-            <div class="detail">
-                🌙 4:00 PM - 9:00 PM: Available
-            </div>
-
-        </div>
-
-        <div class="section">
-
-            <h2>💰 Payment</h2>
-
-            <div class="detail">
-                Expected Payment: ₹300 - ₹500
-            </div>
-
-            <div class="detail">
-                Payment Type: Per Task / Per Hour
-            </div>
-
-        </div>
-
-        <div class="section">
-
-            <h2>📝 About</h2>
-
-            <div class="detail">
-                I am a student with experience in digital work,
-                data entry and social media assistance. I am
-                available for part-time work and flexible tasks.
-            </div>
-
-        </div>
-
-        <button class="hire-btn" onclick="sendRequest()">
-            🤝 Send Hiring Request
-        </button>
+      <div class="location">
+        📍 <span id="workerLocation">Hyderabad</span>
+      </div>
 
     </div>
 
-</div>
 
-<script>
+    <!-- SKILLS -->
+    <div class="card">
 
-function sendRequest() {
+      <h2>🛠️ Skills & Services</h2>
 
-    let confirmRequest = confirm(
-        "Send a hiring request to Ananya?"
-    );
+      <div class="skills" id="skillsContainer">
 
-    if (confirmRequest) {
+        <span class="skill">Video Editing</span>
+        <span class="skill">Poster Design</span>
+        <span class="skill">Canva</span>
 
-        alert(
-            "✅ Hiring request sent successfully!\n\n" +
-            "Ananya will receive your request."
+      </div>
+
+    </div>
+
+
+    <!-- AVAILABILITY -->
+    <div class="card">
+
+      <h2>🕐 Availability</h2>
+
+      <div class="info-row">
+        <span class="label">Monday - Friday</span>
+        <span class="value">9 AM - 6 PM</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Saturday</span>
+        <span class="value">10 AM - 4 PM</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Sunday</span>
+        <span class="value">Not Available</span>
+      </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE -->
+    <div class="card">
+
+      <h2>📚 Experience</h2>
+
+      <!-- Previous experience -->
+      <div class="experience-box">
+
+        <div class="experience-title">
+          Previous Experience
+        </div>
+
+        <div class="experience-description">
+          2 years of experience in video editing
+          and digital content creation before
+          joining SkillCircle.
+        </div>
+
+      </div>
+
+
+      <!-- SkillCircle experience -->
+      <div class="experience-box">
+
+        <div class="experience-title">
+          SkillCircle Experience
+        </div>
+
+        <div class="experience-description">
+          Experience gained through completed
+          work on SkillCircle.
+        </div>
+
+      </div>
+
+
+      <!-- Statistics -->
+      <div class="stats">
+
+        <div class="stat">
+          <strong>18</strong>
+          <span>Jobs Done</span>
+        </div>
+
+        <div class="stat">
+          <strong>96%</strong>
+          <span>Completion</span>
+        </div>
+
+        <div class="stat">
+          <strong>2026</strong>
+          <span>Member Since</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- EXPERIENCE EVIDENCE -->
+    <div class="card">
+
+      <h2>📜 Experience Evidence</h2>
+
+      <div class="notice">
+        Evidence shown here is submitted by the worker
+        to support their previous experience. SkillCircle
+        can mark evidence as verified after review.
+      </div>
+
+      <!-- Certificate -->
+      <div class="evidence" style="margin-top:15px;">
+
+        <div class="evidence-top">
+
+          <div class="evidence-title">
+            📄 Video Editing Certificate
+          </div>
+
+          <div class="verified-evidence">
+            ✓ Verified
+          </div>
+
+        </div>
+
+        <div class="evidence-description">
+          Certificate submitted as proof of previous
+          video-editing training or experience.
+        </div>
+
+        <a
+          class="evidence-btn"
+          href="#"
+          onclick="viewEvidence('certificate')">
+          View Evidence
+        </a>
+
+      </div>
+
+
+      <!-- Video / Work sample -->
+      <div class="evidence">
+
+        <div class="evidence-top">
+
+          <div class="evidence-title">
+            🎥 Previous Work Video
+          </div>
+
+          <div class="verified-evidence">
+            ✓ Verified
+          </div>
+
+        </div>
+
+        <div class="evidence-description">
+          Work sample submitted by the worker to
+          demonstrate practical experience.
+        </div>
+
+        <a
+          class="evidence-btn"
+          href="#"
+          onclick="viewEvidence('video')">
+          View Evidence
+        </a>
+
+      </div>
+
+
+      <!-- Portfolio -->
+      <div class="evidence">
+
+        <div class="evidence-top">
+
+          <div class="evidence-title">
+            🖼️ Portfolio / Work Samples
+          </div>
+
+          <div class="verified-evidence">
+            ✓ Verified
+          </div>
+
+        </div>
+
+        <div class="evidence-description">
+          Previous work samples submitted by the worker.
+        </div>
+
+        <a
+          class="evidence-btn"
+          href="#"
+          onclick="viewEvidence('portfolio')">
+          View Evidence
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- ABOUT -->
+    <div class="card">
+
+      <h2>👤 About</h2>
+
+      <p class="about">
+        I am a creative digital worker interested in
+        video editing, poster designing and digital
+        content creation. I am available for suitable
+        short-term work through SkillCircle.
+      </p>
+
+    </div>
+
+
+    <!-- ACTIONS -->
+    <div class="card">
+
+      <button class="hire-btn" onclick="hireWorker()">
+        Hire This Worker
+      </button>
+
+      <button class="message-btn" onclick="messageWorker()">
+        💬 Message
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function goBack() {
+      if (document.referrer) {
+        history.back();
+      } else {
+        window.location.href = "workerslist.html";
+      }
+    }
+
+
+    function hireWorker() {
+
+      const workerName =
+        document.getElementById("workerName").textContent;
+
+      /*
+        Later, the backend will create a real
+        hiring request here.
+
+        For now this is only the frontend demo.
+      */
+
+      const confirmed = confirm(
+        "Create a hiring request for " +
+        workerName +
+        "?"
+      );
+
+      if (confirmed) {
+
+        localStorage.setItem(
+          "selectedWorker",
+          workerName
         );
+
+        window.location.href = "owner.html";
+      }
+    }
+
+
+    function messageWorker() {
+
+      alert(
+        "Messaging will be connected to the backend later."
+      );
 
     }
 
-}
 
-function goBack() {
+    function viewEvidence(type) {
 
-    window.location.href = "workers-list.html";
+      /*
+        These are placeholder evidence links.
 
-}
+        Later:
+        certificate → real uploaded certificate
+        video → real uploaded video
+        portfolio → real portfolio/work sample
+      */
 
-</script>
+      if (type === "certificate") {
+
+        alert(
+          "Certificate evidence will open here after backend file upload is connected."
+        );
+
+      } else if (type === "video") {
+
+        alert(
+          "Previous work video will open here after backend file upload is connected."
+        );
+
+      } else {
+
+        alert(
+          "Portfolio evidence will open here after backend file upload is connected."
+        );
+
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>
