@@ -1,382 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-if (workers.length === 0) {
+<meta charset="UTF-8">
 
-    workers = [
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* =========================
-           WORKER 1
-        ========================= */
+<title>SkillCircle - Workers</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f6fb;
+    color:#222;
+}
+
+/* HEADER */
+
+.header{
+    background:white;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#5b3cc4;
+}
+
+.back-btn{
+    background:#5b3cc4;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* PAGE */
+
+.container{
+    width:95%;
+    max-width:1100px;
+    margin:auto;
+    padding:25px 0;
+}
+
+.title{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#777;
+    margin-bottom:25px;
+}
+
+/* SEARCH */
+
+.search{
+    width:100%;
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+
+.search input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+/* WORKER GRID */
+
+.worker-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+
+.worker-card{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 3px 15px rgba(0,0,0,0.08);
+}
+
+.worker-name{
+    font-size:21px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.rating{
+    color:#f39c12;
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+/* INFORMATION */
+
+.info{
+    margin-top:13px;
+}
+
+.label{
+    font-size:14px;
+    font-weight:bold;
+    margin-bottom:7px;
+    color:#444;
+}
+
+.value{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* SKILLS */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.skill{
+    background:#eee8ff;
+    color:#5b3cc4;
+    padding:7px 10px;
+    border-radius:20px;
+    font-size:12px;
+}
+
+/* EXPERIENCE */
+
+.experience-box{
+    background:#f8f7ff;
+    padding:11px;
+    border-radius:8px;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* BUTTON */
+
+.details-btn{
+    width:100%;
+    margin-top:18px;
+    padding:12px;
+    background:#5b3cc4;
+    color:white;
+    border:none;
+    border-radius:9px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.details-btn:hover{
+    background:#452ba5;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .title{
+        font-size:24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+        SkillCircle
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="history.back()"
+    >
+        ← Back
+    </button>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <h1 class="title">
+        Find Workers
+    </h1>
+
+    <p class="subtitle">
+        Choose workers based on their skills and experience
+    </p>
+
+
+    <!-- SEARCH -->
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by worker name or skill..."
+            oninput="showWorkers()"
+        >
+
+    </div>
+
+
+    <!-- WORKERS -->
+
+    <div
+        class="worker-grid"
+        id="workerGrid"
+    ></div>
+
+</div>
+
+
+<script>
+
+/*
+================================================
+SKILLCIRCLE DEMO WORKERS
+================================================
+*/
+
+const workers = [
+
+{
+    id:1,
+
+    name:"Lakshmi",
+
+    area:"Kukatpally",
+
+    rating:"4.9",
+
+    skills:[
+        "House Cleaning",
+        "Cooking"
+    ],
+
+    jobs:42,
+
+    previousExperience:[
+        {
+            skill:"House Cleaning",
+            duration:"5 years",
+            description:
+            "Experienced in residential house cleaning, kitchen cleaning and regular home maintenance.",
+            evidence:[
+                {
+                    type:"certificate",
+                    name:"House Cleaning Training Certificate",
+                    file:""
+                }
+            ]
+        },
 
         {
-            id: 1,
+            skill:"Cooking",
+            duration:"3 years",
+            description:
+            "Experienced in preparing regular home meals and traditional dishes.",
+            evidence:[]
+        }
+    ]
+},
 
-            name: "Lakshmi",
 
-            photo: "",
+{
+    id:2,
 
-            rating: 4.9,
+    name:"Ravi Kumar",
 
-            skills: [
-                "House Cleaning",
-                "Cooking"
-            ],
+    area:"Secunderabad",
 
-            jobsCompleted: 42,
+    rating:"4.8",
 
-            location: "Hyderabad",
+    skills:[
+        "Gardening",
+        "Plant Care"
+    ],
 
-            experience: [
+    jobs:36,
 
+    previousExperience:[
+        {
+            skill:"Gardening",
+            duration:"4 years",
+            description:
+            "Experienced in home gardening, plant maintenance, watering and garden cleaning.",
+            evidence:[
                 {
-                    skill: "House Cleaning",
-
-                    duration: "5 years",
-
-                    description:
-                        "Experienced in residential house cleaning, kitchen cleaning and regular home maintenance.",
-
-                    evidence: [
-
-                        {
-                            type: "image",
-                            url: ""
-                        },
-
-                        {
-                            type: "certificate",
-                            url: ""
-                        }
-
-                    ]
-
+                    type:"photo",
+                    name:"Previous Gardening Work",
+                    file:""
                 },
 
                 {
-                    skill: "Cooking",
-
-                    duration: "3 years",
-
-                    description:
-                        "Experienced in preparing regular home meals and traditional dishes.",
-
-                    evidence: []
-
+                    type:"video",
+                    name:"Gardening Work Video",
+                    file:""
                 }
-
             ]
+        }
+    ]
+},
 
-        },
 
+{
+    id:3,
 
-        /* =========================
-           WORKER 2
-        ========================= */
+    name:"Suresh",
 
+    area:"Miyapur",
+
+    rating:"4.7",
+
+    skills:[
+        "Painting",
+        "Wall Repair"
+    ],
+
+    jobs:28,
+
+    previousExperience:[
         {
-            id: 2,
-
-            name: "Ravi Kumar",
-
-            photo: "",
-
-            rating: 4.8,
-
-            skills: [
-                "Gardening",
-                "Plant Care"
-            ],
-
-            jobsCompleted: 36,
-
-            location: "Secunderabad",
-
-            experience: [
-
+            skill:"Painting",
+            duration:"6 years",
+            description:
+            "Experienced in interior painting, exterior painting and wall preparation.",
+            evidence:[
                 {
-                    skill: "Gardening",
-
-                    duration: "4 years",
-
-                    description:
-                        "Experienced in home gardening, plant maintenance, watering and garden cleaning.",
-
-                    evidence: [
-
-                        {
-                            type: "image",
-                            url: ""
-                        },
-
-                        {
-                            type: "video",
-                            url: ""
-                        }
-
-                    ]
-
-                }
-
-            ]
-
-        },
-
-
-        /* =========================
-           WORKER 3
-        ========================= */
-
-        {
-            id: 3,
-
-            name: "Suresh",
-
-            photo: "",
-
-            rating: 4.7,
-
-            skills: [
-                "Painting",
-                "Wall Repair"
-            ],
-
-            jobsCompleted: 28,
-
-            location: "Kukatpally",
-
-            experience: [
-
-                {
-                    skill: "Painting",
-
-                    duration: "6 years",
-
-                    description:
-                        "Experienced in interior wall painting, exterior painting and basic wall preparation.",
-
-                    evidence: [
-
-                        {
-                            type: "image",
-                            url: ""
-                        },
-
-                        {
-                            type: "certificate",
-                            url: ""
-                        }
-
-                    ]
-
+                    type:"photo",
+                    name:"Previous Painting Work",
+                    file:""
                 },
 
                 {
-                    skill: "Wall Repair",
-
-                    duration: "4 years",
-
-                    description:
-                        "Experienced in minor wall repairs and surface preparation.",
-
-                    evidence: []
-
+                    type:"certificate",
+                    name:"Painting Training Certificate",
+                    file:""
                 }
-
             ]
-
         },
 
-
-        /* =========================
-           WORKER 4
-        ========================= */
-
         {
-            id: 4,
+            skill:"Wall Repair",
+            duration:"4 years",
+            description:
+            "Experienced in minor wall repairs and surface preparation.",
+            evidence:[]
+        }
+    ]
+},
 
-            name: "Anitha",
 
-            photo: "",
+{
+    id:4,
 
-            rating: 4.9,
+    name:"Anitha",
 
-            skills: [
-                "Babysitting",
-                "Child Care"
-            ],
+    area:"Madhapur",
 
-            jobsCompleted: 51,
+    rating:"4.9",
 
-            location: "Madhapur",
+    skills:[
+        "Babysitting",
+        "Child Care"
+    ],
 
-            experience: [
+    jobs:51,
 
+    previousExperience:[
+        {
+            skill:"Babysitting",
+            duration:"5 years",
+            description:
+            "Experienced in child care, preparing meals and maintaining a safe environment.",
+            evidence:[
                 {
-                    skill: "Babysitting",
-
-                    duration: "5 years",
-
-                    description:
-                        "Experienced in caring for children, preparing meals and maintaining a safe environment.",
-
-                    evidence: [
-
-                        {
-                            type: "certificate",
-                            url: ""
-                        }
-
-                    ]
-
+                    type:"certificate",
+                    name:"Child Care Certificate",
+                    file:""
                 }
-
             ]
+        }
+    ]
+},
 
-        },
 
+{
+    id:5,
 
-        /* =========================
-           WORKER 5
-        ========================= */
+    name:"Priya",
 
+    area:"Gachibowli",
+
+    rating:"4.6",
+
+    skills:[
+        "Video Editing",
+        "Graphic Design"
+    ],
+
+    jobs:19,
+
+    previousExperience:[
         {
-            id: 5,
-
-            name: "Priya",
-
-            photo: "",
-
-            rating: 4.6,
-
-            skills: [
-                "Video Editing",
-                "Graphic Design"
-            ],
-
-            jobsCompleted: 19,
-
-            location: "Gachibowli",
-
-            experience: [
-
+            skill:"Video Editing",
+            duration:"2 years",
+            description:
+            "Experienced in editing short videos, social media content and promotional videos.",
+            evidence:[
                 {
-                    skill: "Video Editing",
-
-                    duration: "2 years",
-
-                    description:
-                        "Experienced in editing short videos, social media content and promotional videos.",
-
-                    evidence: [
-
-                        {
-                            type: "video",
-                            url: ""
-                        },
-
-                        {
-                            type: "image",
-                            url: ""
-                        }
-
-                    ]
-
+                    type:"video",
+                    name:"Previous Video Editing Work",
+                    file:""
                 },
 
                 {
-                    skill: "Graphic Design",
-
-                    duration: "1 year",
-
-                    description:
-                        "Created posters, social media graphics and simple promotional designs.",
-
-                    evidence: []
-
+                    type:"photo",
+                    name:"Edited Design Sample",
+                    file:""
                 }
-
             ]
-
         },
 
-
-        /* =========================
-           WORKER 6
-        ========================= */
-
         {
-            id: 6,
+            skill:"Graphic Design",
+            duration:"1 year",
+            description:
+            "Created posters, social media graphics and promotional designs.",
+            evidence:[]
+        }
+    ]
+},
 
-            name: "Mahesh",
 
-            photo: "",
+{
+    id:6,
 
-            rating: 4.5,
+    name:"Mahesh",
 
-            skills: [
-                "Electrical Work",
-                "Home Maintenance"
-            ],
+    area:"LB Nagar",
 
-            jobsCompleted: 33,
+    rating:"4.5",
 
-            location: "Miyapur",
+    skills:[
+        "Electrical Work",
+        "Home Maintenance"
+    ],
 
-            experience: [
+    jobs:33,
+
+    previousExperience:[
+        {
+            skill:"Electrical Work",
+            duration:"7 years",
+            description:
+            "Experienced in basic household electrical maintenance and home electrical work.",
+            evidence:[
+                {
+                    type:"certificate",
+                    name:"Electrical Training Certificate",
+                    file:""
+                },
 
                 {
-                    skill: "Electrical Work",
-
-                    duration: "7 years",
-
-                    description:
-                        "Experienced in basic household electrical maintenance, switch replacement and wiring-related work.",
-
-                    evidence: [
-
-                        {
-                            type: "certificate",
-                            url: ""
-                        },
-
-                        {
-                            type: "image",
-                            url: ""
-                        }
-
-                    ]
-
+                    type:"photo",
+                    name:"Previous Electrical Work",
+                    file:""
                 }
-
             ]
+        }
+    ]
+},
 
+
+{
+    id:7,
+
+    name:"Kavitha",
+
+    area:"Dilsukhnagar",
+
+    rating:"4.8",
+
+    skills:[
+        "Tailoring",
+        "Clothing Alteration"
+    ],
+
+    jobs:27,
+
+    previousExperience:[
+        {
+            skill:"Tailoring",
+            duration:"6 years",
+            description:
+            "Experienced in stitching dresses, blouse alterations and clothing repairs.",
+            evidence:[
+                {
+                    type:"photo",
+                    name:"Previous Tailoring Work",
+                    file:""
+                }
+            ]
         },
 
-
-        /* =========================
-           WORKER 7
-        ========================= */
-
         {
-            id: 7,
+            skill:"Clothing Alteration",
+            duration:"5 years",
+            description:
+            "Experienced in fitting and altering different types of clothing.",
+            evidence:[]
+        }
+    ]
+}
 
-            name: "Kavitha",
+];
 
-            photo: "",
 
-            rating: 4.8,
+/*
+================================================
+SHOW WORKERS
+================================================
+*/
 
-            skills: [
-                "Tailoring",
-                "Clothing Alteration"
-            ],
+function showWorkers(){
 
-            jobsCompleted: 27,
+    const grid =
+        document.getElementById("workerGrid");
 
-            location: "LB Nagar",
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
 
-            experience: [
 
-                {
-                    skill: "Tailoring",
+    grid.innerHTML="";
 
-                    duration: "
+
+    const filtered =
+        workers.filter(worker=>{
+
+            const name =
+                worker.name
+                .toLowerCase();
+
+            const skillMatch =
+                worker.skills.some(skill =>
+                    skill
+                    .toLowerCase()
+                    .includes(search)
+                );
+
+            return(
+                name.includes(search)
+                ||
+                skillMatch
+            );
+
+        });
+
+
+    filtered.forEach(worker=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className="worker-card";
+
+
+        const skillsHTML =
+            worker.skills
+            .map(skill=>`
+
+                <span class="skill">
+                    ${skill}
+                </span>
+
+            `)
+            .join("");
+
+
+        const experience =
+            worker.previousExperience[0];
+
+
+        card.innerHTML=`
+
+            <div class="worker-name">
+
+                ${worker.name}
+
+            </div>
+
+
+            <div class="rating">
+
+                ⭐ ${worker.rating} Rating
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="label">
+                    🛠️ SkillCircle Skills
+                </div>
+
+                <div class="skills">
+
+                    ${skillsHTML}
+
+                </div>
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="label">
+                    💼 SkillCircle Jobs
+                </div>
+
+                <div class="value">
+
+                    ${worker.jobs}
+                    jobs completed
+
+                </div>
+
+            </div>
+
+
+            <div class="info">
+
+                <div class="label">
+                    📋 Previous Experience
+                </div>
+
+                <div class="experience-box">
+
+                    <b>
+                        ${experience.skill}
+                    </b>
+
+                    <br>
+
+                    ${experience.duration}
+
+                    <br>
+
+                    ${experience.description}
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="details-btn"
+                onclick="openDetails(${worker.id})"
+            >
+
+                View Details
+
+            </button>
+
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/*
+================================================
+OPEN DETAILS PAGE
+================================================
+*/
+
+function openDetails(id){
+
+    localStorage.setItem(
+        "selectedWorkerId",
+        id
+    );
+
+    window.location.href =
+        "worker-details.html";
+
+}
+
+
+/*
+================================================
+START
+================================================
+*/
+
+showWorkers();
+
+</script>
+
+</body>
+</html>
