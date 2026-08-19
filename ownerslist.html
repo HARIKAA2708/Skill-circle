@@ -1,93 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SkillCircle - Top Owners</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SkillCircle - Owner List</title>
+
 <style>
-*{box-sizing:border-box;font-family:Arial}
-body{margin:0;background:#f4f7fb;color:#222}
-header{background:#2563eb;color:white;text-align:center;padding:22px}
-.container{max-width:650px;margin:auto;padding:20px}
-.card{background:white;padding:20px;margin-bottom:18px;border-radius:16px;box-shadow:0 4px 15px #0001}
-.avatar{width:65px;height:65px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:32px;float:left;margin-right:15px}
-.name{font-size:20px;font-weight:bold}
-.work{color:#2563eb;font-weight:bold;margin-top:5px}
-.clear{clear:both}
-.info{line-height:1.8;margin-top:15px}
-button{width:100%;padding:13px;border:0;border-radius:10px;background:#16a34a;color:white;font-size:16px;font-weight:bold;margin-top:15px}
-.back{background:#64748b}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f6fb;
+    color: #222;
+}
+
+header {
+    background: white;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo {
+    color: #5b3cc4;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.back-btn {
+    border: none;
+    background: #5b3cc4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.container {
+    width: 94%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 25px 0;
+}
+
+.welcome {
+    background: #5b3cc4;
+    color: white;
+    padding: 22px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+}
+
+.welcome h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.welcome p {
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.profile-summary {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.profile-row {
+    margin-top: 9px;
+    font-size: 14px;
+}
+
+.profile-row strong {
+    color: #555;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+}
+
+.skill {
+    background: #eee8ff;
+    color: #5b3cc4;
+    padding: 7px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.owner-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.owner-subtitle {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.owner-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(290px, 1fr));
+
+    gap: 20px;
+}
+
+.owner-card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+.owner-name {
+    font-size: 21px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.owner-area {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.job {
+    margin-top: 12px;
+}
+
+.job-label {
+    font-weight: bold;
+    font-size: 13px;
+    color: #555;
+}
+
+.job-value {
+    color: #666;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.payment {
+    color: #168346;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.view-btn {
+    width: 100%;
+    border: none;
+    background: #5b3cc4;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 18px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.view-btn:hover {
+    background: #452da0;
+}
+
+.no-owner {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: #777;
+}
+
+@media(max-width:600px) {
+
+    .owner-title {
+        font-size: 21px;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
+
 <header>
-<h1>🔵 SkillCircle</h1>
-<p>Top Work Opportunities For You</p>
+
+    <div class="logo">
+        SkillCircle
+    </div>
+
+    <button
+        class="back-btn"
+        onclick="history.back()">
+
+        ← Back
+
+    </button>
+
 </header>
+
 
 <div class="container">
 
-<button class="back" onclick="history.back()">⬅ Back</button>
 
-<div class="card">
-<div class="avatar">👩</div>
-<div class="name">Priya</div>
-<div class="work">Digital Work</div>
-<div class="clear"></div>
+    <!-- WELCOME -->
 
-<div class="info">
-📍 Hyderabad<br>
-⏰ 4:00 PM - 9:00 PM<br>
-💰 ₹400 - ₹600<br>
-⭐ 4.9 / 5<br>
-🏆 Regular Work Available
+    <div class="welcome">
+
+        <h1 id="welcomeName">
+            Welcome Worker
+        </h1>
+
+        <p>
+            Here are available owners and work
+            opportunities that may match your skills.
+        </p>
+
+    </div>
+
+
+    <!-- WORKER PROFILE SUMMARY -->
+
+    <div class="profile-summary">
+
+        <div class="section-title">
+            👤 Your Worker Profile
+        </div>
+
+
+        <div class="profile-row">
+
+            <strong>Area:</strong>
+
+            <span id="workerArea">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <strong>Work Type:</strong>
+
+            <span id="workerType">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <strong>Working Hours:</strong>
+
+            <span id="workerHours">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <strong>Expected Payment:</strong>
+
+            <span id="workerSalary">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="profile-row">
+
+            <strong>Skills:</strong>
+
+            <div
+                class="skills"
+                id="workerSkills">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- OWNER LIST -->
+
+    <h2 class="owner-title">
+        Available Owners & Jobs
+    </h2>
+
+    <p class="owner-subtitle">
+        Choose a suitable work opportunity.
+    </p>
+
+
+    <div
+        class="owner-grid"
+        id="ownerGrid">
+    </div>
+
+
 </div>
 
-<button onclick="openOwner('Priya')">View Owner</button>
-</div>
-
-<div class="card">
-<div class="avatar">👨</div>
-<div class="name">Rahul Stores</div>
-<div class="work">Shop Work</div>
-<div class="clear"></div>
-
-<div class="info">
-📍 Hyderabad<br>
-⏰ 9:00 AM - 1:00 PM<br>
-💰 ₹300 - ₹500<br>
-⭐ 4.7 / 5<br>
-🏆 Part-time Opportunity
-</div>
-
-<button onclick="openOwner('Rahul Stores')">View Owner</button>
-</div>
-
-<div class="card">
-<div class="avatar">🏢</div>
-<div class="name">Creative Hub</div>
-<div class="work">Graphic Design</div>
-<div class="clear"></div>
-
-<div class="info">
-📍 Hyderabad<br>
-⏰ Flexible<br>
-💰 ₹500 - ₹1000<br>
-⭐ 4.8 / 5<br>
-🏆 Project-based Work
-</div>
-
-<button onclick="openOwner('Creative Hub')">View Owner</button>
-</div>
-
-</div>
 
 <script>
-function openOwner(name) {
-    window.location.href = "owner-profile.html?owner=" + encodeURIComponent(name);
+
+/* ==========================================
+   GET WORKER PROFILE
+========================================== */
+
+const savedProfile =
+    localStorage.getItem(
+        "skillCircleWorkerProfile"
+    );
+
+
+let worker = null;
+
+
+if (savedProfile) {
+
+    worker =
+        JSON.parse(savedProfile);
+
 }
+
+
+/* ==========================================
+   SHOW WORKER PROFILE
+========================================== */
+
+if (worker) {
+
+    document
+    .getElementById("welcomeName")
+    .textContent =
+        "Welcome, " + worker.name;
+
+
+    document
+    .getElementById("workerArea")
+    .textContent =
+        worker.area || "-";
+
+
+    document
+    .getElementById("workerType")
+    .textContent =
+        worker.workType || "-";
+
+
+    document
+    .getElementById("workerHours")
+    .textContent =
+        worker.workingHours || "-";
+
+
+    document
+    .getElementById("workerSalary")
+    .textContent =
+        worker.salary || "-";
+
+
+    const skillsBox =
+        document
+        .getElementById("workerSkills");
+
+
+    if (
+        worker.skills &&
+        worker.skills.length > 0
+    ) {
+
+        worker.skills.forEach(
+            function(skill) {
+
+                const span =
+                    document.createElement("span");
+
+                span.className = "skill";
+
+                span.textContent = skill;
+
+                skillsBox.appendChild(span);
+
+            }
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   OWNER / JOB DATA
+========================================== */
+
+const owners = [
+
+    {
+        name: "Srinivas",
+        area: "Kukatpally",
+        work: "House Cleaning",
+        timing: "9 AM - 12 PM",
+        payment: "₹500 per day",
+        description:
+        "Looking for a reliable person for regular house cleaning."
+    },
+
+
+    {
+        name: "Anjali",
+        area: "Miyapur",
+        work: "Gardening",
+        timing: "7 AM - 11 AM",
+        payment: "₹600 per day",
+        description:
+        "Looking for someone experienced in garden maintenance and plant care."
+    },
+
+
+    {
+        name: "Rajesh",
+        area: "Madhapur",
+        work: "Painting",
+        timing: "9 AM - 5 PM",
+        payment: "₹900 per day",
+        description:
+        "Need an experienced painter for home interior work."
+    },
+
+
+    {
+        name: "Deepa",
+        area: "Gachibowli",
+        work: "Cooking",
+        timing: "8 AM - 11 AM",
+        payment: "₹700 per day",
+        description:
+        "Looking for someone who can prepare regular home meals."
+    },
+
+
+    {
+        name: "Kiran",
+        area: "Dilsukhnagar",
+        work: "Tailoring",
+        timing: "Part Time",
+        payment: "₹800 per day",
+        description:
+        "Looking for an experienced tailor for clothing alterations."
+    },
+
+
+    {
+        name: "Meena",
+        area: "Secunderabad",
+        work: "Babysitting",
+        timing: "10 AM - 4 PM",
+        payment: "₹750 per day",
+        description:
+        "Looking for a responsible person for child care."
+    }
+
+];
+
+
+/* ==========================================
+   DISPLAY OWNER LIST
+========================================== */
+
+const ownerGrid =
+    document.getElementById("ownerGrid");
+
+
+owners.forEach(function(owner) {
+
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "owner-card";
+
+
+    card.innerHTML = `
+
+        <div class="owner-name">
+
+            ${owner.name}
+
+        </div>
+
+
+        <div class="owner-area">
+
+            📍 ${owner.area}
+
+        </div>
+
+
+        <div class="job">
+
+            <div class="job-label">
+                🛠️ Work Required
+            </div>
+
+            <div class="job-value">
+                ${owner.work}
+            </div>
+
+        </div>
+
+
+        <div class="job">
+
+            <div class="job-label">
+                🕐 Working Time
+            </div>
+
+            <div class="job-value">
+                ${owner.timing}
+            </div>
+
+        </div>
+
+
+        <div class="job">
+
+            <div class="job-label">
+                💰 Payment
+            </div>
+
+            <div class="payment">
+                ${owner.payment}
+            </div>
+
+        </div>
+
+
+        <div class="job">
+
+            <div class="job-label">
+                📋 Description
+            </div>
+
+            <div class="job-value">
+                ${owner.description}
+            </div>
+
+        </div>
+
+
+        <button
+            class="view-btn"
+            onclick="selectOwner('${owner.name}')">
+
+            View Work Details
+
+        </button>
+
+    `;
+
+
+    ownerGrid.appendChild(card);
+
+});
+
+
+/* ==========================================
+   OWNER SELECTION
+========================================== */
+
+function selectOwner(ownerName) {
+
+    localStorage.setItem(
+        "selectedOwner",
+        ownerName
+    );
+
+
+    alert(
+        "You selected " +
+        ownerName +
+        "'s work opportunity."
+    );
+
+}
+
 </script>
 
 </body>
